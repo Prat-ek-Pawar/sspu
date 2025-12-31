@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SSPP - Coming Soon</title>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <title>Gallery - SSPP Pune</title>
+    
+    <!-- Theme CSS (Existing) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&family=Gantari:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
     <style>
         /* =========================================
            1. DESIGN SYSTEM: ROYAL PUNE PALETTE
@@ -22,22 +29,18 @@
             --gradient-saffron: linear-gradient(135deg, #e76f51 0%, #d62828 100%);
 
             /* UI Elements */
-            --glass-light: rgba(255, 255, 255, 0.9);
-            --glass-dark: rgba(15, 23, 42, 0.6);
-            --text-dark: #1e293b;
-            --text-light: #f8fafc;
-            
             --container-width: 1240px;
             --header-height: 90px;
             --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            --bg-light: #fdfbf7;
         }
 
         /* RESET & BASE */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #fdfbf7; /* Warm paper texture tone */
-            color: var(--text-dark);
+            background-color: var(--bg-light);
+            color: #1e293b;
             overflow-x: hidden;
             display: flex;
             flex-direction: column;
@@ -49,9 +52,9 @@
         ::-webkit-scrollbar-track { background: var(--royal-blue); }
         ::-webkit-scrollbar-thumb { background: var(--imperial-gold); border-radius: 5px; }
 
-        /* =========================================
-           2. NAVIGATION (Immersive Glass)
-           ========================================= */
+        h1,h2,h3,h4,h5,h6 { font-family: "Poppins", sans-serif; font-weight: 500; }
+        
+        /* NAVIGATION (Immersive Glass) */
         header {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
@@ -72,201 +75,102 @@
             padding: 0 20px;
         }
 
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
+        .logo-area { display: flex; align-items: center; gap: 12px; }
         .logo-box {
-            width: 48px;
-            height: 48px;
+            width: 48px; height: 48px;
             background: var(--gradient-royal);
             color: var(--imperial-gold);
-            display: grid;
-            place-items: center;
-            border-radius: 12px;
-            font-size: 1.5rem;
+            display: grid; place-items: center;
+            border-radius: 12px; font-size: 1.5rem;
             box-shadow: 0 8px 20px -5px rgba(30, 58, 138, 0.4);
         }
-
         .logo-text {
-            font-weight: 800;
-            font-size: 1.5rem;
+            font-weight: 800; font-size: 1.5rem;
             background: var(--gradient-royal);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: -0.5px;
         }
 
-        /* Desktop Nav - Row Aligned */
-        .desktop-nav {
-            display: none;
-        }
-        
+        /* Desktop Nav */
+        .desktop-nav { display: none; }
         @media (min-width: 992px) {
-            .desktop-nav {
-                display: flex !important;
-                gap: 30px;
-                align-items: center;
-            }
+            .desktop-nav { display: flex !important; gap: 30px; align-items: center; }
             .nav-link {
-                text-decoration: none;
-                color: var(--text-dark);
-                font-weight: 600;
-                font-size: 0.95rem;
-                padding: 10px 0;
-                position: relative;
+                text-decoration: none; color: #1e293b;
+                font-weight: 600; font-size: 0.95rem;
+                padding: 10px 0; position: relative;
             }
-            /* Cultural Underline Animation */
             .nav-link::after {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 0%;
-                height: 3px;
-                background: var(--gradient-saffron);
-                transition: width 0.3s ease;
-                border-radius: 2px;
+                content: ''; position: absolute; bottom: 0; left: 0;
+                width: 0%; height: 3px; background: var(--gradient-saffron);
+                transition: width 0.3s ease; border-radius: 2px;
             }
-            .nav-link:hover::after { width: 100%; }
+            .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+            .nav-link.active { color: var(--pune-saffron); }
 
-            /* Dropdowns */
             .has-dropdown { position: relative; }
             .dropdown-menu {
-                position: absolute;
-                top: 140%;
-                left: -20px;
-                background: white;
-                min-width: 260px;
+                position: absolute; top: 140%; left: -20px;
+                background: white; min-width: 260px;
                 box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-                border-radius: 12px;
-                padding: 15px 0;
-                opacity: 0;
-                visibility: hidden;
+                border-radius: 12px; padding: 15px 0;
+                opacity: 0; visibility: hidden;
                 transform: translateY(15px);
                 transition: all 0.4s var(--ease-elastic);
                 border-top: 4px solid var(--pune-saffron);
                 z-index: 1010;
             }
-            .has-dropdown:hover .dropdown-menu {
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0);
-                top: 100%;
-            }
+            .has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); top: 100%; }
             .dropdown-item {
-                display: block;
-                padding: 10px 25px;
-                color: #475569;
-                text-decoration: none;
-                font-size: 0.9rem;
-                transition: all 0.2s;
+                display: block; padding: 10px 25px; color: #475569;
+                text-decoration: none; font-size: 0.9rem; transition: all 0.2s;
             }
-            .dropdown-item:hover {
-                background: #fff7ed;
-                color: var(--pune-saffron);
-                padding-left: 30px;
-            }
+            .dropdown-item:hover { background: #fff7ed; color: var(--pune-saffron); padding-left: 30px; }
         }
 
-        /* Mobile Menu */
         .mobile-toggle { font-size: 1.5rem; background: none; border: none; cursor: pointer; color: var(--royal-blue); }
         @media (min-width: 992px) { .mobile-toggle { display: none; } }
-        
-        /* Mobile Active State */
         .desktop-nav.active-mobile {
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            top: var(--header-height);
-            left: 0;
-            width: 100%;
-            background: white;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            z-index: 1005;
+            display: flex; flex-direction: column; position: absolute;
+            top: var(--header-height); left: 0; width: 100%;
+            background: white; padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); z-index: 1005;
         }
 
-        /* Modern Buttons */
         .btn {
-            padding: 14px 32px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+            padding: 14px 32px; border-radius: 50px; font-weight: 600;
+            text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
             transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             border: 2px solid transparent;
         }
         .btn-primary {
-            background: var(--gradient-saffron);
-            color: white;
+            background: var(--gradient-saffron); color: white;
             box-shadow: 0 10px 25px -5px rgba(231, 111, 81, 0.4);
         }
         .btn:hover { transform: translateY(-4px) scale(1.02); }
 
-         /* =========================================
-           7. FOOTER (Immutable Structure, Styled)
-           ========================================= */
+         /* FOOTER */
         footer {
-            background: #0f172a;
-            color: #e2e8f0;
-            padding: 4rem 20px 2rem 20px;
-            border-top: 5px solid var(--pune-saffron);
-            margin-top: auto; /* Push to bottom */
+            background: #0f172a; color: #e2e8f0; padding: 4rem 20px 2rem 20px;
+            border-top: 5px solid var(--pune-saffron); margin-top: auto;
         }
         .footer-container {
-            max-width: var(--container-width);
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
+            max-width: var(--container-width); margin: 0 auto;
+            display: flex; flex-direction: column; gap: 3rem;
         }
         @media (min-width: 768px) { .footer-container { flex-direction: row; justify-content: space-between; } }
-        
-        .footer-logo h3 { color: white; margin-bottom: 0.5rem; font-size: 1.5rem; }
         .footer-links a { color: #94a3b8; text-decoration: none; display: block; margin-bottom: 0.8rem; transition: 0.3s; }
         .footer-links a:hover { color: var(--imperial-gold); padding-left: 5px; }
         .copyright { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 0.9rem; color: #64748b; }
-
-        /* COMING SOON SPECIFIC */
-        .coming-soon-wrapper {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: radial-gradient(circle at center, rgba(231,111,81,0.05) 0%, transparent 70%);
-            padding: 2rem;
-        }
-        .coming-soon-content {
-            text-align: center;
-            max-width: 600px;
-            background: rgba(255,255,255,0.6);
-            backdrop-filter: blur(15px);
-            padding: 3rem;
-            border-radius: 24px;
-            border: 1px solid rgba(255,255,255,0.5);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
-        }
-        .coming-soon-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: var(--gradient-royal);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-        }
-        .coming-soon-subtitle {
-            color: #64748b;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Page Specific CSS -->
+    <link rel="stylesheet" href="./assets/css/gallery.css">
+
+    <!-- GSAP (Local) -->
+    <script src="./assets/gsap.min.js" defer></script>
+    <script src="./assets/js/pages/gallery.js" defer></script>
 </head>
 <body>
 
@@ -323,32 +227,127 @@
                 </div>
 
                 <a href="Patient_Education.html" class="nav-link">Patient Education</a>
-                <a href="Gallery.html" class="nav-link">Gallery</a>
+                <a href="Gallery.html" class="nav-link active">Gallery</a>
                 <a href="Contact_us.html" class="nav-link btn btn-primary" style="padding: 8px 25px; color: white;">Contact Us</a>
             </nav>
         </div>
     </header>
 
-    <!-- MAIN CONTENT: COMING SOON -->
-    <main class="coming-soon-wrapper">
-        <div class="coming-soon-content">
-            <lottie-player 
-                src="./Coming%20Soon.json" 
-                background="transparent" 
-                speed="1" 
-                style="width: 100%; height: 300px; margin-bottom: 1rem;" 
-                loop 
-                autoplay>
-            </lottie-player>
-            
-            <h1 class="coming-soon-title">Coming Soon</h1>
-            <p class="coming-soon-subtitle">We are currently crafting this page with care. <br>Please check back shortly.</p>
-            
-            <a href="index.html" class="btn btn-primary">
-                Back to Home <i class="fas fa-arrow-right"></i>
-            </a>
+    <!-- MAIN GALLERY CONTENT -->
+    <main>
+        
+        <!-- Hero -->
+        <section class="gallery-hero">
+            <h1>Our <span style="background: var(--gradient-saffron); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Shared Moments</span></h1>
+            <p>Celebrating the milestones, conferences, and community outreach that define our journey in pain medicine.</p>
+        </section>
+
+        <!-- Filters -->
+        <div class="filter-bar">
+            <button class="filter-btn active" data-filter="all">All Photos</button>
+            <button class="filter-btn" data-filter="conference">Conferences</button>
+            <button class="filter-btn" data-filter="workshop">Workshops</button>
+            <button class="filter-btn" data-filter="community">Community</button>
+            <button class="filter-btn" data-filter="awards">Awards</button>
         </div>
+
+        <!-- Grid -->
+        <div class="gallery-container">
+            <div class="gallery-grid">
+                
+                <!-- Conference Items -->
+                <div class="gallery-item" data-category="conference">
+                    <img src="https://picsum.photos/600/400?random=1" alt="Annual Conference 2024">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Conference</div>
+                        <div class="gallery-caption">Annual Meet 2024</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="conference">
+                    <img src="https://picsum.photos/600/400?random=2" alt="Keynote Speech">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Conference</div>
+                        <div class="gallery-caption">Keynote Speech</div>
+                    </div>
+                </div>
+                
+                <!-- Workshop Items -->
+                <div class="gallery-item" data-category="workshop">
+                    <img src="https://picsum.photos/600/400?random=3" alt="Hands-on Workshop">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Workshop</div>
+                        <div class="gallery-caption">Ultrasound Workshop</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="workshop">
+                    <img src="https://picsum.photos/600/400?random=4" alt="Pain Management Training">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Workshop</div>
+                        <div class="gallery-caption">Advanced Training</div>
+                    </div>
+                </div>
+
+                 <!-- Community Items -->
+                <div class="gallery-item" data-category="community">
+                    <img src="https://picsum.photos/600/400?random=5" alt="Health Camp">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Community</div>
+                        <div class="gallery-caption">Free Health Camp</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="community">
+                    <img src="https://picsum.photos/600/400?random=6" alt="Patient Awareness">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Community</div>
+                        <div class="gallery-caption">Patient Awareness Walk</div>
+                    </div>
+                </div>
+
+                <!-- Awards Items -->
+                <div class="gallery-item" data-category="awards">
+                    <img src="https://picsum.photos/600/400?random=7" alt="Best Chapter Award">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Awards</div>
+                        <div class="gallery-caption">Best City Chapter Award</div>
+                    </div>
+                </div>
+
+                 <div class="gallery-item" data-category="conference">
+                    <img src="https://picsum.photos/600/400?random=8" alt="Panel Discussion">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Conference</div>
+                        <div class="gallery-caption">Panel Discussion</div>
+                    </div>
+                </div>
+                
+                 <div class="gallery-item" data-category="awards">
+                    <img src="https://picsum.photos/600/400?random=9" alt="Lifetime Achievement">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Awards</div>
+                        <div class="gallery-caption">Lifetime Achievement</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </main>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox">
+        <button class="lightbox-close">&times;</button>
+        <button class="lightbox-nav lightbox-prev"><i class="fas fa-chevron-left"></i></button>
+        
+        <div class="lightbox-content">
+            <img src="" alt="" class="lightbox-img">
+            <div class="lightbox-caption"></div>
+        </div>
+        
+        <button class="lightbox-nav lightbox-next"><i class="fas fa-chevron-right"></i></button>
+    </div>
 
     <!-- FOOTER -->
     <footer>
