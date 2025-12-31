@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +14,7 @@
             --deep-ocean: #1e3a8a;
             --pune-saffron: #e76f51;
             --imperial-gold: #fbbf24;
-            
+
             --gradient-royal: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
             --gradient-gold: linear-gradient(45deg, #d4af37, #f9dc5c, #d4af37);
             --gradient-saffron: linear-gradient(135deg, #e76f51 0%, #d62828 100%);
@@ -21,13 +22,18 @@
             --bg-paper: #fdfbf7;
             --text-dark: #1e293b;
             --text-muted: #475569;
-            
+
             --container-width: 1240px;
             --header-height: 90px;
             --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--bg-paper);
@@ -36,7 +42,11 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+        }
 
         /* =========================================
            2. NAVIGATION (Immutable)
@@ -47,8 +57,8 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.05);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .nav-container {
@@ -61,39 +71,136 @@
             padding: 0 20px;
         }
 
-        .logo-area { display: flex; align-items: center; gap: 12px; }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
         .logo-box {
-            width: 48px; height: 48px; background: var(--gradient-royal); color: var(--imperial-gold);
-            display: grid; place-items: center; border-radius: 12px; font-size: 1.5rem;
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-royal);
+            color: var(--imperial-gold);
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            font-size: 1.5rem;
             box-shadow: 0 8px 20px -5px rgba(30, 58, 138, 0.4);
         }
+
         .logo-text {
-            font-weight: 800; font-size: 1.5rem; background: var(--gradient-royal);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px;
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: var(--gradient-royal);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
         }
 
-        .desktop-nav { display: none; }
+        .desktop-nav {
+            display: none;
+        }
+
         @media (min-width: 992px) {
-            .desktop-nav { display: flex !important; gap: 30px; align-items: center; }
-            .nav-link { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 0.95rem; padding: 10px 0; position: relative; }
-            .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0%; height: 3px; background: var(--gradient-saffron); transition: width 0.3s ease; }
-            .nav-link:hover::after { width: 100%; }
-            
-            .has-dropdown { position: relative; }
+            .desktop-nav {
+                display: flex !important;
+                gap: 30px;
+                align-items: center;
+            }
+
+            .nav-link {
+                text-decoration: none;
+                color: var(--text-dark);
+                font-weight: 600;
+                font-size: 0.95rem;
+                padding: 10px 0;
+                position: relative;
+            }
+
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0%;
+                height: 3px;
+                background: var(--gradient-saffron);
+                transition: width 0.3s ease;
+            }
+
+            .nav-link:hover::after {
+                width: 100%;
+            }
+
+            .has-dropdown {
+                position: relative;
+            }
+
             .dropdown-menu {
-                position: absolute; top: 140%; left: -20px; background: white; min-width: 260px;
-                box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-radius: 12px; padding: 15px 0;
-                opacity: 0; visibility: hidden; transform: translateY(15px); transition: all 0.4s var(--ease-elastic);
+                position: absolute;
+                top: 140%;
+                left: -20px;
+                background: white;
+                min-width: 260px;
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+                border-radius: 12px;
+                padding: 15px 0;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(15px);
+                transition: all 0.4s var(--ease-elastic);
                 border-top: 4px solid var(--pune-saffron);
             }
-            .has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); top: 100%; }
-            .dropdown-item { display: block; padding: 10px 25px; color: #475569; text-decoration: none; font-size: 0.9rem; transition: all 0.2s; }
-            .dropdown-item:hover { background: #fff7ed; color: var(--pune-saffron); padding-left: 30px; }
+
+            .has-dropdown:hover .dropdown-menu {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+                top: 100%;
+            }
+
+            .dropdown-item {
+                display: block;
+                padding: 10px 25px;
+                color: #475569;
+                text-decoration: none;
+                font-size: 0.9rem;
+                transition: all 0.2s;
+            }
+
+            .dropdown-item:hover {
+                background: #fff7ed;
+                color: var(--pune-saffron);
+                padding-left: 30px;
+            }
         }
 
-        .mobile-toggle { font-size: 1.5rem; background: none; border: none; cursor: pointer; color: var(--royal-blue); }
-        @media (min-width: 992px) { .mobile-toggle { display: none; } }
-        .desktop-nav.active-mobile { display: flex; flex-direction: column; position: absolute; top: var(--header-height); left: 0; width: 100%; background: white; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .mobile-toggle {
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--royal-blue);
+        }
+
+        @media (min-width: 992px) {
+            .mobile-toggle {
+                display: none;
+            }
+        }
+
+        .desktop-nav.active-mobile {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: var(--header-height);
+            left: 0;
+            width: 100%;
+            background: white;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
 
         /* =========================================
            3. PAGE HEADER
@@ -108,18 +215,37 @@
         }
 
         .page-header-bg {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-image: radial-gradient(circle at 50% 50%, rgba(251, 191, 36, 0.1) 0%, transparent 50%);
             opacity: 0.6;
         }
 
         .page-title {
-            font-size: 3rem; margin-bottom: 1rem; color: var(--imperial-gold); position: relative; z-index: 2;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--imperial-gold);
+            position: relative;
+            z-index: 2;
         }
-        .breadcrumb { color: rgba(255,255,255,0.7); font-size: 0.9rem; position: relative; z-index: 2; }
+
+        .breadcrumb {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 2;
+        }
 
         .header-arch {
-            position: absolute; bottom: -1px; left: 0; width: 100%; line-height: 0; fill: var(--bg-paper);
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            line-height: 0;
+            fill: var(--bg-paper);
         }
 
         /* =========================================
@@ -129,18 +255,25 @@
             padding: 4rem 20px;
             position: relative;
         }
-        
+
         /* Central decorative line */
         .vm-section::before {
             content: '';
             position: absolute;
-            top: 0; bottom: 0; left: 50%;
+            top: 0;
+            bottom: 0;
+            left: 50%;
             width: 1px;
             background: linear-gradient(to bottom, transparent, var(--imperial-gold), transparent);
             opacity: 0.3;
             display: none;
         }
-        @media(min-width: 992px) { .vm-section::before { display: block; } }
+
+        @media(min-width: 992px) {
+            .vm-section::before {
+                display: block;
+            }
+        }
 
         .vm-container {
             max-width: var(--container-width);
@@ -156,47 +289,88 @@
             border-radius: 20px;
             padding: 3rem;
             position: relative;
-            border: 1px solid rgba(0,0,0,0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
             box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05);
             overflow: hidden;
             transition: transform 0.3s ease;
         }
 
-        .vm-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px -10px rgba(251, 191, 36, 0.15); }
+        .vm-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(251, 191, 36, 0.15);
+        }
 
         /* Top Accent Border */
         .vm-card::after {
             content: '';
-            position: absolute; top: 0; left: 0; right: 0; height: 6px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
             background: var(--gradient-royal);
         }
-        .vm-card.mission-card::after { background: var(--gradient-saffron); }
+
+        .vm-card.mission-card::after {
+            background: var(--gradient-saffron);
+        }
 
         /* Background Motif (Mandala) */
         .bg-motif {
-            position: absolute; top: -50px; right: -50px; width: 200px; height: 200px;
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
             background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='40' stroke='%23fbbf24' stroke-width='1' fill='none' opacity='0.1'/%3E%3Cpath d='M50 10 L50 90 M10 50 L90 50' stroke='%23fbbf24' stroke-width='1' opacity='0.1'/%3E%3C/svg%3E");
             animation: rotate 60s linear infinite;
         }
-        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
 
         /* Content Flex */
         .vm-content {
-            display: flex; flex-direction: column; gap: 2rem;
-            position: relative; z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            position: relative;
+            z-index: 2;
         }
-        @media(min-width: 992px) { 
-            .vm-content { flex-direction: row; gap: 3rem; }
-            .icon-column { flex: 0 0 150px; display: flex; justify-content: center; padding-top: 1rem; }
-            .text-column { flex: 1; }
+
+        @media(min-width: 992px) {
+            .vm-content {
+                flex-direction: row;
+                gap: 3rem;
+            }
+
+            .icon-column {
+                flex: 0 0 150px;
+                display: flex;
+                justify-content: center;
+                padding-top: 1rem;
+            }
+
+            .text-column {
+                flex: 1;
+            }
         }
 
         /* Icons */
         .vm-icon-box {
-            width: 100px; height: 100px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             background: #fffbeb;
-            display: grid; place-items: center;
+            display: grid;
+            place-items: center;
             font-size: 2.5rem;
             color: var(--pune-saffron);
             border: 2px dashed var(--imperial-gold);
@@ -204,49 +378,111 @@
 
         /* Headings */
         .vm-title {
-            font-size: 2.5rem; color: var(--royal-blue); margin-bottom: 2rem;
-            display: flex; align-items: center; gap: 15px;
+            font-size: 2.5rem;
+            color: var(--royal-blue);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         /* Lists */
-        .vm-list { list-style: none; }
-        .vm-list li {
-            position: relative; padding-left: 30px; margin-bottom: 1.5rem;
-            color: var(--text-muted); font-size: 1.05rem;
+        .vm-list {
+            list-style: none;
         }
+
+        .vm-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
         /* Custom Bullet: Saffron Diamond */
         .vm-list li::before {
-            content: ''; position: absolute; top: 10px; left: 0;
-            width: 10px; height: 10px; background: var(--pune-saffron);
-            transform: rotate(45deg); border-radius: 2px;
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 0;
+            width: 10px;
+            height: 10px;
+            background: var(--pune-saffron);
+            transform: rotate(45deg);
+            border-radius: 2px;
         }
+
         /* Gold Bullet for Mission */
-        .mission-card .vm-list li::before { background: var(--imperial-gold); }
+        .mission-card .vm-list li::before {
+            background: var(--imperial-gold);
+        }
 
         /* Highlight Text Strong */
-        .vm-list li strong { color: var(--royal-blue); font-weight: 700; }
+        .vm-list li strong {
+            color: var(--royal-blue);
+            font-weight: 700;
+        }
 
         /* =========================================
            5. FOOTER (Immutable)
            ========================================= */
         footer {
-            background: #0f172a; color: #e2e8f0; padding: 4rem 20px 2rem 20px;
-            border-top: 5px solid var(--pune-saffron); margin-top: auto;
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 4rem 20px 2rem 20px;
+            border-top: 5px solid var(--pune-saffron);
+            margin-top: auto;
         }
-        .footer-container {
-            max-width: var(--container-width); margin: 0 auto; display: flex;
-            flex-direction: column; gap: 3rem;
-        }
-        @media (min-width: 768px) { .footer-container { flex-direction: row; justify-content: space-between; } }
-        .footer-logo h3 { color: white; margin-bottom: 0.5rem; font-size: 1.5rem; }
-        .footer-links a { color: #94a3b8; text-decoration: none; display: block; margin-bottom: 0.8rem; transition: 0.3s; }
-        .footer-links a:hover { color: var(--imperial-gold); padding-left: 5px; }
-        .copyright { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 0.9rem; color: #64748b; }
 
+        .footer-container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-container {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        .footer-logo h3 {
+            color: white;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--imperial-gold);
+            padding-left: 5px;
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
 
     <!-- HEADER & NAVBAR -->
@@ -256,26 +492,34 @@
                 <div class="logo-box"><i class="fas fa-om"></i></div>
                 <div class="logo-text">SSPP</div>
             </div>
-            <button class="mobile-toggle" onclick="document.querySelector('.desktop-nav').classList.toggle('active-mobile')">
+            <button class="mobile-toggle"
+                onclick="document.querySelector('.desktop-nav').classList.toggle('active-mobile')">
                 <i class="fas fa-bars"></i>
             </button>
             <nav class="desktop-nav">
                 <a href="index.html" class="nav-link">Home</a>
                 <div class="has-dropdown">
-                    <span class="nav-link" style="color: var(--pune-saffron);">About <i class="fas fa-chevron-down" style="font-size: 0.7em;"></i></span>
+                    <span class="nav-link" style="color: var(--pune-saffron);">About <i class="fas fa-chevron-down"
+                            style="font-size: 0.7em;"></i></span>
                     <div class="dropdown-menu">
                         <a href="Secretary_message.html" class="dropdown-item">President's Message</a>
                         <a href="Secretary_message.html" class="dropdown-item">Secretary's Message</a>
-                        <a href="Vision_Mission.html" class="dropdown-item" style="color: var(--pune-saffron); font-weight: 600;">Vision Mission</a>
-                        <div class="dropdown-header" style="padding: 8px 25px; font-weight:700; font-size:0.75rem; color:var(--royal-blue); opacity:0.6;">GOVERNANCE</div>
-                        <a href="GoverningCouncil.html" class="dropdown-item" style="padding-left: 35px;">Governing Council</a>
-                        <a href="Strategic_Plan.html" class="dropdown-item" style="padding-left: 35px;">Strategic Plan</a>
+                        <a href="Vision_Mission.html" class="dropdown-item"
+                            style="color: var(--pune-saffron); font-weight: 600;">Vision Mission</a>
+                        <div class="dropdown-header"
+                            style="padding: 8px 25px; font-weight:700; font-size:0.75rem; color:var(--royal-blue); opacity:0.6;">
+                            GOVERNANCE</div>
+                        <a href="GoverningCouncil.html" class="dropdown-item" style="padding-left: 35px;">Governing
+                            Council</a>
+                        <a href="Strategic_Plan.html" class="dropdown-item" style="padding-left: 35px;">Strategic
+                            Plan</a>
                         <a href="History.html" class="dropdown-item">History</a>
                         <a href="Annual_Report.html" class="dropdown-item">Annual Report</a>
                     </div>
                 </div>
                 <div class="has-dropdown">
-                    <span class="nav-link">Membership <i class="fas fa-chevron-down" style="font-size: 0.7em;"></i></span>
+                    <span class="nav-link">Membership <i class="fas fa-chevron-down"
+                            style="font-size: 0.7em;"></i></span>
                     <div class="dropdown-menu">
                         <a href="Why_Join.html" class="dropdown-item">Why Join?</a>
                         <a href="Apply_Online.html" class="dropdown-item">Apply Online</a>
@@ -289,9 +533,11 @@
                         <a href="Upcomming_Meetings.html" class="dropdown-item">Upcoming Meeting</a>
                     </div>
                 </div>
-                <a href="Patient_Education.html" class="nav-link">Patient Education</a>
+                <a href="Patient-Education.html" class="nav-link">Patient Education</a>
                 <a href="Gallery.html" class="nav-link">Gallery</a>
-                <a href="Contact_us.html" class="nav-link btn btn-primary" style="padding: 8px 25px; color: white; background: var(--gradient-saffron); border-radius: 50px;">Contact Us</a>
+                <a href="Contact_us.html" class="nav-link btn btn-primary"
+                    style="padding: 8px 25px; color: white; background: var(--gradient-saffron); border-radius: 50px;">Contact
+                    Us</a>
             </nav>
         </div>
     </header>
@@ -310,7 +556,7 @@
     <!-- MAIN SECTION -->
     <section class="vm-section">
         <div class="vm-container">
-            
+
             <!-- VISION CARD -->
             <div class="vm-card">
                 <div class="bg-motif"></div>
@@ -322,20 +568,27 @@
                     </div>
                     <div class="text-column">
                         <h2 class="vm-title">Our Vision</h2>
-                        <p style="margin-bottom: 2rem; color: #64748b; font-style: italic;">We work passionately towards our vision of:</p>
-                        
+                        <p style="margin-bottom: 2rem; color: #64748b; font-style: italic;">We work passionately towards
+                            our vision of:</p>
+
                         <ul class="vm-list">
                             <li>
-                                <strong>Elevating pain medicine as a premier superspecialty</strong>, supported by structured training, strong mentorship, and high academic standards rooted in anaesthesiology.
+                                <strong>Elevating pain medicine as a premier superspecialty</strong>, supported by
+                                structured training, strong mentorship, and high academic standards rooted in
+                                anaesthesiology.
                             </li>
                             <li>
-                                <strong>Promoting holistic, evidence-based, and multidisciplinary pain management</strong>, integrating interventional techniques, rehabilitation, pharmacology, and psychological care.
+                                <strong>Promoting holistic, evidence-based, and multidisciplinary pain
+                                    management</strong>, integrating interventional techniques, rehabilitation,
+                                pharmacology, and psychological care.
                             </li>
                             <li>
-                                <strong>Fostering research, innovation, and scientific inquiry</strong> into pain mechanisms, interventional procedures, and emerging technologies.
+                                <strong>Fostering research, innovation, and scientific inquiry</strong> into pain
+                                mechanisms, interventional procedures, and emerging technologies.
                             </li>
                             <li>
-                                <strong>Enhancing public awareness and understanding of pain management</strong>, empowering patients and reducing stigma associated with chronic pain.
+                                <strong>Enhancing public awareness and understanding of pain management</strong>,
+                                empowering patients and reducing stigma associated with chronic pain.
                             </li>
                         </ul>
                     </div>
@@ -353,26 +606,36 @@
                     </div>
                     <div class="text-column">
                         <h2 class="vm-title" style="color: var(--pune-saffron);">Our Mission</h2>
-                        <p style="margin-bottom: 2rem; color: #64748b; font-style: italic;">We are committed to the following goals:</p>
-                        
+                        <p style="margin-bottom: 2rem; color: #64748b; font-style: italic;">We are committed to the
+                            following goals:</p>
+
                         <ul class="vm-list">
                             <li>
-                                <strong>To advance the science and practice of pain medicine</strong> through high-quality education, structured training, and continuous professional development for clinicians.
+                                <strong>To advance the science and practice of pain medicine</strong> through
+                                high-quality education, structured training, and continuous professional development for
+                                clinicians.
                             </li>
                             <li>
-                                <strong>To provide patient-centric, ethical, and evidence-based pain care</strong>, ensuring safe, effective, and multidisciplinary management for individuals suffering from acute and chronic pain.
+                                <strong>To provide patient-centric, ethical, and evidence-based pain care</strong>,
+                                ensuring safe, effective, and multidisciplinary management for individuals suffering
+                                from acute and chronic pain.
                             </li>
                             <li>
-                                <strong>To foster a culture of research, innovation, and scientific collaboration</strong>, encouraging studies that enhance understanding of pain mechanisms and improve clinical outcomes.
+                                <strong>To foster a culture of research, innovation, and scientific
+                                    collaboration</strong>, encouraging studies that enhance understanding of pain
+                                mechanisms and improve clinical outcomes.
                             </li>
                             <li>
-                                <strong>To raise public awareness about pain management</strong>, dispel myths, and empower patients with accurate information and accessible support.
+                                <strong>To raise public awareness about pain management</strong>, dispel myths, and
+                                empower patients with accurate information and accessible support.
                             </li>
                             <li>
-                                <strong>To build a strong, united community of pain physicians</strong>, promoting mentorship, teamwork, and leadership within the specialty.
+                                <strong>To build a strong, united community of pain physicians</strong>, promoting
+                                mentorship, teamwork, and leadership within the specialty.
                             </li>
                             <li>
-                                <strong>To shape pain medicine into a future-ready superspecialty</strong>, recognized nationally for its academic excellence, clinical impact, and contribution to healthcare.
+                                <strong>To shape pain medicine into a future-ready superspecialty</strong>, recognized
+                                nationally for its academic excellence, clinical impact, and contribution to healthcare.
                             </li>
                         </ul>
                     </div>
@@ -387,7 +650,8 @@
         <div class="footer-container">
             <div class="footer-logo" style="flex: 1;">
                 <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                    <div style="width: 32px; height: 32px; background: rgba(255,255,255,0.1); border-radius: 50%; display: grid; place-items: center; color: var(--imperial-gold);">
+                    <div
+                        style="width: 32px; height: 32px; background: rgba(255,255,255,0.1); border-radius: 50%; display: grid; place-items: center; color: var(--imperial-gold);">
                         <i class="fas fa-om"></i>
                     </div>
                     <h3>SSPP Pune</h3>
@@ -396,12 +660,18 @@
                     Advancing the field of pain medicine through<br> education, research, and collaboration.
                 </p>
                 <div style="display: flex; gap: 15px; margin-top: 1.5rem;">
-                    <a href="#" style="color:white; background: rgba(255,255,255,0.1); width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%;"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" style="color:white; background: rgba(255,255,255,0.1); width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%;"><i class="fab fa-twitter"></i></a>
-                    <a href="#" style="color:white; background: rgba(255,255,255,0.1); width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%;"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"
+                        style="color:white; background: rgba(255,255,255,0.1); width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%;"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="#"
+                        style="color:white; background: rgba(255,255,255,0.1); width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%;"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="#"
+                        style="color:white; background: rgba(255,255,255,0.1); width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%;"><i
+                            class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
-            
+
             <div class="footer-links" style="flex: 1;">
                 <h4 style="color: var(--imperial-gold); margin-bottom: 1.2rem;">Quick Links</h4>
                 <a href="index.html">About Us</a>
@@ -413,10 +683,12 @@
             <div class="footer-links" style="flex: 1;">
                 <h4 style="color: var(--imperial-gold); margin-bottom: 1.2rem;">Contact</h4>
                 <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1rem;">
-                    <i class="fas fa-envelope" style="color: var(--pune-saffron); margin-right: 10px;"></i> contact@sspp-pune.org
+                    <i class="fas fa-envelope" style="color: var(--pune-saffron); margin-right: 10px;"></i>
+                    contact@sspp-pune.org
                 </p>
                 <p style="color: #cbd5e1; font-size: 0.9rem;">
-                    <i class="fas fa-map-marker-alt" style="color: var(--pune-saffron); margin-right: 10px;"></i> IMA House, Tilak Road, Pune
+                    <i class="fas fa-map-marker-alt" style="color: var(--pune-saffron); margin-right: 10px;"></i> IMA
+                    House, Tilak Road, Pune
                 </p>
             </div>
         </div>
@@ -426,4 +698,5 @@
     </footer>
 
 </body>
+
 </html>

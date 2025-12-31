@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Chronic Pain - SSPP Pune</title>
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Relative Path Fix for Subdirectory Page -->
+    <style>
+        :root {
+            --royal-blue: #0f172a;
+            --pune-saffron: #e76f51;
+            --imperial-gold: #fbbf24;
+            --container-width: 1240px;
+            --header-height: 90px;
+            --text-dark: #1e293b;
+            --bg-light: #fdfbf7;
+            --gradient-royal: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            --gradient-saffron: linear-gradient(135deg, #e76f51 0%, #d62828 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .logo-box {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-royal);
+            color: var(--imperial-gold);
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            font-size: 1.5rem;
+        }
+
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: var(--gradient-royal);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .desktop-nav {
+            display: none;
+        }
+
+        @media (min-width: 992px) {
+            .desktop-nav {
+                display: flex !important;
+                gap: 30px;
+                align-items: center;
+            }
+
+            .nav-link {
+                text-decoration: none;
+                color: var(--text-dark);
+                font-weight: 600;
+                font-size: 0.95rem;
+                position: relative;
+                padding: 10px 0;
+            }
+
+            .nav-link.active {
+                color: var(--pune-saffron);
+            }
+
+            .btn-primary {
+                background: var(--gradient-saffron);
+                color: white;
+                padding: 10px 25px;
+                border-radius: 50px;
+                text-decoration: none;
+                font-weight: 600;
+                box-shadow: 0 10px 25px -5px rgba(231, 111, 81, 0.4);
+            }
+        }
+
+        /* =========================================
+           7. FOOTER (Immutable Structure, Styled)
+           ========================================= */
+        footer {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 4rem 20px 2rem 20px;
+            border-top: 5px solid var(--pune-saffron);
+        }
+
+        .footer-container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-container {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        .footer-logo h3 {
+            color: white;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--imperial-gold);
+            padding-left: 5px;
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+    </style>
+
+    <link rel="stylesheet" href="../assets/css/patient-education.css">
+    <script src="../assets/gsap.min.js" defer></script>
+    <script src="../assets/js/pages/patient-education.js" defer></script>
+</head>
+
+<body>
+
+    <!-- HEADER (Paths adjusted) -->
+    <!-- HEADER & NAVBAR -->
+    <header>
+        <div class="nav-container">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <a href="../index.html" style="text-decoration:none; display:flex; align-items:center; gap:12px;">
+                    <img src="../assets/logo.png" style="max-height: 48px;" />
+                    <div class="logo-text">SSPP</div>
+                </a>
+            </div>
+
+            <button class="mobile-toggle"
+                onclick="document.querySelector('.desktop-nav').classList.toggle('active-mobile')">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Navbar -->
+            <nav class="desktop-nav">
+                <a href="../index.html" class="nav-link">Home</a>
+
+                <div class="has-dropdown">
+                    <span class="nav-link">About <i class="fas fa-chevron-down" style="font-size: 0.7em;"></i></span>
+                    <div class="dropdown-menu">
+                        <a href="../Secretary_message.html" class="dropdown-item">President's Message</a>
+                        <a href="../Secretary_message.html" class="dropdown-item">Secretary's Message</a>
+                        <a href="../Vision_Mission.html" class="dropdown-item">Vision Mission</a>
+                        <div class="dropdown-header"
+                            style="padding: 8px 25px; font-weight:700; font-size:0.75rem; color:var(--royal-blue); opacity:0.6;">
+                            GOVERNANCE</div>
+                        <a href="../GoverningCouncil.html" class="dropdown-item" style="padding-left: 35px;">Governing
+                            Council</a>
+                        <a href="../Strategic_Plan.html" class="dropdown-item" style="padding-left: 35px;">Strategic
+                            Plan</a>
+                        <a href="../History.html" class="dropdown-item">History</a>
+                        <a href="../Annual_Report.html" class="dropdown-item">Annual Report</a>
+                    </div>
+                </div>
+
+                <div class="has-dropdown">
+                    <span class="nav-link">Membership <i class="fas fa-chevron-down"
+                            style="font-size: 0.7em;"></i></span>
+                    <div class="dropdown-menu">
+                        <a href="../Why_Join.html" class="dropdown-item">Why Join?</a>
+                        <a href="../Apply_Online.html" class="dropdown-item">Apply Online</a>
+                    </div>
+                </div>
+
+                <a href="../Activity.html" class="nav-link">Activity</a>
+
+                <div class="has-dropdown">
+                    <span class="nav-link">Meetings <i class="fas fa-chevron-down" style="font-size: 0.7em;"></i></span>
+                    <div class="dropdown-menu">
+                        <a href="../Annual_Meetings.html" class="dropdown-item">Annual Meeting</a>
+                        <a href="../Upcomming_Meetings.html" class="dropdown-item">Upcoming Meeting</a>
+                    </div>
+                </div>
+
+                <a href="../Patient-Education.html" class="nav-link active" style="color: var(--pune-saffron);">Patient
+                    Education</a>
+                <a href="../Gallery.html" class="nav-link">Gallery</a>
+                <a href="../Contact_us.html" class="nav-link btn btn-primary"
+                    style="padding: 8px 25px; color: white;">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ARTICLE CONTENT -->
+    <main class="article-container">
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a>
+            <i class="fas fa-chevron-right"></i>
+            <a href="../Patient-Education.html">Patient Education</a>
+            <i class="fas fa-chevron-right"></i>
+            <span>Understanding Chronic Pain</span>
+        </div>
+
+        <article class="edu-article-body">
+
+            <!-- Article Header -->
+            <header style="margin-bottom: 3rem; text-align: center;">
+                <div
+                    style="width: 80px; height: 80px; background: rgba(231,111,81,0.1); color: var(--pune-saffron); font-size: 2.5rem; border-radius: 50%; display: inline-grid; place-items: center; margin-bottom: 1.5rem;">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h1
+                    style="font-family: 'Playfair Display'; font-size: 2.5rem; color: var(--royal-blue); margin-bottom: 1rem;">
+                    Understanding Chronic Pain</h1>
+                <p style="font-size: 1.2rem; color: #64748b;">Why pain persists after healing: A guide for patients.</p>
+            </header>
+
+            <p class="edu-sub-text">
+                Pain is usually a warning signal that something is wrong. When you touch a hot stove, pain pulls your
+                hand away. This is called acute pain—it protects you. However, sometimes pain signals keep firing in the
+                nervous system for weeks, months, or even years. This is <strong>Chronic Pain</strong>.
+            </p>
+
+            <h2>Difference Between Acute and Chronic Pain</h2>
+            <p>It is important to distinguish between "good" pain (useful warning) and "bad" pain (malfunctioning
+                signal).</p>
+            <ul>
+                <li><strong>Acute Pain:</strong> Lasts for a short time, usually resolves when the injury heals (e.g.,
+                    cut, broken bone).</li>
+                <li><strong>Chronic Pain:</strong> Lasts longer than 3-6 months, persists even after healing, and can
+                    affect your mood, sleep, and overall quality of life.</li>
+            </ul>
+
+            <h2>Why Does It Happen?</h2>
+            <p>
+                Chronic pain can result from an initial injury, like a back sprain, or an ongoing cause like arthritis.
+                However, for many people, the pain persists because the nervous system has become "sensitized."
+            </p>
+            <p>
+                Think of it like a car alarm that goes off not just when a thief breaks in, but even when a leaf falls
+                on the hood. Your nerves become hypersensitive and send pain signals even when there is no new damage to
+                the body.
+            </p>
+
+            <!-- Callout Alert -->
+            <div class="edu-alert-box">
+                <i class="fas fa-info-circle edu-alert-icon"></i>
+                <div class="edu-alert-content">
+                    <h4>Pain Is Real</h4>
+                    <p>Even if X-rays or MRI scans look "normal," your pain is real. It is a physiological condition
+                        involving the nerves and brain, not "just in your head."</p>
+                </div>
+            </div>
+
+            <h2>How Do We Treat It?</h2>
+            <p>
+                Because chronic pain involves the nervous system, simply resting often doesn't help. treatment usually
+                requires a combination of therapies (Multimodal Approach):
+            </p>
+            <ul>
+                <li><strong>Physical Therapy:</strong> Movement desensitizes the nervous system and strengthens muscles.
+                </li>
+                <li><strong>Medication:</strong> Specific medicines that calm down nerve firing (impulse control) rather
+                    than just standard painkillers.</li>
+                <li><strong>Interventions:</strong> Injections or procedures to target specific pain generators.</li>
+                <li><strong>Mind-Body Techniques:</strong> Stress management and sleep hygiene are critical for
+                    recovery.</li>
+            </ul>
+
+            <!-- FAQ Accordion -->
+            <div class="edu-faq-section">
+                <h2 style="border-bottom: none; margin-bottom: 1rem;">Common Questions</h2>
+
+                <div class="faq-item">
+                    <button class="faq-header" aria-expanded="false">
+                        <span>Can chronic pain ever be cured?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-body">
+                        <div class="faq-content">
+                            While "cure" is a strong word, many chronic pain conditions can be effectively
+                            <em>managed</em> to the point where they no longer interfere with your daily life. The goal
+                            is often remission or significant reduction rather than complete elimination.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-header" aria-expanded="false">
+                        <span>Will I need surgery?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-body">
+                        <div class="faq-content">
+                            Most chronic pain conditions do NOT require surgery. In fact, for conditions like
+                            fibromyalgia or non-specific back pain, surgery is rarely the answer. We focus on
+                            non-surgical interventions first.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </article>
+
+        <div class="edu-disclaimer">
+            This article is provided for informational purposes only and is not medical advice.
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo" style="flex: 1;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                    <div
+                        style="width: 32px; height: 32px; background: rgba(255,255,255,0.1); border-radius: 50%; display: grid; place-items: center; color: var(--imperial-gold);">
+                        <i class="fas fa-om"></i>
+                    </div>
+                    <h3>SSPP Pune</h3>
+                </div>
+                <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.6;">
+                    Advancing the field of pain medicine through<br> education, research, and collaboration.
+                </p>
+                <div style="display: flex; gap: 15px; margin-top: 1.5rem;">
+                    <a href="#"
+                        style="color:white; background: rgba(255,255,255,0.1); width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%;"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="#"
+                        style="color:white; background: rgba(255,255,255,0.1); width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%;"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="#"
+                        style="color:white; background: rgba(255,255,255,0.1); width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%;"><i
+                            class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links" style="flex: 1;">
+                <h4 style="color: var(--imperial-gold); margin-bottom: 1.2rem;">Quick Links</h4>
+                <a href="../index.html">About Us</a>
+                <a href="../Why_Join.html">Membership</a>
+                <a href="../Annual_Meetings.html">Events</a>
+                <a href="../Contact_us.html">Contact</a>
+            </div>
+
+            <div class="footer-links" style="flex: 1;">
+                <h4 style="color: var(--imperial-gold); margin-bottom: 1.2rem;">Contact</h4>
+                <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1rem;">
+                    <i class="fas fa-envelope" style="color: var(--pune-saffron); margin-right: 10px;"></i>
+                    contact@sspp-pune.org
+                </p>
+                <p style="color: #cbd5e1; font-size: 0.9rem;">
+                    <i class="fas fa-map-marker-alt" style="color: var(--pune-saffron); margin-right: 10px;"></i> IMA
+                    House, Tilak Road, Pune
+                </p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Indian Society for Study of Pain (Pune Chapter). All rights reserved.
+        </div>
+    </footer>
+
+</body>
+
+</html>

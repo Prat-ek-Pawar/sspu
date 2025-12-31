@@ -1,0 +1,329 @@
+/* =========================================
+   PATIENT EDUCATION: STYLE MAP
+   Theme: "Calm Authority"
+   Core Palette: Inherited from Main (Royal Blue, Saffron, Gold)
+   Specific overrides: Softer backgrounds, higher contrast text for reading
+   ========================================= */
+
+/* Use local scope variables to ensure standalone integrity while inheriting global */
+.edu-wrapper {
+    --edu-bg-soft: #f8fafc;
+    --edu-text-body: #334155;
+    --edu-card-hover-lift: -5px;
+    --readability-width: 800px;
+}
+
+/* 1. HERO SECTION (Specific to Education - Calmer than Home) */
+.edu-hero {
+    background: linear-gradient(180deg, rgba(231, 111, 81, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+    padding: 6rem 20px 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle background grain or pattern */
+.edu-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.edu-hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.edu-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--royal-blue);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.edu-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.15rem;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* 2. TOPIC CARDS (Grid) */
+.edu-grid-section {
+    padding: 4rem 20px 6rem;
+    background: #fff;
+}
+
+.topic-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+    .topic-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .topic-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.topic-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover: Lift + Saffron Border + Shadow */
+.topic-card:hover {
+    transform: translateY(var(--edu-card-hover-lift));
+    border-color: var(--pune-saffron);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.topic-icon-wrap {
+    width: 64px;
+    height: 64px;
+    background: rgba(15, 23, 42, 0.05);
+    /* Royal Blue tint */
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 1.5rem;
+    color: var(--royal-blue);
+    font-size: 1.75rem;
+    transition: all 0.3s ease;
+}
+
+.topic-card:hover .topic-icon-wrap {
+    background: var(--gradient-saffron);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.topic-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--royal-blue);
+    margin-bottom: 0.75rem;
+}
+
+.topic-card p {
+    font-family: 'Poppins', sans-serif;
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.topic-link-text {
+    font-weight: 600;
+    color: var(--pune-saffron);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.topic-link-text i {
+    transition: transform 0.3s;
+}
+
+.topic-card:hover .topic-link-text i {
+    transform: translateX(5px);
+}
+
+
+/* 3. ARTICLE LAYOUT (Detail Page) */
+.article-container {
+    max-width: var(--readability-width);
+    margin: 0 auto;
+    padding: 4rem 20px;
+}
+
+.breadcrumb {
+    margin-bottom: 2rem;
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.breadcrumb a {
+    color: var(--pune-saffron);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.breadcrumb i {
+    margin: 0 8px;
+    font-size: 0.7rem;
+}
+
+.edu-article-body {
+    background: white;
+    /* No card look for article - let it breathe on the page like a paper */
+}
+
+.edu-article-body h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--royal-blue);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.edu-article-body h2:first-of-type {
+    margin-top: 0;
+}
+
+.edu-article-body p {
+    font-size: 1.1rem;
+    /* Larger for readability */
+    line-height: 1.8;
+    color: var(--edu-text-body);
+    margin-bottom: 1.5rem;
+}
+
+.edu-article-body ul {
+    margin-bottom: 2rem;
+    padding-left: 1rem;
+}
+
+.edu-article-body li {
+    font-size: 1.1rem;
+    color: var(--edu-text-body);
+    line-height: 1.7;
+    margin-bottom: 0.8rem;
+    list-style: none;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.edu-article-body li::before {
+    content: '•';
+    color: var(--pune-saffron);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* 4. CALLOUTS & ALERTS */
+.edu-alert-box {
+    background: #fff7ed;
+    /* Orange soft tint */
+    border-left: 4px solid var(--pune-saffron);
+    padding: 1.5rem;
+    border-radius: 0 12px 12px 0;
+    margin: 2rem 0;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.edu-alert-icon {
+    font-size: 1.5rem;
+    color: var(--pune-saffron);
+    margin-top: 3px;
+}
+
+.edu-alert-content h4 {
+    color: #9a3412;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.edu-alert-content p {
+    font-size: 1rem;
+    color: #9a3412;
+    margin: 0;
+}
+
+/* 5. ACCORDION (Clean Style) */
+.edu-faq-section {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+.faq-header {
+    width: 100%;
+    background: #f8fafc;
+    border: none;
+    border-radius: 8px;
+    padding: 1.2rem;
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--royal-blue);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background 0.3s;
+}
+
+.faq-header:hover {
+    background: #f1f5f9;
+}
+
+.faq-header[aria-expanded="true"] {
+    background: #e2e8f0;
+    color: var(--royal-blue);
+}
+
+.faq-header i {
+    transition: transform 0.3s;
+    color: var(--pune-saffron);
+}
+
+.faq-header[aria-expanded="true"] i {
+    transform: rotate(180deg);
+}
+
+.faq-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    padding: 0 1.2rem;
+}
+
+.faq-content {
+    padding-bottom: 1.5rem;
+    padding-top: 0.5rem;
+    color: var(--edu-text-body);
+    line-height: 1.6;
+}
+
+/* 6. DISCLAIMER (Legal) */
+.edu-disclaimer {
+    border-top: 1px solid #e2e8f0;
+    padding-top: 2rem;
+    margin-top: 4rem;
+    font-size: 0.85rem;
+    color: #94a3b8;
+    font-style: italic;
+    text-align: center;
+}
