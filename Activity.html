@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSPP Activities | Society For Study Of Pain Pune</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* =========================================
+           1. DESIGN SYSTEM & VARIABLES
+           ========================================= */
+        :root {
+            /* Vibrant Heritage Colors */
+            --royal-blue: #0f172a;
+            --deep-ocean: #1e3a8a;
+            --pune-saffron: #e76f51;
+            --imperial-gold: #fbbf24;
+            --emerald-healing: #10b981;
+            
+            /* Gradients */
+            --gradient-royal: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            --gradient-gold: linear-gradient(45deg, #d4af37, #f9dc5c, #d4af37);
+            --gradient-saffron: linear-gradient(135deg, #e76f51 0%, #d62828 100%);
+
+            /* UI Elements */
+            --glass-light: rgba(255, 255, 255, 0.95);
+            --shadow-card: 0 10px 30px -5px rgba(15, 23, 42, 0.15);
+            --container-width: 1240px;
+            --header-height: 90px;
+            --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fdfbf7;
+            color: var(--royal-blue);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* =========================================
+           2. ROBUST NAVIGATION
+           ========================================= */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 1002;
+        }
+        
+        .logo-box {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-royal);
+            color: var(--imperial-gold);
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            font-size: 1.5rem;
+            box-shadow: 0 8px 20px -5px rgba(30, 58, 138, 0.4);
+        }
+
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: var(--gradient-royal);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        /* --- Mobile First Nav --- */
+        .desktop-nav {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: white;
+            flex-direction: column;
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out, padding 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            z-index: 1001;
+            display: flex;
+        }
+
+        .desktop-nav.active-mobile {
+            max-height: 100vh;
+            padding: 20px 0;
+            overflow-y: auto;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #1e293b;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 15px 25px;
+            display: block;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        /* Mobile Dropdowns */
+        .dropdown-menu {
+            display: none;
+            background: #f8fafc;
+            padding-left: 20px;
+            border-left: 4px solid var(--pune-saffron);
+        }
+
+        .desktop-nav.active-mobile .dropdown-menu {
+            display: block;
+            position: static;
+            box-shadow: none;
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+            width: 100%;
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 12px 20px;
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .mobile-toggle {
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--royal-blue);
+            z-index: 1002;
+            padding: 10px;
+        }
+
+        /* --- Desktop Nav (Overwrites) --- */
+        @media (min-width: 992px) {
+            .mobile-toggle { display: none; }
+
+            .desktop-nav {
+                position: static;
+                width: auto;
+                background: transparent;
+                flex-direction: row;
+                max-height: unset;
+                overflow: visible;
+                padding: 0;
+                box-shadow: none;
+                gap: 30px;
+            }
+
+            .nav-link {
+                padding: 10px 0;
+                font-size: 0.95rem;
+                border-bottom: none;
+                position: relative;
+            }
+
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                bottom: 0; left: 0; width: 0%; height: 3px;
+                background: var(--gradient-saffron);
+                transition: width 0.3s ease;
+                border-radius: 2px;
+            }
+            .nav-link:hover::after { width: 100%; }
+
+            .has-dropdown { position: relative; }
+            
+            .dropdown-menu {
+                position: absolute;
+                top: 140%;
+                left: -20px;
+                background: white;
+                min-width: 260px;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+                border-radius: 12px;
+                padding: 15px 0;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(15px);
+                transition: all 0.4s var(--ease-elastic);
+                border-top: 4px solid var(--pune-saffron);
+                border-left: none;
+                display: block;
+                z-index: 1010;
+            }
+
+            .has-dropdown:hover .dropdown-menu {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+                top: 100%;
+            }
+
+            .dropdown-item { border-bottom: none; }
+            .dropdown-item:hover {
+                background: #fff7ed;
+                color: var(--pune-saffron);
+                padding-left: 30px;
+            }
+        }
+
+        .btn-nav {
+            padding: 10px 25px;
+            background: var(--gradient-saffron);
+            color: white !important;
+            border-radius: 50px;
+            margin-left: 10px;
+            box-shadow: 0 4px 15px rgba(231, 111, 81, 0.3);
+            transition: transform 0.3s;
+        }
+        .btn-nav:hover { transform: translateY(-2px); }
+
+        /* =========================================
+           3. ACTIVITY PAGE HERO
+           ========================================= */
+        .hero {
+            background: var(--gradient-royal);
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            padding: 2rem;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('https://picsum.photos/seed/medical/1920/1080') center/cover;
+            opacity: 0.1;
+            mix-blend-mode: overlay;
+        }
+
+        .hero-content { z-index: 2; max-width: 800px; }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            animation: bounce 2s infinite;
+        }
+
+        /* =========================================
+           4. TIMELINE STYLES
+           ========================================= */
+        .timeline-container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 6rem 1.5rem;
+            position: relative;
+        }
+
+        /* The Central Spine */
+        .timeline-spine {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: rgba(30, 58, 138, 0.2);
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+
+        /* Month Dividers */
+        .month-header {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            margin: 4rem 0 3rem 0;
+            clear: both;
+        }
+
+        .month-badge {
+            display: inline-block;
+            background: var(--deep-ocean);
+            color: var(--imperial-gold);
+            padding: 0.8rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+            border: 2px solid var(--imperial-gold);
+        }
+
+        /* Card Layout */
+        .activity-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 4rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .activity-row.visible { opacity: 1; transform: translateY(0); }
+
+        .activity-card {
+            width: 45%;
+            background: var(--glass-light);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            border-top: 5px solid var(--royal-blue);
+        }
+
+        /* Zig-Zag Logic */
+        .activity-row:nth-child(odd) { justify-content: flex-start; }
+        .activity-row:nth-child(even) { justify-content: flex-end; }
+        
+        /* Connector Line */
+        .activity-row::after {
+            content: '';
+            position: absolute;
+            top: 2rem;
+            width: 50%;
+            height: 2px;
+            background: var(--deep-ocean);
+            z-index: 0;
+        }
+        .activity-row:nth-child(odd)::after { right: 50%; transform-origin: right; }
+        .activity-row:nth-child(even)::after { left: 50%; transform-origin: left; }
+
+        /* Dot on Spine */
+        .activity-row::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 1.5rem;
+            width: 20px;
+            height: 20px;
+            background: var(--pune-saffron);
+            border: 4px solid white;
+            border-radius: 50%;
+            z-index: 3;
+            transform: translateX(-50%);
+            box-shadow: 0 0 0 4px rgba(231, 111, 81, 0.3);
+        }
+
+        /* Content inside card */
+        .card-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .activity-card:hover .card-image { transform: scale(1.05); }
+
+        .card-content { padding: 1.5rem; }
+
+        .card-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        /* Tag Colors */
+        .tag-conference { background: #e0f2fe; color: #0369a1; }
+        .tag-camp { background: #ffedd5; color: #c2410c; }
+        .tag-award { background: #fef3c7; color: #b45309; }
+        .tag-webinar { background: #f3e8ff; color: #7e22ce; }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--royal-blue);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .card-desc { font-size: 0.95rem; color: #64748b; line-height: 1.5; }
+        
+        .card-footer {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: var(--deep-ocean);
+            font-weight: 600;
+        }
+
+        /* Category Styling */
+        .type-award { border-top-color: var(--imperial-gold); }
+        .type-award .activity-row::before { background: var(--imperial-gold); }
+        .type-camp { border-top-color: var(--pune-saffron); }
+        .type-camp .activity-row::before { background: var(--pune-saffron); }
+
+        /* Responsive Timeline */
+        @media (max-width: 768px) {
+            .timeline-spine { left: 20px; }
+            .activity-row { justify-content: flex-end !important; padding-left: 40px; }
+            .activity-card { width: 100%; }
+            .activity-row::before { left: 20px; }
+            .activity-row::after { left: 20px; width: 30px; }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+        /* =========================================
+           5. FOOTER
+           ========================================= */
+        footer {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 4rem 20px 2rem 20px;
+            border-top: 5px solid var(--pune-saffron);
+            margin-top: auto;
+        }
+        .footer-container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+        @media (min-width: 768px) { .footer-container { flex-direction: row; justify-content: space-between; } }
+        
+        .footer-logo h3 { color: white; margin-bottom: 0.5rem; font-size: 1.5rem; }
+        .footer-links a { color: #94a3b8; text-decoration: none; display: block; margin-bottom: 0.8rem; transition: 0.3s; }
+        .footer-links a:hover { color: var(--imperial-gold); padding-left: 5px; }
+        .copyright { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 0.9rem; color: #64748b; }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER & NAVBAR -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-area">
+                <a href="index.html" style="text-decoration:none; display:flex; align-items:center; gap:12px;">
+                    <div class="logo-box">
+                        <i class="fas fa-om"></i> 
+                    </div>
+                    <div class="logo-text">SSPP</div>
+                </a>
+            </div>
+
+            <button class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Navbar -->
+            <nav class="desktop-nav">
+                <a href="index.html" class="nav-link">Home</a>
+                
+                <div class="has-dropdown">
+                    <span class="nav-link">About <i class="fas fa-chevron-down" style="font-size: 0.7em;"></i></span>
+                    <div class="dropdown-menu">
+                        <a href="Secretary_message.html" class="dropdown-item">President's Message</a>
+                        <a href="Secretary_message.html" class="dropdown-item">Secretary's Message</a>
+                        <a href="Vision_Mission.html" class="dropdown-item">Vision Mission</a>
+                        <div class="dropdown-header" style="padding: 12px 20px; font-weight:700; font-size:0.75rem; color:var(--royal-blue); opacity:0.6;">GOVERNANCE</div>
+                        <a href="GoverningCouncil.html" class="dropdown-item" style="padding-left: 35px;">Governing Council</a>
+                        <a href="Strategic_Plan.html" class="dropdown-item" style="padding-left: 35px;">Strategic Plan</a>
+                        <a href="History.html" class="dropdown-item">History</a>
+                        <a href="Annual_Report.html" class="dropdown-item">Annual Report</a>
+                    </div>
+                </div>
+
+                <div class="has-dropdown">
+                    <span class="nav-link">Membership <i class="fas fa-chevron-down" style="font-size: 0.7em;"></i></span>
+                    <div class="dropdown-menu">
+                        <a href="Why_Join.html" class="dropdown-item">Why Join?</a>
+                        <a href="Apply_Online.html" class="dropdown-item">Apply Online</a>
+                    </div>
+                </div>
+
+                <a href="Activity.html" class="nav-link" style="color: var(--pune-saffron);">Activity</a>
+
+                <div class="has-dropdown">
+                    <span class="nav-link">Meetings <i class="fas fa-chevron-down" style="font-size: 0.7em;"></i></span>
+                    <div class="dropdown-menu">
+                        <a href="Annual_Meetings.html" class="dropdown-item">Annual Meeting</a>
+                        <a href="Upcomming_Meetings.html" class="dropdown-item">Upcoming Meeting</a>
+                    </div>
+                </div>
+
+                <a href="Patient_Education.html" class="nav-link">Patient Education</a>
+                <a href="Gallery.html" class="nav-link">Gallery</a>
+                <a href="Contact_us.html" class="nav-link btn-nav">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Activity Report</h1>
+            <p>Society For Study Of Pain Pune (SSPP)</p>
+            <p style="color: var(--imperial-gold); font-weight: 600;">December 2024 — October 2025</p>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down fa-2x"></i>
+        </div>
+    </section>
+
+    <!-- TIMELINE CONTENT -->
+    <div class="timeline-container" id="timeline-wrapper">
+        <div class="timeline-spine"></div>
+        <!-- Javascript will inject activity cards here -->
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo" style="flex: 1;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                    <div style="width: 32px; height: 32px; background: rgba(255,255,255,0.1); border-radius: 50%; display: grid; place-items: center; color: var(--imperial-gold);">
+                        <i class="fas fa-om"></i>
+                    </div>
+                    <h3>SSPP Pune</h3>
+                </div>
+                <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.6;">
+                    Advancing the field of pain medicine through<br> education, research, and collaboration.
+                </p>
+                <div style="display: flex; gap: 15px; margin-top: 1.5rem;">
+                    <a href="#" style="color:white; background: rgba(255,255,255,0.1); width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="color:white; background: rgba(255,255,255,0.1); width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color:white; background: rgba(255,255,255,0.1); width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%;"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links" style="flex: 1;">
+                <h4 style="color: var(--imperial-gold); margin-bottom: 1.2rem;">Quick Links</h4>
+                <a href="index.html">About Us</a>
+                <a href="Why_Join.html">Membership</a>
+                <a href="Annual_Meetings.html">Events</a>
+                <a href="Contact_us.html">Contact</a>
+            </div>
+
+            <div class="footer-links" style="flex: 1;">
+                <h4 style="color: var(--imperial-gold); margin-bottom: 1.2rem;">Contact</h4>
+                <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1rem;">
+                    <i class="fas fa-envelope" style="color: var(--pune-saffron); margin-right: 10px;"></i> contact@sspp-pune.org
+                </p>
+                <p style="color: #cbd5e1; font-size: 0.9rem;">
+                    <i class="fas fa-map-marker-alt" style="color: var(--pune-saffron); margin-right: 10px;"></i> IMA House, Tilak Road, Pune
+                </p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Indian Society for Study of Pain (Pune Chapter). All rights reserved.
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // --- Mobile Menu Toggle ---
+        const menuBtn = document.querySelector('.mobile-toggle');
+        const navMenu = document.querySelector('.desktop-nav');
+        const icon = menuBtn.querySelector('i');
+
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active-mobile');
+            if (navMenu.classList.contains('active-mobile')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // --- Activity Data ---
+        const activities = [
+            // --- DECEMBER 2024 ---
+            {
+                month: "December 2024",
+                title: "MIPSICON Annual CME & Cadaveric Program",
+                desc: "Dr. Sanjog acting as Organizing Secretary and Faculty at Navi Mumbai.",
+                type: "Conference",
+                icon: "fa-book-medical"
+            },
+            {
+                month: "December 2024",
+                title: "PRASHA: Hybrid Pain Orientation Course",
+                desc: "Online plus offline hybrid course organized at Bharti Vidyapeeth.",
+                type: "Academic",
+                icon: "fa-laptop-medical"
+            },
+            {
+                month: "December 2024",
+                title: "10th Spine Weekend 2024",
+                desc: "Dr. Priya Rathi as faculty speaking on 'Radiofrequency ablation in Lumbosacral pain'.",
+                type: "Conference",
+                icon: "fa-user-md"
+            },
+            {
+                month: "December 2024",
+                title: "Centenary of Mahilya Vidyalay",
+                desc: "Dr. Madhuri Lokapur attended celebrations founded by her grandparents.",
+                type: "Social",
+                icon: "fa-users"
+            },
+
+            // --- JANUARY 2025 ---
+            {
+                month: "January 2025",
+                title: "Orthobiologics Awareness Article",
+                desc: "Dr. Kiran Shete published an article on MSK conditions.",
+                type: "Media",
+                icon: "fa-newspaper"
+            },
+            {
+                month: "January 2025",
+                title: "SSPP Webinar: The Ozone Debate",
+                desc: "Debate on 'Ozone, a hidden weapon in pain physician armamentarium'.",
+                type: "Webinar",
+                icon: "fa-video"
+            },
+            {
+                month: "January 2025",
+                title: "CME on Knee Conundrum (Miraj)",
+                desc: "Organized by ISSP Miraj. Faculties: Dr. Sanjog, Dr. Varshali, Dr. Varsha, Dr. Asha.",
+                type: "Conference",
+                icon: "fa-bone"
+            },
+            {
+                month: "January 2025",
+                title: "Endurance India First Aid Services",
+                desc: "Dr. Sanjog & Team JEEVISHA provided medical support for the tournament.",
+                type: "Camp",
+                icon: "fa-medkit"
+            },
+
+            // --- FEBRUARY 2025 ---
+            {
+                month: "February 2025",
+                title: "FIAPM Pass-outs Gathering",
+                desc: "Dinner gathering organized by the SSPP Family.",
+                type: "Social",
+                icon: "fa-glass-cheers"
+            },
+            {
+                month: "February 2025",
+                title: "Free BMD & Medical Camp",
+                desc: "Organized by Dr. Sanjog Mekewar in a residential society.",
+                type: "Camp",
+                icon: "fa-heartbeat"
+            },
+
+            // --- MARCH 2025 ---
+            {
+                month: "March 2025",
+                title: "BEST CITY BRANCH AWARD",
+                desc: "SSPP won the award for the 5th consecutive time at ISSPCON 2025.",
+                type: "Award",
+                icon: "fa-trophy"
+            },
+            {
+                month: "March 2025",
+                title: "USG Guided Dry Needling Workshop",
+                desc: "Dr. Priya Rathi was part of the organizing team and faculty in Mumbai.",
+                type: "Workshop",
+                icon: "fa-syringe"
+            },
+            {
+                month: "March 2025",
+                title: "Women's Pain Management Camp",
+                desc: "Dr. Kanchan Godase provided free consultations for women.",
+                type: "Camp",
+                icon: "fa-female"
+            },
+            {
+                month: "March 2025",
+                title: "RESCON Oral Paper Presentation",
+                desc: "Dr. Amruta presented on 'Knowledge and Attitude regarding Chronic Pain'.",
+                type: "Academic",
+                icon: "fa-file-alt"
+            },
+            {
+                month: "March 2025",
+                title: "SSPP Webinar: Post Viral Sequelae",
+                desc: "Debate on 'Role of Pain Physician in Post Viral Sequelae Management'.",
+                type: "Webinar",
+                icon: "fa-video"
+            },
+            {
+                month: "March 2025",
+                title: "European Congress of Radiology (Vienna)",
+                desc: "Dr. Kirti Pawar presented research on the Popliteus muscle.",
+                type: "Conference",
+                icon: "fa-plane"
+            },
+            {
+                month: "March 2025",
+                title: "Bone Density Camp & Women's Day",
+                desc: "Dr. Priya Rathi (Hasya Club) and Dr. Aparna Desai (HDFC School/John Deere).",
+                type: "Camp",
+                icon: "fa-child"
+            },
+
+            // --- APRIL 2025 ---
+            {
+                month: "April 2025",
+                title: "Pain Connect 2025 (Austin, USA)",
+                desc: "Dr. Priya Rathi invited as faculty by American Academy of Pain Medicine.",
+                type: "Conference",
+                icon: "fa-globe-americas"
+            },
+            {
+                month: "April 2025",
+                title: "GP Pain Awareness Talk",
+                desc: "Organized by Dr. Sanjog Mekewar for General Practitioners.",
+                type: "Academic",
+                icon: "fa-chalkboard-teacher"
+            },
+            {
+                month: "April 2025",
+                title: "4th Int. Conf. on MSK Pain (Railway Hospital)",
+                desc: "Dr. Kirti Pawar invited as Faculty. Theme: Degeneration to Regeneration.",
+                type: "Conference",
+                icon: "fa-train"
+            },
+            {
+                month: "April 2025",
+                title: "Painex Corporate Health Camps",
+                desc: "Camps at K Nest, Dagdusheth Ganpati, and Mahindra & Mahindra.",
+                type: "Camp",
+                icon: "fa-industry"
+            },
+            {
+                month: "April 2025",
+                title: "SSPP Academic Achievements",
+                desc: "Dr. Varshali Kenia elected to ISSP GC. Multiple members completed FIAPM Fellowship.",
+                type: "Award",
+                icon: "fa-medal"
+            },
+
+            // --- MAY 2025 ---
+            {
+                month: "May 2025",
+                title: "SSPP Webinar: Fellowship Exams",
+                desc: "Theme: Navigating Pain Fellowship Exams for USA & Europe.",
+                type: "Webinar",
+                icon: "fa-graduation-cap"
+            },
+
+            // --- JUNE 2025 ---
+            {
+                month: "June 2025",
+                title: "Sonovision Workshop (YUVAMAHACON)",
+                desc: "Organized at MIMER Medical College. Coordinated by Dr. Varsha Kurhade.",
+                type: "Workshop",
+                icon: "fa-microscope"
+            },
+            {
+                month: "June 2025",
+                title: "Varkari Pain Management Service",
+                desc: "Dr. Vivek Deshmukh participated in 'Vari' providing services to pilgrims.",
+                type: "Camp",
+                icon: "fa-walking"
+            },
+
+            // --- JULY 2025 ---
+            {
+                month: "July 2025",
+                title: "PRASHA 6.0 Hybrid Course",
+                desc: "Basics in Pain Medicine at KK Care Hospital. Faculties: Dr. Varsha, Dr. Sanjog.",
+                type: "Academic",
+                icon: "fa-user-graduate"
+            },
+            {
+                month: "July 2025",
+                title: "Cadaveric Workshop (MGM Mumbai)",
+                desc: "Conducted by Dr. Sanjog Mekewar.",
+                type: "Workshop",
+                icon: "fa-procedures"
+            },
+            {
+                month: "July 2025",
+                title: "SSPP Annual General Body Meeting",
+                desc: "Held at Hotel Tarawade Clarks Inn.",
+                type: "Social",
+                icon: "fa-handshake"
+            },
+            {
+                month: "July 2025",
+                title: "IMA Daund Talk",
+                desc: "Dr. Kirti Pawar delivered a talk on 'Knee pain and regenerative therapies'.",
+                type: "Academic",
+                icon: "fa-microphone"
+            },
+
+            // --- AUGUST 2025 ---
+            {
+                month: "August 2025",
+                title: "ISSP Foundation Day Awareness",
+                desc: "Skit and Walkathon at Taljai Tekdi. Programs at Baramati GMC & Kashibai Navale.",
+                type: "Camp",
+                icon: "fa-running"
+            },
+            {
+                month: "August 2025",
+                title: "Crowd Funding for Inj. Dantrolene",
+                desc: "Dr. Madhuri Lokapur recognized for generous donation to Pune City ISA.",
+                type: "Award",
+                icon: "fa-hand-holding-heart"
+            },
+            {
+                month: "August 2025",
+                title: "3rd International MSK Congress",
+                desc: "Faculty: Dr. Madhuri Lokapur, Dr. Sanjog Mekewar.",
+                type: "Conference",
+                icon: "fa-id-badge"
+            },
+            {
+                month: "August 2025",
+                title: "Lavasa Bonding Trip",
+                desc: "One day trip for SSPP members and families.",
+                type: "Social",
+                icon: "fa-bus"
+            },
+            {
+                month: "August 2025",
+                title: "Orthorenew Collaboration",
+                desc: "Dr. Varsha Kurhade's KK Care Hospital collaborated with Orthorenew.",
+                type: "Media",
+                icon: "fa-handshake"
+            },
+            {
+                month: "August 2025",
+                title: "Avanos MIPM Proctorship",
+                desc: "Live cases of Cooled Radiofrequency Ablation demonstrated.",
+                type: "Workshop",
+                icon: "fa-wifi"
+            },
+
+            // --- SEPTEMBER 2025 ---
+            {
+                month: "September 2025",
+                title: "Pain Awareness Month Camp",
+                desc: "Dr. Kanchan Godase organized camp benefiting over 100 patients.",
+                type: "Camp",
+                icon: "fa-clinic-medical"
+            },
+            {
+                month: "September 2025",
+                title: "CIPM XVIII Workshop",
+                desc: "Faculty: Dr. Yashwant Nankar, Dr. Archana, Dr. Varsha, Dr. Kashinath.",
+                type: "Workshop",
+                icon: "fa-users-cog"
+            },
+            {
+                month: "September 2025",
+                title: "10th SARPS Congress",
+                desc: "Multiple SSPP members served as faculty. Handbook presented by Dr. Madhuri.",
+                type: "Conference",
+                icon: "fa-book-open"
+            },
+
+            // --- OCTOBER 2025 ---
+            {
+                month: "October 2025",
+                title: "ICRA 2025 Faculties",
+                desc: "Dr. Varshali, Dr. Varsha, Dr. Asha, Dr. Kashinath called as faculties.",
+                type: "Conference",
+                icon: "fa-microphone-alt"
+            },
+            {
+                month: "October 2025",
+                title: "SSPP Webinar: Fascia",
+                desc: "Topic: 'Fascia as Sensory Organ' by Dr. Priya Rathi.",
+                type: "Webinar",
+                icon: "fa-network-wired"
+            },
+            {
+                month: "October 2025",
+                title: "Trigeminal Ganglion RF Workshop",
+                desc: "Dr. Sanjog Mekewar at DY Patil Medical College, Kolhapur.",
+                type: "Workshop",
+                icon: "fa-brain"
+            },
+            {
+                month: "October 2025",
+                title: "Moshi Malayali Award",
+                desc: "Dr. Sanjog Mekewar felicitated for medical contributions.",
+                type: "Award",
+                icon: "fa-award"
+            },
+             {
+                month: "October 2025",
+                title: "COLS & BCLS Training",
+                desc: "Dr. Priya Lahane conducted training at Pentagon Hospital.",
+                type: "Workshop",
+                icon: "fa-hands-helping"
+            }
+        ];
+
+        // --- Render Logic ---
+        const container = document.getElementById('timeline-wrapper');
+        let currentMonth = '';
+
+        activities.forEach((item, index) => {
+            // Check for new month header
+            if (item.month !== currentMonth) {
+                currentMonth = item.month;
+                const monthDiv = document.createElement('div');
+                monthDiv.className = 'month-header';
+                monthDiv.innerHTML = `<span class="month-badge">${currentMonth}</span>`;
+                container.appendChild(monthDiv);
+            }
+
+            // Determine specific styling based on type
+            let tagClass = 'tag-conference';
+            let cardClass = 'type-generic';
+            
+            if(item.type.includes('Camp')) { tagClass = 'tag-camp'; cardClass = 'type-camp'; }
+            else if(item.type.includes('Award')) { tagClass = 'tag-award'; cardClass = 'type-award'; }
+            else if(item.type.includes('Webinar')) { tagClass = 'tag-webinar'; }
+
+            // Unique Image Seed
+            const imgSeed = `sspp-${index}`; 
+            
+            // Create Row Element
+            const row = document.createElement('div');
+            row.className = `activity-row ${cardClass}`;
+            
+            row.innerHTML = `
+                <div class="activity-card">
+                    <img src="https://picsum.photos/seed/${imgSeed}/600/400" alt="${item.title}" class="card-image">
+                    <div class="card-content">
+                        <span class="card-tag ${tagClass}">${item.type}</span>
+                        <h3 class="card-title">${item.title}</h3>
+                        <p class="card-desc">${item.desc}</p>
+                        <div class="card-footer">
+                            <i class="fas ${item.icon}"></i> SSPP Activity
+                        </div>
+                    </div>
+                </div>
+            `;
+            container.appendChild(row);
+        });
+
+        // --- Scroll Animations ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.activity-row').forEach(row => {
+            observer.observe(row);
+        });
+
+    </script>
+</body>
+</html>
