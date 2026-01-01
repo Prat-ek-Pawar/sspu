@@ -53,6 +53,8 @@
             background-color: var(--off-white);
             color: var(--royal-blue);
             overflow-x: hidden;
+            /* Essential for mobile */
+            width: 100%;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -580,19 +582,110 @@
             font-weight: 600;
         }
 
-        /* Responsive */
+        /* Filter Bar */
+        .filter-bar {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+            /* For scrollbar space */
+            margin-bottom: 2rem;
+            align-items: center;
+        }
+
+        .filter-label {
+            font-weight: 700;
+            color: var(--royal-blue);
+            font-size: 0.9rem;
+            margin-right: 5px;
+            white-space: nowrap;
+        }
+
+        .filter-btn {
+            padding: 6px 16px;
+            border: 1px solid #cbd5e1;
+            background: white;
+            color: #64748b;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--pune-saffron);
+            color: var(--pune-saffron);
+        }
+
+        .filter-btn.active {
+            background: var(--pune-saffron);
+            color: white;
+            border-color: var(--pune-saffron);
+            box-shadow: 0 4px 10px rgba(231, 111, 81, 0.3);
+        }
+
+        /* Responsive Mobile Nav & Layout */
         @media (max-width: 992px) {
             .main-container {
                 grid-template-columns: 1fr;
+                padding-top: 2rem;
+                padding-left: 15px;
+                /* Standardize */
+                padding-right: 15px;
             }
 
             .sticky-nav {
+                display: block;
+                position: sticky;
+                top: var(--header-height);
+                height: auto;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(15px);
+                z-index: 99;
+
+                /* Clean full width scroll */
+                width: 100vw;
+                margin-left: -50vw;
+                left: 50%;
+                right: 50%;
+                padding: 15px 0;
+
+                border-right: none;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                overflow-x: auto;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .nav-title {
                 display: none;
-                /* Hide sidebar on mobile, maybe replace with dropdown later if needed */
+            }
+
+            .timeline-nav-list {
+                flex-direction: row;
+                padding: 0 20px;
+                gap: 10px;
+            }
+
+            .timeline-nav-item {
+                border-left: none;
+                background: #f1f5f9;
+                padding: 8px 16px;
+                border-radius: 50px;
+                font-size: 0.85rem;
+                flex-shrink: 0;
+            }
+
+            .timeline-nav-item.active {
+                border-left: none;
+                background: var(--royal-blue);
+                color: var(--imperial-gold);
             }
 
             .header-content h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
         }
 
@@ -603,6 +696,11 @@
 
             .header-content h1 {
                 font-size: 2rem;
+                padding-top: 1rem;
+            }
+
+            .stat-bar {
+                gap: 20px;
             }
         }
 
@@ -756,6 +854,17 @@
 
         <!-- Content Area -->
         <main class="content-area" id="content-projector">
+            <!-- Filter Controls -->
+            <div class="filter-bar">
+                <span class="filter-label">Filter by:</span>
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="Conference">Conferences</button>
+                <button class="filter-btn" data-filter="Workshop">Workshops</button>
+                <button class="filter-btn" data-filter="Camp">Camps</button>
+                <button class="filter-btn" data-filter="Award">Awards</button>
+                <button class="filter-btn" data-filter="Social">Social</button>
+            </div>
+
             <!-- Javascript will inject Month Sections -->
         </main>
     </div>
@@ -1239,6 +1348,50 @@
             `;
             contentArea.appendChild(section);
         });
+
+        // --- FILTER FUNCTIONALITY ---
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active to clicked
+                btn.classList.add('active');
+
+                const filterType = btn.getAttribute('data-filter');
+                filterContent(filterType);
+            });
+        });
+
+        function filterContent(type) {
+            const allCards = document.querySelectorAll('.activity-card');
+
+            allCards.forEach(card => {
+                const badge = card.querySelector('.card-badge');
+                if (!badge) return;
+
+                const cardType = badge.textContent.trim();
+
+                // Show/Hide Logic
+                if (type === 'all' || cardType.includes(type)) {
+                    card.style.display = 'flex';
+                    gsap.to(card, { opacity: 1, duration: 0.4 });
+                } else {
+                    card.style.display = 'none';
+                    card.style.opacity = '0';
+                }
+            });
+
+            // Hide sections if all cards in them are hidden
+            document.querySelectorAll('.month-section').forEach(section => {
+                const visibleCards = Array.from(section.querySelectorAll('.activity-card')).filter(c => c.style.display !== 'none');
+                if (visibleCards.length === 0) {
+                    section.style.display = 'none';
+                } else {
+                    section.style.display = 'block';
+                }
+            });
+        }
 
         // --- Animations & Interactivity ---
 
