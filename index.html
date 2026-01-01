@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +15,7 @@
             --deep-ocean: #1e3a8a;
             --pune-saffron: #e76f51;
             --imperial-gold: #fbbf24;
-            
+
             /* Gradients */
             --gradient-royal: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
             --gradient-gold: linear-gradient(45deg, #d4af37, #f9dc5c, #d4af37);
@@ -25,25 +26,40 @@
             --glass-dark: rgba(15, 23, 42, 0.6);
             --text-dark: #1e293b;
             --text-light: #f8fafc;
-            
+
             --container-width: 1240px;
             --header-height: 90px;
             --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
         /* RESET & BASE */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #fdfbf7; /* Warm paper texture tone */
+            background-color: #fdfbf7;
+            /* Warm paper texture tone */
             color: var(--text-dark);
             overflow-x: hidden;
         }
 
         /* CUSTOM SCROLLBAR */
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: var(--royal-blue); }
-        ::-webkit-scrollbar-thumb { background: var(--imperial-gold); border-radius: 5px; }
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--royal-blue);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--imperial-gold);
+            border-radius: 5px;
+        }
 
         /* =========================================
            2. NAVIGATION (Immersive Glass)
@@ -54,8 +70,8 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.05);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .nav-container {
@@ -73,7 +89,7 @@
             align-items: center;
             gap: 12px;
         }
-        
+
         .logo-box {
             width: 48px;
             height: 48px;
@@ -99,13 +115,14 @@
         .desktop-nav {
             display: none;
         }
-        
+
         @media (min-width: 992px) {
             .desktop-nav {
                 display: flex !important;
                 gap: 30px;
                 align-items: center;
             }
+
             .nav-link {
                 text-decoration: none;
                 color: var(--text-dark);
@@ -114,6 +131,7 @@
                 padding: 10px 0;
                 position: relative;
             }
+
             /* Cultural Underline Animation */
             .nav-link::after {
                 content: '';
@@ -126,17 +144,23 @@
                 transition: width 0.3s ease;
                 border-radius: 2px;
             }
-            .nav-link:hover::after { width: 100%; }
+
+            .nav-link:hover::after {
+                width: 100%;
+            }
 
             /* Dropdowns */
-            .has-dropdown { position: relative; }
+            .has-dropdown {
+                position: relative;
+            }
+
             .dropdown-menu {
                 position: absolute;
                 top: 140%;
                 left: -20px;
                 background: white;
                 min-width: 260px;
-                box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
                 border-radius: 12px;
                 padding: 15px 0;
                 opacity: 0;
@@ -145,12 +169,14 @@
                 transition: all 0.4s var(--ease-elastic);
                 border-top: 4px solid var(--pune-saffron);
             }
+
             .has-dropdown:hover .dropdown-menu {
                 opacity: 1;
                 visibility: visible;
                 transform: translateY(0);
                 top: 100%;
             }
+
             .dropdown-item {
                 display: block;
                 padding: 10px 25px;
@@ -159,6 +185,7 @@
                 font-size: 0.9rem;
                 transition: all 0.2s;
             }
+
             .dropdown-item:hover {
                 background: #fff7ed;
                 color: var(--pune-saffron);
@@ -167,9 +194,20 @@
         }
 
         /* Mobile Menu */
-        .mobile-toggle { font-size: 1.5rem; background: none; border: none; cursor: pointer; color: var(--royal-blue); }
-        @media (min-width: 992px) { .mobile-toggle { display: none; } }
-        
+        .mobile-toggle {
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--royal-blue);
+        }
+
+        @media (min-width: 992px) {
+            .mobile-toggle {
+                display: none;
+            }
+        }
+
         /* Mobile Active State */
         .desktop-nav.active-mobile {
             display: flex;
@@ -180,7 +218,7 @@
             width: 100%;
             background: white;
             padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         /* =========================================
@@ -190,7 +228,8 @@
             background: var(--bg-light);
             position: relative;
             overflow: hidden;
-            padding-bottom: 8rem; /* Space for the arch */
+            padding-bottom: 8rem;
+            /* Space for the arch */
         }
 
         /* Dynamic Background Shape */
@@ -228,7 +267,10 @@
         }
 
         @media (min-width: 992px) {
-            .hero-container { grid-template-columns: 1.2fr 0.8fr; padding: 6rem 20px; }
+            .hero-container {
+                grid-template-columns: 1.2fr 0.8fr;
+                padding: 6rem 20px;
+            }
         }
 
         .hero-content h1 {
@@ -237,7 +279,12 @@
             margin-bottom: 1.5rem;
             color: var(--royal-blue);
         }
-        @media (min-width: 992px) { .hero-content h1 { font-size: 3.8rem; } }
+
+        @media (min-width: 992px) {
+            .hero-content h1 {
+                font-size: 3.8rem;
+            }
+        }
 
         /* The Gold Text Highlight */
         .highlight-text {
@@ -252,7 +299,7 @@
             color: #64748b;
             margin-bottom: 2rem;
             max-width: 90%;
-            background: rgba(255,255,255,0.8);
+            background: rgba(255, 255, 255, 0.8);
             padding: 15px;
             border-radius: 10px;
             backdrop-filter: blur(5px);
@@ -270,17 +317,22 @@
             transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             border: 2px solid transparent;
         }
+
         .btn-primary {
             background: var(--gradient-saffron);
             color: white;
             box-shadow: 0 10px 25px -5px rgba(231, 111, 81, 0.4);
         }
+
         .btn-outline {
             border-color: var(--royal-blue);
             color: var(--royal-blue);
             background: transparent;
         }
-        .btn:hover { transform: translateY(-4px) scale(1.02); }
+
+        .btn:hover {
+            transform: translateY(-4px) scale(1.02);
+        }
 
         /* Hero Image Frame */
         .hero-img-wrapper {
@@ -302,10 +354,12 @@
             width: 100%;
             line-height: 0;
         }
+
         .arch-svg {
             width: 100%;
             height: 100px;
-            fill: var(--royal-blue); /* Seamlessly flows into next section */
+            fill: var(--royal-blue);
+            /* Seamlessly flows into next section */
         }
 
         /* =========================================
@@ -313,7 +367,7 @@
            ========================================= */
         .council-section {
             background-color: var(--royal-blue);
-            background-image: 
+            background-image:
                 radial-gradient(circle at 0% 0%, rgba(251, 191, 36, 0.15) 0%, transparent 40%),
                 radial-gradient(circle at 100% 100%, rgba(231, 111, 81, 0.15) 0%, transparent 40%);
             padding: 5rem 20px 8rem 20px;
@@ -328,15 +382,17 @@
             position: relative;
             z-index: 2;
         }
+
         .council-header h2 {
             font-family: 'Playfair Display', serif;
             color: var(--imperial-gold);
             font-size: 3rem;
             margin-bottom: 15px;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
-        .council-header p { 
-            color: #cbd5e1; 
+
+        .council-header p {
+            color: #cbd5e1;
             font-size: 1.1rem;
             max-width: 600px;
             margin: 0 auto;
@@ -355,7 +411,8 @@
         /* NEW CARD DESIGN */
         .council-card {
             position: relative;
-            height: 380px; /* Fixed height for uniformity */
+            height: 380px;
+            /* Fixed height for uniformity */
             perspective: 1000px;
         }
 
@@ -375,7 +432,7 @@
             justify-content: center;
             text-align: center;
             padding: 2rem;
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
         }
 
         /* Hover Animation: Lift & Gold Glow */
@@ -398,7 +455,10 @@
             opacity: 0.05;
             transition: opacity 0.5s;
         }
-        .council-card:hover .card-bg-pattern { opacity: 0.1; }
+
+        .council-card:hover .card-bg-pattern {
+            opacity: 0.1;
+        }
 
         /* Icon Container */
         .icon-box {
@@ -415,7 +475,7 @@
             transition: all 0.5s ease;
             z-index: 1;
         }
-        
+
         /* Rotating border effect on hover */
         .icon-box::before {
             content: '';
@@ -427,10 +487,12 @@
             transition: all 0.5s ease;
             transform: rotate(0deg);
         }
+
         .council-card:hover .icon-box::before {
             opacity: 1;
             transform: rotate(180deg);
         }
+
         .council-card:hover .icon-box {
             transform: scale(1.1);
             border-color: transparent;
@@ -443,7 +505,10 @@
             color: var(--imperial-gold);
             transition: color 0.3s;
         }
-        .council-card:hover .icon-box i { color: white; }
+
+        .council-card:hover .icon-box i {
+            color: white;
+        }
 
         /* Typography */
         .role-badge {
@@ -460,6 +525,7 @@
             border: 1px solid rgba(251, 191, 36, 0.2);
             transition: all 0.3s;
         }
+
         .council-card:hover .role-badge {
             background: var(--imperial-gold);
             color: var(--royal-blue);
@@ -482,7 +548,10 @@
             margin-top: 1.5rem;
             transition: width 0.3s;
         }
-        .council-card:hover .card-line { width: 100px; }
+
+        .council-card:hover .card-line {
+            width: 100px;
+        }
 
         /* =========================================
            6. GALLERY (Mosaic Layout)
@@ -491,13 +560,13 @@
             padding: 6rem 20px;
             background: #fff;
         }
-        
+
         /* Section Title (Clean & Modern) */
         .section-title-box {
             text-align: center;
             margin-bottom: 3rem;
         }
-        
+
         .gallery-header-line {
             width: 80px;
             height: 4px;
@@ -514,39 +583,60 @@
             max-width: var(--container-width);
             margin: 0 auto;
         }
+
         @media (min-width: 768px) {
-            .gallery-mosaic { grid-template-columns: repeat(4, 1fr); }
-            .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
-            .gallery-item:nth-child(4) { grid-column: span 2; }
+            .gallery-mosaic {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+                grid-row: span 2;
+            }
+
+            .gallery-item:nth-child(4) {
+                grid-column: span 2;
+            }
         }
 
         .gallery-item {
             border-radius: 16px;
             overflow: hidden;
             position: relative;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
-        .gallery-item:hover img { transform: scale(1.1); }
-        
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
         /* Overlay text on hover */
         .overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
             opacity: 0;
             transition: opacity 0.3s;
             display: flex;
             align-items: flex-end;
             padding: 20px;
         }
-        .gallery-item:hover .overlay { opacity: 1; }
-        .overlay span { color: white; font-weight: 600; }
+
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay span {
+            color: white;
+            font-weight: 600;
+        }
 
         /* =========================================
            7. FOOTER (Immutable Structure, Styled)
@@ -557,6 +647,7 @@
             padding: 4rem 20px 2rem 20px;
             border-top: 5px solid var(--pune-saffron);
         }
+
         .footer-container {
             max-width: var(--container-width);
             margin: 0 auto;
@@ -564,68 +655,111 @@
             flex-direction: column;
             gap: 3rem;
         }
-        @media (min-width: 768px) { .footer-container { flex-direction: row; justify-content: space-between; } }
-        
-        .footer-logo h3 { color: white; margin-bottom: 0.5rem; font-size: 1.5rem; }
-        .footer-links a { color: #94a3b8; text-decoration: none; display: block; margin-bottom: 0.8rem; transition: 0.3s; }
-        .footer-links a:hover { color: var(--imperial-gold); padding-left: 5px; }
-        .copyright { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 0.9rem; color: #64748b; }
 
+        @media (min-width: 768px) {
+            .footer-container {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        .footer-logo h3 {
+            color: white;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--imperial-gold);
+            padding-left: 5px;
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
     </style>
     <style>
-@import url('https://fonts.googleapis.com/css2?family=Gantari:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-</style>
+        @import url('https://fonts.googleapis.com/css2?family=Gantari:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
-        *{
-    font-family: "Gantari", sans-serif !important;
-}
+        body {
+            font-family: "Gantari", sans-serif;
+        }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&family=Gantari:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&family=Gantari:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 
-<style>
-    h1,h2,h3,h4,h5,h6{
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-style: normal;
-}
-</style>
+    <style>
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Poppins", sans-serif;
+            font-weight: 500;
+            font-style: normal;
+        }
+    </style>
 </head>
+
 <body>
 
     <!-- HEADER & NAVBAR -->
     <header>
         <div class="nav-container">
-                <img src="./assets/logo.png" style="max-width: 20%;"/>
+            <img src="./assets/logo.png" style="max-width: 20%;" />
 
-            <button class="mobile-toggle" onclick="document.querySelector('.desktop-nav').classList.toggle('active-mobile')">
+            <button class="mobile-toggle"
+                onclick="document.querySelector('.desktop-nav').classList.toggle('active-mobile')">
                 <i class="fas fa-bars"></i>
             </button>
 
             <!-- Navbar -->
             <nav class="desktop-nav">
                 <a href="index.html" class="nav-link" style="color: var(--pune-saffron);">Home</a>
-                
+
                 <div class="has-dropdown">
                     <span class="nav-link">About <i class="fas fa-chevron-down" style="font-size: 0.7em;"></i></span>
                     <div class="dropdown-menu">
                         <a href="Secretary_message.html" class="dropdown-item">President's Message</a>
                         <a href="Secretary_message.html" class="dropdown-item">Secretary's Message</a>
                         <a href="Vision_Mission.html" class="dropdown-item">Vision Mission</a>
-                        <div class="dropdown-header" style="padding: 8px 25px; font-weight:700; font-size:0.75rem; color:var(--royal-blue); opacity:0.6;">GOVERNANCE</div>
-                        <a href="GoverningCouncil.html" class="dropdown-item" style="padding-left: 35px;">Governing Council</a>
-                        <a href="Strategic_Plan.html" class="dropdown-item" style="padding-left: 35px;">Strategic Plan</a>
+                        <div class="dropdown-header"
+                            style="padding: 8px 25px; font-weight:700; font-size:0.75rem; color:var(--royal-blue); opacity:0.6;">
+                            GOVERNANCE</div>
+                        <a href="GoverningCouncil.html" class="dropdown-item" style="padding-left: 35px;">Governing
+                            Council</a>
+                        <a href="Strategic_Plan.html" class="dropdown-item" style="padding-left: 35px;">Strategic
+                            Plan</a>
                         <a href="History.html" class="dropdown-item">History</a>
                         <a href="Annual_Report.html" class="dropdown-item">Annual Report</a>
                     </div>
                 </div>
 
                 <div class="has-dropdown">
-                    <span class="nav-link">Membership <i class="fas fa-chevron-down" style="font-size: 0.7em;"></i></span>
+                    <span class="nav-link">Membership <i class="fas fa-chevron-down"
+                            style="font-size: 0.7em;"></i></span>
                     <div class="dropdown-menu">
                         <a href="Why_Join.html" class="dropdown-item">Why Join?</a>
                         <a href="Apply_Online.html" class="dropdown-item">Apply Online</a>
@@ -644,7 +778,8 @@
 
                 <a href="Patient-Education.html" class="nav-link">Patient Education</a>
                 <a href="Gallery.html" class="nav-link">Gallery</a>
-                <a href="Contact_us.html" class="nav-link btn btn-primary" style="padding: 8px 25px; color: white;">Contact Us</a>
+                <a href="Contact_us.html" class="nav-link btn btn-primary"
+                    style="padding: 8px 25px; color: white;">Contact Us</a>
             </nav>
         </div>
     </header>
@@ -653,14 +788,15 @@
     <section class="hero-section">
         <div class="hero-bg-blob"></div>
         <div class="hero-texture"></div>
-        
+
         <div class="hero-container">
             <div class="hero-content">
                 <h1>Society Study of <br><span class="highlight-text">Pain Pune</span> (SSPP)</h1>
                 <p class="hero-text">
-                    Founded in 2014 by visionary senior physicians, transforming pain medicine from a niche to a superspecialty. Winner of 5 National Best City Awards.
+                    Founded in 2014 by visionary senior physicians, transforming pain medicine from a niche to a
+                    superspecialty. Winner of 5 National Best City Awards.
                 </p>
-                
+
                 <div style="display: flex; flex-wrap: wrap; gap: 15px;">
                     <a href="Apply_Online.html" class="btn btn-primary">
                         <span>BECOME A MEMBER</span>
@@ -680,11 +816,12 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="hero-image">
                 <div class="hero-img-wrapper">
                     <!-- Lifestyle image representing medical conference -->
-                    <img src="./assets/pune.png" alt="SSPP Conference" style="width: 100%; height: auto; display: block;">
+                    <img src="./assets/pune.png" alt="SSPP Conference"
+                        style="width: 100%; height: auto; display: block;">
                 </div>
             </div>
         </div>
@@ -702,7 +839,8 @@
         <div class="council-header">
             <!-- Decorative SVG Element -->
             <div style="margin-bottom: 1rem; opacity: 0.8;">
-                <i class="fas fa-dharmachakra" style="color: var(--imperial-gold); font-size: 2.5rem; animation: spin 20s linear infinite;"></i>
+                <i class="fas fa-dharmachakra"
+                    style="color: var(--imperial-gold); font-size: 2.5rem; animation: spin 20s linear infinite;"></i>
             </div>
             <h2>Governing Council</h2>
             <p>Distinguished leaders guiding the Society's vision and excellence in pain medicine.</p>
@@ -795,9 +933,10 @@
                 <div class="overlay"><span>Scientific Sessions</span></div>
             </div>
         </div>
-        
+
         <div style="text-align: center; margin-top: 3rem;">
-            <a href="Gallery.html" class="btn btn-outline" style="border-width: 2px; font-weight: 700;">VIEW FULL GALLERY</a>
+            <a href="Gallery.html" class="btn btn-outline" style="border-width: 2px; font-weight: 700;">VIEW FULL
+                GALLERY</a>
         </div>
     </section>
 
@@ -806,7 +945,8 @@
         <div class="footer-container">
             <div class="footer-logo" style="flex: 1;">
                 <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                    <div style="width: 32px; height: 32px; background: rgba(255,255,255,0.1); border-radius: 50%; display: grid; place-items: center; color: var(--imperial-gold);">
+                    <div
+                        style="width: 32px; height: 32px; background: rgba(255,255,255,0.1); border-radius: 50%; display: grid; place-items: center; color: var(--imperial-gold);">
                         <i class="fas fa-om"></i>
                     </div>
                     <h3>SSPP Pune</h3>
@@ -815,12 +955,18 @@
                     Advancing the field of pain medicine through<br> education, research, and collaboration.
                 </p>
                 <div style="display: flex; gap: 15px; margin-top: 1.5rem;">
-                    <a href="#" style="color:white; background: rgba(255,255,255,0.1); width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%;"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" style="color:white; background: rgba(255,255,255,0.1); width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%;"><i class="fab fa-twitter"></i></a>
-                    <a href="#" style="color:white; background: rgba(255,255,255,0.1); width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%;"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"
+                        style="color:white; background: rgba(255,255,255,0.1); width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%;"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="#"
+                        style="color:white; background: rgba(255,255,255,0.1); width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%;"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="#"
+                        style="color:white; background: rgba(255,255,255,0.1); width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%;"><i
+                            class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
-            
+
             <div class="footer-links" style="flex: 1;">
                 <h4 style="color: var(--imperial-gold); margin-bottom: 1.2rem;">Quick Links</h4>
                 <a href="index.html">About Us</a>
@@ -832,10 +978,12 @@
             <div class="footer-links" style="flex: 1;">
                 <h4 style="color: var(--imperial-gold); margin-bottom: 1.2rem;">Contact</h4>
                 <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1rem;">
-                    <i class="fas fa-envelope" style="color: var(--pune-saffron); margin-right: 10px;"></i> contact@sspp-pune.org
+                    <i class="fas fa-envelope" style="color: var(--pune-saffron); margin-right: 10px;"></i>
+                    contact@sspp-pune.org
                 </p>
                 <p style="color: #cbd5e1; font-size: 0.9rem;">
-                    <i class="fas fa-map-marker-alt" style="color: var(--pune-saffron); margin-right: 10px;"></i> IMA House, Tilak Road, Pune
+                    <i class="fas fa-map-marker-alt" style="color: var(--pune-saffron); margin-right: 10px;"></i> IMA
+                    House, Tilak Road, Pune
                 </p>
             </div>
         </div>
@@ -849,4 +997,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="assets/js/app.js"></script>
 </body>
+
 </html>
