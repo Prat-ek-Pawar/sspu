@@ -94,6 +94,7 @@
             font-size: 1.5rem;
             background: var(--royal-gradient);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: -0.5px;
         }
@@ -355,19 +356,29 @@
         }
 
         .leader-img-box {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             background: white;
             border-radius: 50%;
-            margin: 0 auto -50px auto;
+            margin: 0 auto -60px auto;
             border: 4px solid white;
-            display: grid;
-            place-items: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 2.5rem;
             color: var(--pune-saffron);
             position: relative;
             z-index: 2;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .leader-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            display: block;
         }
 
         .leader-body {
@@ -629,7 +640,9 @@
             <div class="executive-grid" style="max-width: 800px; margin: 0 auto 4rem auto;">
                 <div class="leader-card">
                     <div class="leader-header"></div>
-                    <div class="leader-img-box"><i class="fas fa-user-tie"></i></div>
+                    <div class="leader-img-box">
+                        <img src="./assets/Dr. Pradnya Bhalerao.jpeg" alt="Dr Pradnya Bhalerao">
+                    </div>
                     <div class="leader-body">
                         <div class="leader-role">Organising Chairman</div>
                         <div class="leader-name">Dr Pradnya Bhalerao</div>
@@ -637,7 +650,9 @@
                 </div>
                 <div class="leader-card">
                     <div class="leader-header"></div>
-                    <div class="leader-img-box"><i class="fas fa-signature"></i></div>
+                    <div class="leader-img-box">
+                        <img src="./assets/Dr. Sanjog Mekewar.jpeg" alt="Dr Sanjog Mekewar">
+                    </div>
                     <div class="leader-body">
                         <div class="leader-role">Organising Secretary</div>
                         <div class="leader-name">Dr Sanjog Mekewar</div>
@@ -652,7 +667,9 @@
             <div class="executive-grid">
                 <div class="leader-card">
                     <div class="leader-header" style="background: var(--deep-ocean);"></div>
-                    <div class="leader-img-box"><i class="fas fa-microscope"></i></div>
+                    <div class="leader-img-box">
+                        <img src="./assets/Dr. Pradnya Bhalerao.jpeg" alt="Dr Varshali Kenia">
+                    </div>
                     <div class="leader-body">
                         <div class="leader-role">Scientific Chairperson</div>
                         <div class="leader-name">Dr Varshali Kenia</div>
@@ -660,7 +677,9 @@
                 </div>
                 <div class="leader-card">
                     <div class="leader-header" style="background: var(--deep-ocean);"></div>
-                    <div class="leader-img-box"><i class="fas fa-dna"></i></div>
+                    <div class="leader-img-box">
+                        <img src="./assets/Dr Priya Rathi.jpeg" alt="Dr Priya Rathi">
+                    </div>
                     <div class="leader-body">
                         <div class="leader-role">Scientific Co-Chair</div>
                         <div class="leader-name">Dr Priya Rathi</div>
@@ -668,7 +687,9 @@
                 </div>
                 <div class="leader-card">
                     <div class="leader-header" style="background: #334155;"></div>
-                    <div class="leader-img-box"><i class="fas fa-coins"></i></div>
+                    <div class="leader-img-box">
+                        <img src="./assets/Dr. Anmol Maindarkar.jpeg" alt="Dr Anmol Maindarkar">
+                    </div>
                     <div class="leader-body">
                         <div class="leader-role">Treasurer</div>
                         <div class="leader-name">Dr Anmol Maindarkar</div>
@@ -676,7 +697,9 @@
                 </div>
                 <div class="leader-card">
                     <div class="leader-header" style="background: #334155;"></div>
-                    <div class="leader-img-box"><i class="fas fa-coins"></i></div>
+                    <div class="leader-img-box">
+                        <img src="./assets/Dr. Varsha Kurhade.jpeg" alt="Dr Varsha Kurhade">
+                    </div>
                     <div class="leader-body">
                         <div class="leader-role">Co-Treasurer</div>
                         <div class="leader-name">Dr Varsha Kurhade</div>
@@ -794,13 +817,10 @@
     <footer>
         <div class="footer-container">
             <div class="footer-logo" style="flex: 1;">
-                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                    <div
-                        style="width: 32px; height: 32px; background: rgba(255,255,255,0.1); border-radius: 50%; display: grid; place-items: center; color: var(--imperial-gold);">
-                        <i class="fas fa-om"></i>
-                    </div>
-                    <h3>SSPP Pune</h3>
+                <div style="margin-bottom: 20px;">
+                    <img src="./assets/logo.png" style="max-width: 180px; height: auto;" alt="SSPP Logo" />
                 </div>
+                <h3>SSPP Pune</h3>
                 <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.6;">
                     Advancing the field of pain medicine through<br> education, research, and collaboration.
                 </p>

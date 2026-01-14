@@ -462,8 +462,8 @@
 
         /* Icon Container */
         .icon-box {
-            width: 90px;
-            height: 90px;
+            width: 120px;
+            height: 120px;
             background: var(--gradient-royal);
             border-radius: 50%;
             display: flex;
@@ -471,9 +471,19 @@
             justify-content: center;
             margin-bottom: 2rem;
             position: relative;
-            border: 2px solid rgba(251, 191, 36, 0.3);
+            border: 4px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
             transition: all 0.5s ease;
             z-index: 1;
+            overflow: hidden;
+        }
+
+        .icon-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            display: block;
         }
 
         /* Rotating border effect on hover */
@@ -853,7 +863,7 @@
                     <div class="card-bg-pattern"></div>
                     <span class="role-badge">Organising Chairman</span>
                     <div class="icon-box">
-                        <i class="fas fa-user-tie"></i>
+                        <img src="./assets/Dr. Pradnya Bhalerao.jpeg" alt="Dr Pradnya Bhalerao">
                     </div>
                     <h3 class="member-name">Dr Pradnya Bhalerao</h3>
                     <div class="card-line"></div>
@@ -866,7 +876,7 @@
                     <div class="card-bg-pattern"></div>
                     <span class="role-badge">Organising Secretary</span>
                     <div class="icon-box">
-                        <i class="fas fa-file-signature"></i>
+                        <img src="./assets/Dr. Sanjog Mekewar.jpeg" alt="Dr Sanjog Mekewar">
                     </div>
                     <h3 class="member-name">Dr Sanjog Mekewar</h3>
                     <div class="card-line"></div>
@@ -892,7 +902,7 @@
                     <div class="card-bg-pattern"></div>
                     <span class="role-badge">Scientific Co-Chair</span>
                     <div class="icon-box">
-                        <i class="fas fa-microscope"></i>
+                        <img src="./assets/Dr Priya Rathi.jpeg" alt="Dr Priya Rathi">
                     </div>
                     <h3 class="member-name">Dr Priya Rathi</h3>
                     <div class="card-line"></div>
@@ -944,13 +954,10 @@
     <footer>
         <div class="footer-container">
             <div class="footer-logo" style="flex: 1;">
-                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                    <div
-                        style="width: 32px; height: 32px; background: rgba(255,255,255,0.1); border-radius: 50%; display: grid; place-items: center; color: var(--imperial-gold);">
-                        <i class="fas fa-om"></i>
-                    </div>
-                    <h3>SSPP Pune</h3>
+                <div style="margin-bottom: 20px;">
+                    <img src="./assets/logo.png" style="max-width: 180px; height: auto;" alt="SSPP Logo" />
                 </div>
+                <h3>SSPP Pune</h3>
                 <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.6;">
                     Advancing the field of pain medicine through<br> education, research, and collaboration.
                 </p>
