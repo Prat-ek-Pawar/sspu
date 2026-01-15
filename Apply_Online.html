@@ -113,11 +113,12 @@
     .nav-container {
       max-width: var(--container-width);
       margin: 0 auto;
+      min-width: 90vw;
       height: var(--header-height);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 24px;
+      padding: 0 -42px;
     }
 
     .logo-area img {
@@ -132,18 +133,21 @@
     @media (min-width: 992px) {
       .desktop-nav {
         display: flex;
-        gap: 32px;
+        gap: 35px;
         align-items: center;
       }
 
       .nav-link {
+        align-items: center;
+        gap: 6px;
+        display: flex;
+        justify-content: center;
         text-decoration: none;
         color: var(--text-dark);
         font-weight: 600;
         font-size: 0.95rem;
-        transition: 0.3s;
+        padding: 10px 0;
         position: relative;
-        padding-bottom: 5px;
       }
 
       .nav-link:hover {
@@ -164,6 +168,12 @@
 
       .nav-link:hover::after {
         width: 100%;
+      }
+
+      /* Remove underline for buttons */
+      .nav-link.btn::after,
+      .btn::after {
+        display: none !important;
       }
 
       .has-dropdown {
@@ -210,16 +220,26 @@
     }
 
     .mobile-toggle {
-      font-size: 1.5rem;
-      color: var(--royal-blue);
+      font-size: 2.5rem;
       background: none;
+      position: absolute;
       border: none;
+      right: 45px;
       cursor: pointer;
+      color: var(--royal-blue);
     }
 
     @media (min-width: 992px) {
       .mobile-toggle {
         display: none;
+      }
+    }
+
+    @media (max-width: 991px) {
+
+      /* Logo adjustment for mobile/tablet */
+      .logo-area img {
+        max-width: 65% !important;
       }
     }
 
@@ -249,6 +269,58 @@
       box-shadow: 0 15px 35px -5px rgba(231, 111, 81, 0.5);
     }
 
+
+    /* Mobile Active State */
+    .desktop-nav.active-mobile {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      /* Fixed to cover screen or stick */
+      top: var(--header-height);
+      left: 0;
+      width: 100%;
+      height: calc(100vh - var(--header-height));
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      align-items: center;
+      /* Center horizontally */
+      justify-content: flex-start;
+      gap: 20px;
+      overflow-y: auto;
+      z-index: 999;
+    }
+
+    .desktop-nav.active-mobile .nav-link {
+      font-size: 1.1rem;
+      width: 100%;
+      text-align: center;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .desktop-nav.active-mobile .has-dropdown {
+      width: 100%;
+      text-align: center;
+    }
+
+    .desktop-nav.active-mobile .dropdown-menu {
+      position: static;
+      box-shadow: none;
+      border: none;
+      background: transparent;
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      padding: 0;
+      margin-top: 10px;
+      display: none;
+    }
+
+    .desktop-nav.active-mobile .has-dropdown:hover .dropdown-menu {
+      display: block;
+    }
 
     /* =========================================
        3. CINEMATIC HERO SECTION
@@ -599,6 +671,11 @@
         <a href="Patient-Education.html" class="nav-link">Patient Education</a>
         <a href="Gallery.html" class="nav-link">Gallery</a>
         <a href="Contact_us.html" class="btn btn-primary">Contact Us</a>
+        <a href="painscape.html" class="nav-link btn"
+          style="padding: 6px 15px; color: var(--royal-blue); background: var(--gradient-gold); margin-left: 5px; font-weight: 700; box-shadow: 0 0 20px rgba(251, 191, 36, 0.6); border: 2px solid white; display: inline-flex; align-items: center; gap: 6px;">
+          <i class="fas fa-crown"></i>
+          PAINSCAPE 2026
+        </a>
       </nav>
     </div>
   </header>

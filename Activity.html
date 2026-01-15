@@ -88,11 +88,12 @@
     .nav-container {
       max-width: var(--container-width);
       margin: 0 auto;
+      min-width: 90vw;
       height: var(--header-height);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 20px;
+      padding: 0 -42px;
     }
 
     .logo-area {
@@ -101,47 +102,26 @@
       gap: 12px;
     }
 
-    .logo-box {
-      width: 48px;
-      height: 48px;
-      background: var(--gradient-royal);
-      color: var(--imperial-gold);
-      display: grid;
-      place-items: center;
-      border-radius: 12px;
-      font-size: 1.5rem;
-      box-shadow: 0 8px 20px -5px rgba(30, 58, 138, 0.4);
-    }
-
-    .logo-text {
-      font-weight: 800;
-      font-size: 1.5rem;
-      letter-spacing: -0.5px;
-      background: var(--gradient-royal);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    /* Desktop Nav */
+    /* Desktop Nav - Row Aligned */
     .desktop-nav {
       display: none;
     }
 
     @media (min-width: 992px) {
-      .mobile-toggle {
-        display: none;
-      }
-
       .desktop-nav {
-        display: flex;
-        gap: 30px;
+        display: flex !important;
+        gap: 35px;
         align-items: center;
       }
 
       .nav-link {
+        align-items: center;
+        gap: 6px;
+        display: flex;
+        justify-content: center;
         text-decoration: none;
-        color: #1e293b;
+        color: var(--royal-blue);
+        /* Ensuring visibility */
         font-weight: 600;
         font-size: 0.95rem;
         padding: 10px 0;
@@ -162,6 +142,12 @@
 
       .nav-link:hover::after {
         width: 100%;
+      }
+
+      /* Remove underline for buttons */
+      .nav-link.btn::after,
+      .btn::after {
+        display: none !important;
       }
 
       /* Dropdowns */
@@ -208,25 +194,79 @@
       }
     }
 
+    /* Mobile Menu */
     .mobile-toggle {
-      font-size: 1.5rem;
+      font-size: 2.5rem;
       background: none;
+      position: absolute;
       border: none;
+      right: 45px;
       cursor: pointer;
       color: var(--royal-blue);
     }
 
+    @media (min-width: 992px) {
+      .mobile-toggle {
+        display: none;
+      }
+    }
+
+    @media (max-width: 991px) {
+
+      /* Logo adjustment for mobile/tablet */
+      .nav-container img {
+        max-width: 65% !important;
+      }
+    }
+
+    /* Mobile Active State */
     .desktop-nav.active-mobile {
       display: flex;
       flex-direction: column;
-      position: absolute;
+      position: fixed;
       top: var(--header-height);
       left: 0;
       width: 100%;
-      background: white;
+      height: calc(100vh - var(--header-height));
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
       padding: 2rem;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      z-index: 1005;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 20px;
+      overflow-y: auto;
+      z-index: 999;
+    }
+
+    .desktop-nav.active-mobile .nav-link {
+      font-size: 1.1rem;
+      width: 100%;
+      text-align: center;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .desktop-nav.active-mobile .has-dropdown {
+      width: 100%;
+      text-align: center;
+    }
+
+    .desktop-nav.active-mobile .dropdown-menu {
+      position: static;
+      box-shadow: none;
+      border: none;
+      background: transparent;
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      padding: 0;
+      margin-top: 10px;
+      display: none;
+    }
+
+    .desktop-nav.active-mobile .has-dropdown:hover .dropdown-menu {
+      display: block;
     }
 
     .btn-nav {
@@ -891,6 +931,10 @@
             </div>
             <a href="GoverningCouncil.html" class="dropdown-item" style="padding-left: 35px">Governing Council</a>
             <a href="Strategic_Plan.html" class="dropdown-item" style="padding-left: 35px">Strategic Plan</a>
+            <a href="GoverningCouncil.html" class="dropdown-item" style="padding-left: 35px">Governing
+              Council</a>
+            <a href="Strategic_Plan.html" class="dropdown-item" style="padding-left: 35px">Strategic
+              Plan</a>
             <a href="History.html" class="dropdown-item">History</a>
             <a href="Annual_Report.html" class="dropdown-item">Annual Report</a>
           </div>
@@ -905,7 +949,7 @@
           </div>
         </div>
 
-        <a href="Activity.html" class="nav-link" style="color: var(--pune-saffron)">Activity</a>
+        <a href="Activity.html" class="nav-link nav-active" style="color: var(--pune-saffron)">Activity</a>
 
         <div class="has-dropdown">
           <span class="nav-link">Meetings
@@ -920,6 +964,11 @@
         <a href="Gallery.html" class="nav-link">Gallery</a>
         <a href="Contact_us.html" class="nav-link btn btn-primary" style="padding: 8px 25px; color: white">Contact
           Us</a>
+        <a href="painscape.html" class="nav-link btn"
+          style="padding: 6px 15px; color: var(--royal-blue); background: var(--gradient-gold); margin-left: 5px; font-weight: 700; box-shadow: 0 0 20px rgba(251, 191, 36, 0.6); border: 2px solid white; display: inline-flex; align-items: center; gap: 6px;">
+          <i class="fas fa-crown"></i>
+          PAINSCAPE 2026
+        </a>
       </nav>
     </div>
   </header>

@@ -1,810 +1,801 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Strategic Plan - SSPP Pune</title>
-    <style>
-      /* =========================================
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Strategic Plan - SSPP Pune</title>
+  <style>
+    /* =========================================
            1. DESIGN SYSTEM: ROYAL PUNE PALETTE
            ========================================= */
-      :root {
-        --royal-blue: #0f172a;
-        --deep-ocean: #1e3a8a;
-        --pune-saffron: #e76f51;
-        --imperial-gold: #fbbf24;
+    :root {
+      --royal-blue: #0f172a;
+      --deep-ocean: #1e3a8a;
+      --pune-saffron: #e76f51;
+      --imperial-gold: #fbbf24;
 
-        --gradient-royal: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
-        --gradient-gold: linear-gradient(45deg, #d4af37, #f9dc5c, #d4af37);
+      --gradient-royal: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      --gradient-gold: linear-gradient(45deg, #d4af37, #f9dc5c, #d4af37);
 
-        --bg-paper: #fdfbf7;
-        --text-dark: #1e293b;
-        --text-muted: #475569;
+      --bg-paper: #fdfbf7;
+      --text-dark: #1e293b;
+      --text-muted: #475569;
 
-        --container-width: 1240px;
-        --header-height: 90px;
-        --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-      }
+      --container-width: 1240px;
+      --header-height: 90px;
+      --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-      body {
-        font-family: "Poppins", sans-serif;
-        background-color: var(--bg-paper);
-        color: var(--text-dark);
-        line-height: 1.7;
-        overflow-x: hidden;
-      }
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: var(--bg-paper);
+      color: var(--text-dark);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
 
-      h1,
-      h2,
-      h3 {
-        font-family: "Playfair Display", serif;
-      }
+    h1,
+    h2,
+    h3 {
+      font-family: "Playfair Display", serif;
+    }
 
-      /* =========================================
+    /* =========================================
            2. NAVIGATION (Immutable)
            ========================================= */
-      header {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(20px);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-      }
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
 
-      .nav-container {
-        max-width: var(--container-width);
-        margin: 0 auto;
-        height: var(--header-height);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 20px;
-      }
+    .nav-container {
+      max-width: var(--container-width);
+      margin: 0 auto;
+      min-width: 90vw;
+      height: var(--header-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 -42px;
+    }
 
-      .logo-area {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-      .logo-box {
-        width: 48px;
-        height: 48px;
-        background: var(--gradient-royal);
-        color: var(--imperial-gold);
-        display: grid;
-        place-items: center;
-        border-radius: 12px;
-        font-size: 1.5rem;
-        box-shadow: 0 8px 20px -5px rgba(30, 58, 138, 0.4);
-      }
+    /* Desktop Nav - Row Aligned */
+    .desktop-nav {
+      display: none;
+    }
 
-      .logo-text {
-        font-weight: 800;
-        font-size: 1.5rem;
-        background: var(--gradient-royal);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        letter-spacing: -0.5px;
-      }
-
+    @media (min-width: 992px) {
       .desktop-nav {
-        display: none;
+        display: flex !important;
+        gap: 35px;
+        align-items: center;
       }
 
-      @media (min-width: 992px) {
-        .desktop-nav {
-          display: flex !important;
-          gap: 30px;
-          align-items: center;
-        }
-
-        .nav-link {
-          text-decoration: none;
-          color: var(--text-dark);
-          font-weight: 600;
-          font-size: 0.95rem;
-          padding: 10px 0;
-          position: relative;
-        }
-
-        .nav-link::after {
-          content: "";
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 0%;
-          height: 3px;
-          background: var(--pune-saffron);
-          transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-          width: 100%;
-        }
-
-        .has-dropdown {
-          position: relative;
-        }
-
-        .dropdown-menu {
-          position: absolute;
-          top: 140%;
-          left: -20px;
-          background: white;
-          min-width: 260px;
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-          border-radius: 12px;
-          padding: 15px 0;
-          opacity: 0;
-          visibility: hidden;
-          transform: translateY(15px);
-          transition: all 0.4s var(--ease-elastic);
-          border-top: 4px solid var(--pune-saffron);
-        }
-
-        .has-dropdown:hover .dropdown-menu {
-          opacity: 1;
-          visibility: visible;
-          transform: translateY(0);
-          top: 100%;
-        }
-
-        .dropdown-item {
-          display: block;
-          padding: 10px 25px;
-          color: #475569;
-          text-decoration: none;
-          font-size: 0.9rem;
-          transition: all 0.2s;
-        }
-
-        .dropdown-item:hover {
-          background: #fff7ed;
-          color: var(--pune-saffron);
-          padding-left: 30px;
-        }
-      }
-
-      .mobile-toggle {
-        font-size: 1.5rem;
-        background: none;
-        border: none;
-        cursor: pointer;
-        color: var(--royal-blue);
-      }
-
-      @media (min-width: 992px) {
-        .mobile-toggle {
-          display: none;
-        }
-      }
-
-      .desktop-nav.active-mobile {
+      .nav-link {
+        align-items: center;
+        gap: 6px;
         display: flex;
-        flex-direction: column;
+        justify-content: center;
+        text-decoration: none;
+        color: var(--text-dark);
+        font-weight: 600;
+        font-size: 0.95rem;
+        padding: 10px 0;
+        position: relative;
+      }
+
+      .nav-link::after {
+        content: "";
         position: absolute;
-        top: var(--header-height);
+        bottom: 0;
         left: 0;
+        width: 0%;
+        height: 3px;
+        background: var(--gradient-saffron);
+        transition: width 0.3s ease;
+        border-radius: 2px;
+      }
+
+      .nav-link:hover::after {
         width: 100%;
+      }
+
+      /* Remove underline for buttons */
+      .nav-link.btn::after,
+      .btn::after {
+        display: none !important;
+      }
+
+      /* Dropdowns */
+      .has-dropdown {
+        position: relative;
+      }
+
+      .dropdown-menu {
+        position: absolute;
+        top: 140%;
+        left: -20px;
         background: white;
-        padding: 2rem;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        min-width: 260px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        padding: 15px 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(15px);
+        transition: all 0.4s ease;
+        border-top: 4px solid var(--pune-saffron);
       }
 
-      /* =========================================
-           3. HERO SECTION
-           ========================================= */
-      .page-header {
-        background: var(--royal-blue);
-        padding: 6rem 20px 8rem 20px;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-        color: white;
+      .has-dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        top: 100%;
       }
 
-      .page-header-bg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: radial-gradient(
-          circle at 50% 50%,
-          rgba(251, 191, 36, 0.1) 0%,
-          transparent 50%
-        );
-        opacity: 0.6;
-      }
-
-      .page-title {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        color: var(--imperial-gold);
-        position: relative;
-        z-index: 2;
-      }
-
-      .breadcrumb {
-        color: rgba(255, 255, 255, 0.7);
+      .dropdown-item {
+        display: block;
+        padding: 10px 25px;
+        color: #475569;
+        text-decoration: none;
         font-size: 0.9rem;
-        position: relative;
-        z-index: 2;
+        transition: all 0.2s;
       }
 
-      .header-arch {
-        position: absolute;
-        bottom: -1px;
-        left: 0;
-        width: 100%;
-        line-height: 0;
-        fill: var(--bg-paper);
-      }
-
-      /* =========================================
-           4. STRATEGIC CONTENT
-           ========================================= */
-      .strategy-section {
-        padding: 4rem 20px;
-      }
-
-      .strategy-container {
-        max-width: var(--container-width);
-        margin: 0 auto;
-      }
-
-      .section-heading {
-        text-align: center;
-        margin-bottom: 4rem;
-      }
-
-      .section-heading h2 {
-        font-size: 2.25rem;
-        color: var(--royal-blue);
-        margin-bottom: 10px;
-      }
-
-      .section-heading p {
-        color: var(--text-muted);
-        font-size: 1.1rem;
-      }
-
-      /* --- GOALS GRID (Pillars) --- */
-      .goals-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 30px;
-        margin-bottom: 6rem;
-      }
-
-      .goal-card {
-        background: white;
-        padding: 2.5rem 2rem;
-        border-radius: 16px;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        border-bottom: 4px solid var(--pune-saffron);
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .goal-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 25px -5px rgba(231, 111, 81, 0.15);
-      }
-
-      /* Icon styling */
-      .goal-icon {
-        width: 60px;
-        height: 60px;
+      .dropdown-item:hover {
         background: #fff7ed;
         color: var(--pune-saffron);
-        border-radius: 12px;
-        display: grid;
-        place-items: center;
-        font-size: 1.5rem;
-        margin-bottom: 1.5rem;
+        padding-left: 30px;
       }
+    }
 
-      /* Subtle Numbering */
-      .goal-number {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        font-size: 4rem;
-        font-weight: 800;
-        color: #f1f5f9;
-        z-index: 0;
-        font-family: "Playfair Display";
-        line-height: 1;
-      }
+    /* Mobile Menu */
+    .mobile-toggle {
+      font-size: 2.5rem;
+      background: none;
+      position: absolute;
+      border: none;
+      right: 45px;
+      cursor: pointer;
+      color: var(--royal-blue);
+    }
 
-      .goal-content {
-        position: relative;
-        z-index: 1;
-      }
-
-      .goal-title {
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: var(--royal-blue);
-        margin-bottom: 1rem;
-      }
-
-      .goal-text {
-        color: var(--text-muted);
-        font-size: 0.95rem;
-      }
-
-      /* --- OBJECTIVES (Roadmap) --- */
-      .objectives-wrapper {
-        background: white;
-        border-radius: 20px;
-        padding: 3rem;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
-        position: relative;
-        border: 1px solid rgba(0, 0, 0, 0.05);
-      }
-
-      /* Decorative left border resembling a decree scroll */
-      .objectives-wrapper::before {
-        content: "";
-        position: absolute;
-        top: 20px;
-        bottom: 20px;
-        left: 10px;
-        width: 4px;
-        background: var(--imperial-gold);
-        border-radius: 2px;
-        opacity: 0.5;
-      }
-
-      .obj-list {
-        list-style: none;
-        counter-reset: obj-counter;
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-
-      @media (min-width: 992px) {
-        .obj-list {
-          grid-template-columns: 1fr 1fr;
-          gap: 30px;
-        }
-      }
-
-      .obj-item {
-        position: relative;
-        padding-left: 60px;
-        padding-right: 20px;
-        transition: transform 0.3s;
-      }
-
-      .obj-item:hover {
-        transform: translateX(5px);
-      }
-
-      /* Custom Counter */
-      .obj-item::before {
-        counter-increment: obj-counter;
-        content: counter(obj-counter);
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 40px;
-        height: 40px;
-        background: var(--royal-blue);
-        color: var(--imperial-gold);
-        font-weight: 700;
-        border-radius: 50%;
-        display: grid;
-        place-items: center;
-        font-family: "Playfair Display";
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-
-      /* Connector Line */
-      .obj-item::after {
-        content: "";
-        position: absolute;
-        left: 19px;
-        top: 40px;
-        bottom: -20px;
-        width: 2px;
-        background: #e2e8f0;
-        z-index: 0;
-      }
-
-      /* Remove line from last items roughly */
-      .obj-item:last-child::after {
+    @media (min-width: 992px) {
+      .mobile-toggle {
         display: none;
       }
+    }
 
-      .obj-text {
-        font-size: 1rem;
-        color: #334155;
-        font-weight: 500;
+    @media (max-width: 991px) {
+
+      /* Logo adjustment for mobile/tablet */
+      .nav-container img {
+        max-width: 65% !important;
       }
+    }
 
-      .obj-text strong {
-        color: var(--pune-saffron);
-        font-weight: 700;
+    /* Mobile Active State */
+    .desktop-nav.active-mobile {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: var(--header-height);
+      left: 0;
+      width: 100%;
+      height: calc(100vh - var(--header-height));
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      align-items: center;
+      justify-content: flex-start;
+      gap: 20px;
+      overflow-y: auto;
+      z-index: 999;
+    }
+
+    .desktop-nav.active-mobile .nav-link {
+      font-size: 1.1rem;
+      width: 100%;
+      text-align: center;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .desktop-nav.active-mobile .has-dropdown {
+      width: 100%;
+      text-align: center;
+    }
+
+    .desktop-nav.active-mobile .dropdown-menu {
+      position: static;
+      box-shadow: none;
+      border: none;
+      background: transparent;
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      padding: 0;
+      margin-top: 10px;
+      display: none;
+    }
+
+    .desktop-nav.active-mobile .has-dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    /* =========================================
+           3. HERO SECTION
+           ========================================= */
+    .page-header {
+      background: var(--royal-blue);
+      padding: 6rem 20px 8rem 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      color: white;
+    }
+
+    .page-header-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(circle at 50% 50%,
+          rgba(251, 191, 36, 0.1) 0%,
+          transparent 50%);
+      opacity: 0.6;
+    }
+
+    .page-title {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--imperial-gold);
+      position: relative;
+      z-index: 2;
+    }
+
+    .breadcrumb {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .header-arch {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      line-height: 0;
+      fill: var(--bg-paper);
+    }
+
+    /* =========================================
+           4. STRATEGIC CONTENT
+           ========================================= */
+    .strategy-section {
+      padding: 4rem 20px;
+    }
+
+    .strategy-container {
+      max-width: var(--container-width);
+      margin: 0 auto;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-heading h2 {
+      font-size: 2.25rem;
+      color: var(--royal-blue);
+      margin-bottom: 10px;
+    }
+
+    .section-heading p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    /* --- GOALS GRID (Pillars) --- */
+    .goals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-bottom: 6rem;
+    }
+
+    .goal-card {
+      background: white;
+      padding: 2.5rem 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      border-bottom: 4px solid var(--pune-saffron);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .goal-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 25px -5px rgba(231, 111, 81, 0.15);
+    }
+
+    /* Icon styling */
+    .goal-icon {
+      width: 60px;
+      height: 60px;
+      background: #fff7ed;
+      color: var(--pune-saffron);
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Subtle Numbering */
+    .goal-number {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 4rem;
+      font-weight: 800;
+      color: #f1f5f9;
+      z-index: 0;
+      font-family: "Playfair Display";
+      line-height: 1;
+    }
+
+    .goal-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .goal-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--royal-blue);
+      margin-bottom: 1rem;
+    }
+
+    .goal-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* --- OBJECTIVES (Roadmap) --- */
+    .objectives-wrapper {
+      background: white;
+      border-radius: 20px;
+      padding: 3rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+      position: relative;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    /* Decorative left border resembling a decree scroll */
+    .objectives-wrapper::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      bottom: 20px;
+      left: 10px;
+      width: 4px;
+      background: var(--imperial-gold);
+      border-radius: 2px;
+      opacity: 0.5;
+    }
+
+    .obj-list {
+      list-style: none;
+      counter-reset: obj-counter;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    @media (min-width: 992px) {
+      .obj-list {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
       }
+    }
 
-      /* Cultural Divider */
-      .cultural-divider {
-        text-align: center;
-        margin: 4rem 0;
-        color: var(--pune-saffron);
-        opacity: 0.3;
-      }
+    .obj-item {
+      position: relative;
+      padding-left: 60px;
+      padding-right: 20px;
+      transition: transform 0.3s;
+    }
 
-      /* =========================================
+    .obj-item:hover {
+      transform: translateX(5px);
+    }
+
+    /* Custom Counter */
+    .obj-item::before {
+      counter-increment: obj-counter;
+      content: counter(obj-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 40px;
+      height: 40px;
+      background: var(--royal-blue);
+      color: var(--imperial-gold);
+      font-weight: 700;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-family: "Playfair Display";
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Connector Line */
+    .obj-item::after {
+      content: "";
+      position: absolute;
+      left: 19px;
+      top: 40px;
+      bottom: -20px;
+      width: 2px;
+      background: #e2e8f0;
+      z-index: 0;
+    }
+
+    /* Remove line from last items roughly */
+    .obj-item:last-child::after {
+      display: none;
+    }
+
+    .obj-text {
+      font-size: 1rem;
+      color: #334155;
+      font-weight: 500;
+    }
+
+    .obj-text strong {
+      color: var(--pune-saffron);
+      font-weight: 700;
+    }
+
+    /* Cultural Divider */
+    .cultural-divider {
+      text-align: center;
+      margin: 4rem 0;
+      color: var(--pune-saffron);
+      opacity: 0.3;
+    }
+
+    /* =========================================
            5. FOOTER (Immutable)
            ========================================= */
-      footer {
-        background: #0f172a;
-        color: #e2e8f0;
-        padding: 4rem 20px 2rem 20px;
-        border-top: 5px solid var(--pune-saffron);
-        margin-top: auto;
-      }
+    footer {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 4rem 20px 2rem 20px;
+      border-top: 5px solid var(--pune-saffron);
+      margin-top: auto;
+    }
 
+    .footer-container {
+      max-width: var(--container-width);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    @media (min-width: 768px) {
       .footer-container {
-        max-width: var(--container-width);
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        gap: 3rem;
+        flex-direction: row;
+        justify-content: space-between;
       }
+    }
 
-      @media (min-width: 768px) {
-        .footer-container {
-          flex-direction: row;
-          justify-content: space-between;
-        }
-      }
+    .footer-logo h3 {
+      color: white;
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
 
-      .footer-logo h3 {
-        color: white;
-        margin-bottom: 0.5rem;
-        font-size: 1.5rem;
-      }
+    .footer-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.8rem;
+      transition: 0.3s;
+    }
 
-      .footer-links a {
-        color: #94a3b8;
-        text-decoration: none;
-        display: block;
-        margin-bottom: 0.8rem;
-        transition: 0.3s;
-      }
+    .footer-links a:hover {
+      color: var(--imperial-gold);
+      padding-left: 5px;
+    }
 
-      .footer-links a:hover {
-        color: var(--imperial-gold);
-        padding-left: 5px;
-      }
+    .copyright {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      font-size: 0.9rem;
+      color: #64748b;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+</head>
 
-      .copyright {
-        margin-top: 3rem;
-        padding-top: 2rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        text-align: center;
-        font-size: 0.9rem;
-        color: #64748b;
-      }
-    </style>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-  </head>
+<body>
+  <!-- HEADER & NAVBAR -->
+  <header>
+    <div class="nav-container">
+      <img src="./assets/logo.png" style="max-width: 20%" />
 
-  <body>
-    <!-- HEADER & NAVBAR -->
-    <header>
-      <div class="nav-container">
-        <div class="logo-area">
-          <a href="index.html" style="text-decoration:none;">
-            <img src="./assets/logo.png" style="max-width: 180px; height: auto;" alt="SSPP Logo" />
-          </a>
-        </div>
-        <button
-          class="mobile-toggle"
-          onclick="document.querySelector('.desktop-nav').classList.toggle('active-mobile')"
-        >
-          <i class="fas fa-bars"></i>
-        </button>
-        <nav class="desktop-nav">
-          <a href="index.html" class="nav-link">Home</a>
-          <div class="has-dropdown">
-            <span class="nav-link" style="color: var(--pune-saffron)"
-              >About <i class="fas fa-chevron-down" style="font-size: 0.7em"></i
-            ></span>
-            <div class="dropdown-menu">
-              <a href="Secretary_message.html" class="dropdown-item"
-                >Secretary's Message</a
-              >
-              <a href="Vision_Mission.html" class="dropdown-item"
-                >Vision Mission</a
-              >
-              <div
-                class="dropdown-header"
-                style="
+      <button class="mobile-toggle" onclick="document.querySelector('.desktop-nav').classList.toggle('active-mobile')">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Navbar -->
+      <nav class="desktop-nav">
+        <a href="index.html" class="nav-link">Home</a>
+
+        <div class="has-dropdown">
+          <span class="nav-link" style="color: var(--pune-saffron)">About <i class="fas fa-chevron-down"
+              style="font-size: 0.7em"></i></span>
+          <div class="dropdown-menu">
+            <a href="Secretary_message.html" class="dropdown-item">Secretary's Message</a>
+            <a href="Vision_Mission.html" class="dropdown-item">Vision Mission</a>
+            <div class="dropdown-header" style="
                   padding: 8px 25px;
                   font-weight: 700;
                   font-size: 0.75rem;
                   color: var(--royal-blue);
                   opacity: 0.6;
-                "
-              >
-                GOVERNANCE
-              </div>
-              <a
-                href="GoverningCouncil.html"
-                class="dropdown-item"
-                style="padding-left: 35px"
-                >Governing Council</a
-              >
-              <a
-                href="Strategic_Plan.html"
-                class="dropdown-item"
-                style="
-                  padding-left: 35px;
-                  color: var(--pune-saffron);
-                  font-weight: 600;
-                "
-                >Strategic Plan</a
-              >
-              <a href="History.html" class="dropdown-item">History</a>
-              <a href="Annual_Report.html" class="dropdown-item"
-                >Annual Report</a
-              >
+                ">
+              GOVERNANCE
             </div>
+            <a href="GoverningCouncil.html" class="dropdown-item" style="padding-left: 35px">Governing
+              Council</a>
+            <a href="Strategic_Plan.html" class="dropdown-item"
+              style="padding-left: 35px; color: var(--pune-saffron); font-weight: 600">Strategic
+              Plan</a>
+            <a href="History.html" class="dropdown-item">History</a>
+            <a href="Annual_Report.html" class="dropdown-item">Annual Report</a>
           </div>
-          <div class="has-dropdown">
-            <span class="nav-link"
-              >Membership
-              <i class="fas fa-chevron-down" style="font-size: 0.7em"></i
-            ></span>
-            <div class="dropdown-menu">
-              <a href="Why_Join.html" class="dropdown-item">Why Join?</a>
-              <a href="Apply_Online.html" class="dropdown-item">Apply Online</a>
-            </div>
-          </div>
-          <a href="Activity.html" class="nav-link">Activity</a>
-          <div class="has-dropdown">
-            <span class="nav-link"
-              >Meetings
-              <i class="fas fa-chevron-down" style="font-size: 0.7em"></i
-            ></span>
-            <div class="dropdown-menu">
-              <a href="Annual_Meetings.html" class="dropdown-item"
-                >Annual Meeting</a
-              >
-              <a href="Upcomming_Meetings.html" class="dropdown-item"
-                >Upcoming Meeting</a
-              >
-            </div>
-          </div>
-          <a href="Patient-Education.html" class="nav-link"
-            >Patient Education</a
-          >
-          <a href="Gallery.html" class="nav-link">Gallery</a>
-          <a
-            href="Contact_us.html"
-            class="nav-link btn btn-primary"
-            style="
-              padding: 8px 25px;
-              color: white;
-              background: var(--gradient-royal);
-              border-radius: 50px;
-            "
-            >Contact Us</a
-          >
-        </nav>
-      </div>
-    </header>
+        </div>
 
-    <!-- PAGE TITLE HERO -->
-    <div class="page-header">
-      <div class="page-header-bg"></div>
-      <div class="breadcrumb">About SSPP / Roadmap</div>
-      <h1 class="page-title">Strategic Plan</h1>
-      <!-- Arch Divider -->
-      <svg
-        class="header-arch"
-        viewBox="0 0 1440 100"
-        preserveAspectRatio="none"
-      >
-        <path d="M0,100 C480,0 960,0 1440,100 L1440,100 L0,100 Z"></path>
-      </svg>
+        <div class="has-dropdown">
+          <span class="nav-link">Membership
+            <i class="fas fa-chevron-down" style="font-size: 0.7em"></i></span>
+          <div class="dropdown-menu">
+            <a href="Why_Join.html" class="dropdown-item">Why Join?</a>
+            <a href="Apply_Online.html" class="dropdown-item">Apply Online</a>
+          </div>
+        </div>
+
+        <a href="Activity.html" class="nav-link">Activity</a>
+
+        <div class="has-dropdown">
+          <span class="nav-link">Meetings
+            <i class="fas fa-chevron-down" style="font-size: 0.7em"></i></span>
+          <div class="dropdown-menu">
+            <a href="Annual_Meetings.html" class="dropdown-item">Annual Meeting</a>
+            <a href="Upcomming_Meetings.html" class="dropdown-item">Upcoming Meeting</a>
+          </div>
+        </div>
+
+        <a href="Patient-Education.html" class="nav-link">Patient Education</a>
+        <a href="Gallery.html" class="nav-link">Gallery</a>
+        <a href="Contact_us.html" class="nav-link btn btn-primary" style="padding: 8px 25px; color: white">Contact
+          Us</a>
+        <a href="painscape.html" class="nav-link btn"
+          style="padding: 6px 15px; color: var(--royal-blue); background: var(--gradient-gold); margin-left: 5px; font-weight: 700; box-shadow: 0 0 20px rgba(251, 191, 36, 0.6); border: 2px solid white; display: inline-flex; align-items: center; gap: 6px;">
+          <i class="fas fa-crown"></i>
+          PAINSCAPE 2026
+        </a>
+      </nav>
     </div>
+  </header>
 
-    <!-- MAIN STRATEGY CONTENT -->
-    <section class="strategy-section">
-      <div class="strategy-container">
-        <div class="section-heading">
-          <h2>Goals and Objectives</h2>
-          <p>SSPP Pune Branch</p>
-        </div>
+  <!-- PAGE TITLE HERO -->
+  <div class="page-header">
+    <div class="page-header-bg"></div>
+    <div class="breadcrumb">About SSPP / Roadmap</div>
+    <h1 class="page-title">Strategic Plan</h1>
+    <!-- Arch Divider -->
+    <svg class="header-arch" viewBox="0 0 1440 100" preserveAspectRatio="none">
+      <path d="M0,100 C480,0 960,0 1440,100 L1440,100 L0,100 Z"></path>
+    </svg>
+  </div>
 
-        <!-- GOALS: PILLARS GRID -->
-        <div class="goals-grid">
-          <!-- Goal 1 -->
-          <div class="goal-card">
-            <div class="goal-number">01</div>
-            <div class="goal-content">
-              <div class="goal-icon"><i class="fas fa-brain"></i></div>
-              <h3 class="goal-title">Enhance Understanding</h3>
-              <p class="goal-text">
-                To enhance understanding of pain among healthcare professionals
-                and the wider community.
-              </p>
-            </div>
-          </div>
+  <!-- MAIN STRATEGY CONTENT -->
+  <section class="strategy-section">
+    <div class="strategy-container">
+      <div class="section-heading">
+        <h2>Goals and Objectives</h2>
+        <p>SSPP Pune Branch</p>
+      </div>
 
-          <!-- Goal 2 -->
-          <div class="goal-card">
-            <div class="goal-number">02</div>
-            <div class="goal-content">
-              <div class="goal-icon"><i class="fas fa-user-md"></i></div>
-              <h3 class="goal-title">Advance Practices</h3>
-              <p class="goal-text">
-                Advance pain management practices through evidence-based care
-                and innovative treatments.
-              </p>
-            </div>
-          </div>
-
-          <!-- Goal 3 -->
-          <div class="goal-card">
-            <div class="goal-number">03</div>
-            <div class="goal-content">
-              <div class="goal-icon"><i class="fas fa-graduation-cap"></i></div>
-              <h3 class="goal-title">Educate Stakeholders</h3>
-              <p class="goal-text">
-                Educate clinicians, researchers, patients, and policymakers
-                about the latest developments in pain medicine.
-              </p>
-            </div>
-          </div>
-
-          <!-- Goal 4 -->
-          <div class="goal-card">
-            <div class="goal-number">04</div>
-            <div class="goal-content">
-              <div class="goal-icon"><i class="fas fa-users"></i></div>
-              <h3 class="goal-title">Strengthen Society</h3>
-              <p class="goal-text">
-                Strengthen the branch by expanding membership, fostering
-                collaborations, and building relationships.
-              </p>
-            </div>
+      <!-- GOALS: PILLARS GRID -->
+      <div class="goals-grid">
+        <!-- Goal 1 -->
+        <div class="goal-card">
+          <div class="goal-number">01</div>
+          <div class="goal-content">
+            <div class="goal-icon"><i class="fas fa-brain"></i></div>
+            <h3 class="goal-title">Enhance Understanding</h3>
+            <p class="goal-text">
+              To enhance understanding of pain among healthcare professionals
+              and the wider community.
+            </p>
           </div>
         </div>
 
-        <div class="cultural-divider">
-          <i class="fas fa-burn fa-2x"></i>
+        <!-- Goal 2 -->
+        <div class="goal-card">
+          <div class="goal-number">02</div>
+          <div class="goal-content">
+            <div class="goal-icon"><i class="fas fa-user-md"></i></div>
+            <h3 class="goal-title">Advance Practices</h3>
+            <p class="goal-text">
+              Advance pain management practices through evidence-based care
+              and innovative treatments.
+            </p>
+          </div>
         </div>
 
-        <!-- OBJECTIVES: LIST -->
-        <div class="section-heading">
-          <h2>Key Objectives</h2>
-          <p>Our roadmap to achieving professional excellence</p>
+        <!-- Goal 3 -->
+        <div class="goal-card">
+          <div class="goal-number">03</div>
+          <div class="goal-content">
+            <div class="goal-icon"><i class="fas fa-graduation-cap"></i></div>
+            <h3 class="goal-title">Educate Stakeholders</h3>
+            <p class="goal-text">
+              Educate clinicians, researchers, patients, and policymakers
+              about the latest developments in pain medicine.
+            </p>
+          </div>
         </div>
 
-        <div class="objectives-wrapper">
-          <ul class="obj-list">
-            <li class="obj-item">
-              <div class="obj-text">
-                Promote academic and scientific initiatives in pain medicine
-                locally and nationally.
-              </div>
-            </li>
-            <li class="obj-item">
-              <div class="obj-text">
-                Increase public awareness about pain, its impact, and effective
-                management strategies.
-              </div>
-            </li>
-            <li class="obj-item">
-              <div class="obj-text">
-                Encourage and support research in pain and related fields to
-                advance knowledge and innovation.
-              </div>
-            </li>
-            <li class="obj-item">
-              <div class="obj-text">
-                Organize
-                <strong>CME programs, workshops, and hands-on training</strong>
-                for pain physicians.
-              </div>
-            </li>
-            <li class="obj-item">
-              <div class="obj-text">
-                Conduct
-                <strong>meetings, conferences, and interactive sessions</strong>
-                to foster learning and collaboration.
-              </div>
-            </li>
-            <li class="obj-item">
-              <div class="obj-text">
-                Publish
-                <strong>journals, newsletters, and digital content</strong> to
-                disseminate current knowledge and best practices.
-              </div>
-            </li>
-            <li class="obj-item">
-              <div class="obj-text">
-                Establish <strong>guidelines and protocols</strong> for
-                efficient and standardized pain clinic operations.
-              </div>
-            </li>
-            <li class="obj-item">
-              <div class="obj-text">
-                Build affiliations with
-                <strong>national and international associations</strong> to
-                promote knowledge sharing.
-              </div>
-            </li>
-            <li class="obj-item">
-              <div class="obj-text">
-                Mobilize <strong>resources and funding</strong> to support the
-                branch’s activities and initiatives.
-              </div>
-            </li>
-            <li class="obj-item">
-              <div class="obj-text">
-                Take proactive steps to position Pune as a
-                <strong>model chapter</strong> in the field of pain medicine.
-              </div>
-            </li>
-          </ul>
+        <!-- Goal 4 -->
+        <div class="goal-card">
+          <div class="goal-number">04</div>
+          <div class="goal-content">
+            <div class="goal-icon"><i class="fas fa-users"></i></div>
+            <h3 class="goal-title">Strengthen Society</h3>
+            <p class="goal-text">
+              Strengthen the branch by expanding membership, fostering
+              collaborations, and building relationships.
+            </p>
+          </div>
         </div>
       </div>
-    </section>
 
-    <!-- FOOTER -->
-    <footer>
-      <div class="footer-container">
-        <div class="footer-logo" style="flex: 1">
-          <div style="margin-bottom: 20px">
-            <img
-              src="./assets/logo.png"
-              style="max-width: 180px; height: auto"
-              alt="SSPP Logo"
-            />
-          </div>
-          <h3>SSPP Pune</h3>
-          <p
-            style="
+      <div class="cultural-divider">
+        <i class="fas fa-burn fa-2x"></i>
+      </div>
+
+      <!-- OBJECTIVES: LIST -->
+      <div class="section-heading">
+        <h2>Key Objectives</h2>
+        <p>Our roadmap to achieving professional excellence</p>
+      </div>
+
+      <div class="objectives-wrapper">
+        <ul class="obj-list">
+          <li class="obj-item">
+            <div class="obj-text">
+              Promote academic and scientific initiatives in pain medicine
+              locally and nationally.
+            </div>
+          </li>
+          <li class="obj-item">
+            <div class="obj-text">
+              Increase public awareness about pain, its impact, and effective
+              management strategies.
+            </div>
+          </li>
+          <li class="obj-item">
+            <div class="obj-text">
+              Encourage and support research in pain and related fields to
+              advance knowledge and innovation.
+            </div>
+          </li>
+          <li class="obj-item">
+            <div class="obj-text">
+              Organize
+              <strong>CME programs, workshops, and hands-on training</strong>
+              for pain physicians.
+            </div>
+          </li>
+          <li class="obj-item">
+            <div class="obj-text">
+              Conduct
+              <strong>meetings, conferences, and interactive sessions</strong>
+              to foster learning and collaboration.
+            </div>
+          </li>
+          <li class="obj-item">
+            <div class="obj-text">
+              Publish
+              <strong>journals, newsletters, and digital content</strong> to
+              disseminate current knowledge and best practices.
+            </div>
+          </li>
+          <li class="obj-item">
+            <div class="obj-text">
+              Establish <strong>guidelines and protocols</strong> for
+              efficient and standardized pain clinic operations.
+            </div>
+          </li>
+          <li class="obj-item">
+            <div class="obj-text">
+              Build affiliations with
+              <strong>national and international associations</strong> to
+              promote knowledge sharing.
+            </div>
+          </li>
+          <li class="obj-item">
+            <div class="obj-text">
+              Mobilize <strong>resources and funding</strong> to support the
+              branch’s activities and initiatives.
+            </div>
+          </li>
+          <li class="obj-item">
+            <div class="obj-text">
+              Take proactive steps to position Pune as a
+              <strong>model chapter</strong> in the field of pain medicine.
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-logo" style="flex: 1">
+        <div style="margin-bottom: 20px">
+          <img src="./assets/logo.png" style="max-width: 180px; height: auto" alt="SSPP Logo" />
+        </div>
+        <h3>SSPP Pune</h3>
+        <p style="
               color: #94a3b8;
               font-size: 0.9rem;
               margin-top: 0.5rem;
               line-height: 1.6;
-            "
-          >
-            Advancing the field of pain medicine through<br />
-            education, research, and collaboration.
-          </p>
-          <div style="display: flex; gap: 15px; margin-top: 1.5rem">
-            <a
-              href="#"
-              style="
+            ">
+          Advancing the field of pain medicine through<br />
+          education, research, and collaboration.
+        </p>
+        <div style="display: flex; gap: 15px; margin-top: 1.5rem">
+          <a href="#" style="
                 color: white;
                 background: rgba(255, 255, 255, 0.1);
                 width: 36px;
@@ -812,12 +803,8 @@
                 display: grid;
                 place-items: center;
                 border-radius: 50%;
-              "
-              ><i class="fab fa-facebook-f"></i
-            ></a>
-            <a
-              href="#"
-              style="
+              "><i class="fab fa-facebook-f"></i></a>
+          <a href="#" style="
                 color: white;
                 background: rgba(255, 255, 255, 0.1);
                 width: 36px;
@@ -825,12 +812,8 @@
                 display: grid;
                 place-items: center;
                 border-radius: 50%;
-              "
-              ><i class="fab fa-twitter"></i
-            ></a>
-            <a
-              href="#"
-              style="
+              "><i class="fab fa-twitter"></i></a>
+          <a href="#" style="
                 color: white;
                 background: rgba(255, 255, 255, 0.1);
                 width: 36px;
@@ -838,46 +821,39 @@
                 display: grid;
                 place-items: center;
                 border-radius: 50%;
-              "
-              ><i class="fab fa-linkedin-in"></i
-            ></a>
-          </div>
-        </div>
-
-        <div class="footer-links" style="flex: 1">
-          <h4 style="color: var(--imperial-gold); margin-bottom: 1.2rem">
-            Quick Links
-          </h4>
-          <a href="index.html">About Us</a>
-          <a href="Why_Join.html">Membership</a>
-          <a href="Annual_Meetings.html">Events</a>
-          <a href="Contact_us.html">Contact</a>
-        </div>
-
-        <div class="footer-links" style="flex: 1">
-          <h4 style="color: var(--imperial-gold); margin-bottom: 1.2rem">
-            Contact
-          </h4>
-          <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1rem">
-            <i
-              class="fas fa-envelope"
-              style="color: var(--pune-saffron); margin-right: 10px"
-            ></i>
-            contact@sspp-pune.org
-          </p>
-          <p style="color: #cbd5e1; font-size: 0.9rem">
-            <i
-              class="fas fa-map-marker-alt"
-              style="color: var(--pune-saffron); margin-right: 10px"
-            ></i>
-            IMA House, Tilak Road, Pune
-          </p>
+              "><i class="fab fa-linkedin-in"></i></a>
         </div>
       </div>
-      <div class="copyright">
-        &copy; 2025 Indian Society for Study of Pain (Pune Chapter). All rights
-        reserved.
+
+      <div class="footer-links" style="flex: 1">
+        <h4 style="color: var(--imperial-gold); margin-bottom: 1.2rem">
+          Quick Links
+        </h4>
+        <a href="index.html">About Us</a>
+        <a href="Why_Join.html">Membership</a>
+        <a href="Annual_Meetings.html">Events</a>
+        <a href="Contact_us.html">Contact</a>
       </div>
-    </footer>
-  </body>
+
+      <div class="footer-links" style="flex: 1">
+        <h4 style="color: var(--imperial-gold); margin-bottom: 1.2rem">
+          Contact
+        </h4>
+        <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1rem">
+          <i class="fas fa-envelope" style="color: var(--pune-saffron); margin-right: 10px"></i>
+          contact@sspp-pune.org
+        </p>
+        <p style="color: #cbd5e1; font-size: 0.9rem">
+          <i class="fas fa-map-marker-alt" style="color: var(--pune-saffron); margin-right: 10px"></i>
+          IMA House, Tilak Road, Pune
+        </p>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2025 Indian Society for Study of Pain (Pune Chapter). All rights
+      reserved.
+    </div>
+  </footer>
+</body>
+
 </html>
