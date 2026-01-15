@@ -1,489 +1,824 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SSPP - Coming Soon</title>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - SSPP Pune</title>
     <style>
-        /* =========================================
+      /* =========================================
            1. DESIGN SYSTEM: ROYAL PUNE PALETTE
            ========================================= */
-        :root {
-            /* Vibrant Heritage Colors */
-            --royal-blue: #0f172a;
-            --deep-ocean: #1e3a8a;
-            --pune-saffron: #e76f51;
-            --imperial-gold: #fbbf24;
+      :root {
+        --royal-blue: #0f172a;
+        --deep-ocean: #1e3a8a;
+        --pune-saffron: #e76f51;
+        --imperial-gold: #fbbf24;
 
-            /* Gradients */
-            --gradient-royal: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
-            --gradient-gold: linear-gradient(45deg, #d4af37, #f9dc5c, #d4af37);
-            --gradient-saffron: linear-gradient(135deg, #e76f51 0%, #d62828 100%);
+        --gradient-royal: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+        --gradient-gold: linear-gradient(45deg, #d4af37, #f9dc5c, #d4af37);
+        --gradient-saffron: linear-gradient(135deg, #e76f51 0%, #d62828 100%);
 
-            /* UI Elements */
-            --glass-light: rgba(255, 255, 255, 0.9);
-            --glass-dark: rgba(15, 23, 42, 0.6);
-            --text-dark: #1e293b;
-            --text-light: #f8fafc;
+        --glass-light: rgba(255, 255, 255, 0.9);
+        --glass-dark: rgba(15, 23, 42, 0.6);
+        --text-dark: #1e293b;
+        --text-light: #f8fafc;
 
-            --container-width: 1240px;
-            --header-height: 90px;
-            --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
+        --container-width: 1240px;
+        --header-height: 90px;
+        --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
 
-        /* RESET & BASE */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      /* RESET & BASE */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #fdfbf7;
-            /* Warm paper texture tone */
-            color: var(--text-dark);
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #fdfbf7;
+        color: var(--text-dark);
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
 
-        /* CUSTOM SCROLLBAR */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
+      /* CUSTOM SCROLLBAR */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
 
-        ::-webkit-scrollbar-track {
-            background: var(--royal-blue);
-        }
+      ::-webkit-scrollbar-track {
+        background: var(--royal-blue);
+      }
 
-        ::-webkit-scrollbar-thumb {
-            background: var(--imperial-gold);
-            border-radius: 5px;
-        }
+      ::-webkit-scrollbar-thumb {
+        background: var(--imperial-gold);
+        border-radius: 5px;
+      }
 
-        /* =========================================
-           2. NAVIGATION (Immersive Glass)
+      /* =========================================
+           2. NAVIGATION
            ========================================= */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
+      header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      }
 
-        .nav-container {
-            max-width: var(--container-width);
-            margin: 0 auto;
-            height: var(--header-height);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-        }
+      .nav-container {
+        max-width: var(--container-width);
+        margin: 0 auto;
+        height: var(--header-height);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+      }
 
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+      /* Reuse existing header styles */
+      .logo-area {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
 
-        .logo-box {
-            width: 48px;
-            height: 48px;
-            background: var(--gradient-royal);
-            color: var(--imperial-gold);
-            display: grid;
-            place-items: center;
-            border-radius: 12px;
-            font-size: 1.5rem;
-            box-shadow: 0 8px 20px -5px rgba(30, 58, 138, 0.4);
-        }
+      .logo-box {
+        width: 48px;
+        height: 48px;
+        background: var(--gradient-royal);
+        color: var(--imperial-gold);
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        font-size: 1.5rem;
+        box-shadow: 0 8px 20px -5px rgba(30, 58, 138, 0.4);
+      }
 
-        .logo-text {
-            font-weight: 800;
-            font-size: 1.5rem;
-            background: var(--gradient-royal);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -0.5px;
-        }
+      .logo-text {
+        font-weight: 800;
+        font-size: 1.5rem;
+        background: var(--gradient-royal);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.5px;
+      }
 
-        /* Desktop Nav - Row Aligned */
+      .desktop-nav {
+        display: none;
+      }
+
+      @media (min-width: 992px) {
         .desktop-nav {
-            display: none;
+          display: flex !important;
+          gap: 30px;
+          align-items: center;
         }
 
-        @media (min-width: 992px) {
-            .desktop-nav {
-                display: flex !important;
-                gap: 30px;
-                align-items: center;
-            }
-
-            .nav-link {
-                text-decoration: none;
-                color: var(--text-dark);
-                font-weight: 600;
-                font-size: 0.95rem;
-                padding: 10px 0;
-                position: relative;
-            }
-
-            /* Cultural Underline Animation */
-            .nav-link::after {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 0%;
-                height: 3px;
-                background: var(--gradient-saffron);
-                transition: width 0.3s ease;
-                border-radius: 2px;
-            }
-
-            .nav-link:hover::after {
-                width: 100%;
-            }
-
-            /* Dropdowns */
-            .has-dropdown {
-                position: relative;
-            }
-
-            .dropdown-menu {
-                position: absolute;
-                top: 140%;
-                left: -20px;
-                background: white;
-                min-width: 260px;
-                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-                border-radius: 12px;
-                padding: 15px 0;
-                opacity: 0;
-                visibility: hidden;
-                transform: translateY(15px);
-                transition: all 0.4s var(--ease-elastic);
-                border-top: 4px solid var(--pune-saffron);
-                z-index: 1010;
-            }
-
-            .has-dropdown:hover .dropdown-menu {
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0);
-                top: 100%;
-            }
-
-            .dropdown-item {
-                display: block;
-                padding: 10px 25px;
-                color: #475569;
-                text-decoration: none;
-                font-size: 0.9rem;
-                transition: all 0.2s;
-            }
-
-            .dropdown-item:hover {
-                background: #fff7ed;
-                color: var(--pune-saffron);
-                padding-left: 30px;
-            }
+        .nav-link {
+          text-decoration: none;
+          color: var(--text-dark);
+          font-weight: 600;
+          font-size: 0.95rem;
+          padding: 10px 0;
+          position: relative;
         }
 
-        /* Mobile Menu */
+        .nav-link::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0%;
+          height: 3px;
+          background: var(--gradient-saffron);
+          transition: width 0.3s ease;
+          border-radius: 2px;
+        }
+
+        .nav-link:hover::after {
+          width: 100%;
+        }
+
+        .has-dropdown {
+          position: relative;
+        }
+
+        .dropdown-menu {
+          position: absolute;
+          top: 140%;
+          left: -20px;
+          background: white;
+          min-width: 260px;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+          border-radius: 12px;
+          padding: 15px 0;
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(15px);
+          transition: all 0.4s var(--ease-elastic);
+          border-top: 4px solid var(--pune-saffron);
+          z-index: 1010;
+        }
+
+        .has-dropdown:hover .dropdown-menu {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+          top: 100%;
+        }
+
+        .dropdown-item {
+          display: block;
+          padding: 10px 25px;
+          color: #475569;
+          text-decoration: none;
+          font-size: 0.9rem;
+          transition: all 0.2s;
+        }
+
+        .dropdown-item:hover {
+          background: #fff7ed;
+          color: var(--pune-saffron);
+          padding-left: 30px;
+        }
+      }
+
+      .mobile-toggle {
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--royal-blue);
+      }
+
+      @media (min-width: 992px) {
         .mobile-toggle {
-            font-size: 1.5rem;
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: var(--royal-blue);
+          display: none;
         }
+      }
 
-        @media (min-width: 992px) {
-            .mobile-toggle {
-                display: none;
-            }
-        }
+      .desktop-nav.active-mobile {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        z-index: 1005;
+      }
 
-        /* Mobile Active State */
-        .desktop-nav.active-mobile {
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            top: var(--header-height);
-            left: 0;
-            width: 100%;
-            background: white;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            z-index: 1005;
-        }
+      .btn {
+        padding: 14px 32px;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border: 2px solid transparent;
+        cursor: pointer;
+      }
 
-        /* Modern Buttons */
-        .btn {
-            padding: 14px 32px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border: 2px solid transparent;
-        }
+      .btn-primary {
+        background: var(--gradient-saffron);
+        color: white;
+        box-shadow: 0 10px 25px -5px rgba(231, 111, 81, 0.4);
+        border: none;
+      }
 
-        .btn-primary {
-            background: var(--gradient-saffron);
-            color: white;
-            box-shadow: 0 10px 25px -5px rgba(231, 111, 81, 0.4);
-        }
+      .btn:hover {
+        transform: translateY(-4px) scale(1.02);
+      }
 
-        .btn:hover {
-            transform: translateY(-4px) scale(1.02);
-        }
-
-        /* =========================================
-           7. FOOTER (Immutable Structure, Styled)
+      /* =========================================
+           CONTACT PAGE SPECIFIC STYLES
            ========================================= */
-        footer {
-            background: #0f172a;
-            color: #e2e8f0;
-            padding: 4rem 20px 2rem 20px;
-            border-top: 5px solid var(--pune-saffron);
-            margin-top: auto;
-            /* Push to bottom */
-        }
+      .page-header {
+        background: var(--royal-blue);
+        padding: 6rem 20px 6rem 20px;
+        text-align: center;
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
 
+      .page-header-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(
+          circle at 50% 50%,
+          rgba(251, 191, 36, 0.1) 0%,
+          transparent 50%
+        );
+        opacity: 0.6;
+      }
+
+      .page-title {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: var(--imperial-gold);
+        position: relative;
+        z-index: 2;
+      }
+
+      .contact-section {
+        padding: 4rem 20px;
+        position: relative;
+      }
+
+      .contact-container {
+        max-width: var(--container-width);
+        margin: -4rem auto 0 auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        position: relative;
+        z-index: 5;
+      }
+
+      @media (min-width: 992px) {
+        .contact-container {
+          grid-template-columns: 1fr 1.2fr;
+          gap: 4rem;
+        }
+      }
+
+      .contact-info-card {
+        background: white;
+        border-radius: 20px;
+        padding: 2.5rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        border-top: 5px solid var(--pune-saffron);
+        height: fit-content;
+      }
+
+      .info-item {
+        margin-bottom: 2rem;
+      }
+
+      .info-item h4 {
+        color: var(--pune-saffron);
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .info-item p {
+        color: var(--text-muted);
+        line-height: 1.6;
+        margin-left: 0;
+      }
+
+      .payment-qr-section {
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px dashed #e2e8f0;
+        text-align: center;
+      }
+
+      .payment-qr-img {
+        max-width: 100%;
+        width: 200px;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+        margin-top: 1rem;
+      }
+
+      .contact-form-card {
+        background: white;
+        border-radius: 20px;
+        padding: 2.5rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        border-top: 5px solid var(--deep-ocean);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: var(--royal-blue);
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 14px;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        font-family: "Poppins", sans-serif;
+        transition: all 0.3s;
+        background: #f8fafc;
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: var(--pune-saffron);
+        background: white;
+        box-shadow: 0 0 0 3px rgba(231, 111, 81, 0.1);
+      }
+
+      .file-upload-wrapper {
+        position: relative;
+        padding: 20px;
+        border: 2px dashed #cbd5e1;
+        border-radius: 8px;
+        text-align: center;
+        background: #f8fafc;
+        transition: 0.3s;
+      }
+
+      .file-upload-wrapper:hover {
+        border-color: var(--pune-saffron);
+      }
+
+      /* =========================================
+           FOOTER
+           ========================================= */
+      footer {
+        background: #0f172a;
+        color: #e2e8f0;
+        padding: 4rem 20px 2rem 20px;
+        border-top: 5px solid var(--pune-saffron);
+        margin-top: auto;
+      }
+
+      .footer-container {
+        max-width: var(--container-width);
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+      }
+
+      @media (min-width: 768px) {
         .footer-container {
-            max-width: var(--container-width);
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
+          flex-direction: row;
+          justify-content: space-between;
         }
+      }
 
-        @media (min-width: 768px) {
-            .footer-container {
-                flex-direction: row;
-                justify-content: space-between;
-            }
-        }
+      .footer-logo h3 {
+        color: white;
+        margin-bottom: 0.5rem;
+        font-size: 1.5rem;
+      }
 
-        .footer-logo h3 {
-            color: white;
-            margin-bottom: 0.5rem;
-            font-size: 1.5rem;
-        }
+      .footer-links a {
+        color: #94a3b8;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 0.8rem;
+        transition: 0.3s;
+      }
 
-        .footer-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 0.8rem;
-            transition: 0.3s;
-        }
+      .footer-links a:hover {
+        color: var(--imperial-gold);
+        padding-left: 5px;
+      }
 
-        .footer-links a:hover {
-            color: var(--imperial-gold);
-            padding-left: 5px;
-        }
-
-        .copyright {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            font-size: 0.9rem;
-            color: #64748b;
-        }
-
-        /* COMING SOON SPECIFIC */
-        .coming-soon-wrapper {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: radial-gradient(circle at center, rgba(231, 111, 81, 0.05) 0%, transparent 70%);
-            padding: 2rem;
-        }
-
-        .coming-soon-content {
-            text-align: center;
-            max-width: 600px;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(15px);
-            padding: 3rem;
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
-        }
-
-        .coming-soon-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: var(--gradient-royal);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-        }
-
-        .coming-soon-subtitle {
-            color: #64748b;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
+      .copyright {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+        font-size: 0.9rem;
+        color: #64748b;
+      }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
-</head>
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
-
+  <body>
     <!-- HEADER & NAVBAR -->
     <header>
-        <div class="nav-container">
-            <div class="logo-area">
-                <a href="index.html" style="text-decoration:none; display:flex; align-items:center; gap:12px;">
-                    <div class="logo-box">
-                        <i class="fas fa-om"></i>
-                    </div>
-                    <div class="logo-text">SSPP</div>
-                </a>
-            </div>
-
-            <button class="mobile-toggle"
-                onclick="document.querySelector('.desktop-nav').classList.toggle('active-mobile')">
-                <i class="fas fa-bars"></i>
-            </button>
-
-            <!-- Navbar -->
-            <nav class="desktop-nav">
-                <a href="index.html" class="nav-link">Home</a>
-
-                <div class="has-dropdown">
-                    <span class="nav-link">About <i class="fas fa-chevron-down" style="font-size: 0.7em;"></i></span>
-                    <div class="dropdown-menu">
-                        <a href="Secretary_message.html" class="dropdown-item">President's Message</a>
-                        <a href="Secretary_message.html" class="dropdown-item">Secretary's Message</a>
-                        <a href="Vision_Mission.html" class="dropdown-item">Vision Mission</a>
-                        <div class="dropdown-header"
-                            style="padding: 8px 25px; font-weight:700; font-size:0.75rem; color:var(--royal-blue); opacity:0.6;">
-                            GOVERNANCE</div>
-                        <a href="GoverningCouncil.html" class="dropdown-item" style="padding-left: 35px;">Governing
-                            Council</a>
-                        <a href="Strategic_Plan.html" class="dropdown-item" style="padding-left: 35px;">Strategic
-                            Plan</a>
-                        <a href="History.html" class="dropdown-item">History</a>
-                        <a href="Annual_Report.html" class="dropdown-item">Annual Report</a>
-                    </div>
-                </div>
-
-                <div class="has-dropdown">
-                    <span class="nav-link">Membership <i class="fas fa-chevron-down"
-                            style="font-size: 0.7em;"></i></span>
-                    <div class="dropdown-menu">
-                        <a href="Why_Join.html" class="dropdown-item">Why Join?</a>
-                        <a href="Apply_Online.html" class="dropdown-item">Apply Online</a>
-                    </div>
-                </div>
-
-                <a href="Activity.html" class="nav-link">Activity</a>
-
-                <div class="has-dropdown">
-                    <span class="nav-link">Meetings <i class="fas fa-chevron-down" style="font-size: 0.7em;"></i></span>
-                    <div class="dropdown-menu">
-                        <a href="Annual_Meetings.html" class="dropdown-item">Annual Meeting</a>
-                        <a href="Upcomming_Meetings.html" class="dropdown-item">Upcoming Meeting</a>
-                    </div>
-                </div>
-
-                <a href="Patient-Education.html" class="nav-link">Patient Education</a>
-                <a href="Gallery.html" class="nav-link">Gallery</a>
-                <a href="Contact_us.html" class="nav-link btn btn-primary"
-                    style="padding: 8px 25px; color: white;">Contact Us</a>
-            </nav>
+      <div class="nav-container">
+        <div class="logo-area">
+          <a href="index.html" style="text-decoration:none;">
+            <img src="./assets/logo.png" style="max-width: 180px; height: auto;" alt="SSPP Logo" />
+          </a>
         </div>
+
+        <button
+          class="mobile-toggle"
+          onclick="document.querySelector('.desktop-nav').classList.toggle('active-mobile')"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Navbar -->
+        <nav class="desktop-nav">
+          <a href="index.html" class="nav-link">Home</a>
+
+          <div class="has-dropdown">
+            <span class="nav-link"
+              >About <i class="fas fa-chevron-down" style="font-size: 0.7em"></i
+            ></span>
+            <div class="dropdown-menu">
+              <a href="Secretary_message.html" class="dropdown-item"
+                >Secretary's Message</a
+              >
+              <a href="Vision_Mission.html" class="dropdown-item"
+                >Vision Mission</a
+              >
+              <div
+                class="dropdown-header"
+                style="
+                  padding: 8px 25px;
+                  font-weight: 700;
+                  font-size: 0.75rem;
+                  color: var(--royal-blue);
+                  opacity: 0.6;
+                "
+              >
+                GOVERNANCE
+              </div>
+              <a
+                href="GoverningCouncil.html"
+                class="dropdown-item"
+                style="padding-left: 35px"
+                >Governing Council</a
+              >
+              <a
+                href="Strategic_Plan.html"
+                class="dropdown-item"
+                style="padding-left: 35px"
+                >Strategic Plan</a
+              >
+              <a href="History.html" class="dropdown-item">History</a>
+              <a href="Annual_Report.html" class="dropdown-item"
+                >Annual Report</a
+              >
+            </div>
+          </div>
+
+          <div class="has-dropdown">
+            <span class="nav-link"
+              >Membership
+              <i class="fas fa-chevron-down" style="font-size: 0.7em"></i
+            ></span>
+            <div class="dropdown-menu">
+              <a href="Why_Join.html" class="dropdown-item">Why Join?</a>
+              <a href="Apply_Online.html" class="dropdown-item">Apply Online</a>
+            </div>
+          </div>
+
+          <a href="Activity.html" class="nav-link">Activity</a>
+
+          <div class="has-dropdown">
+            <span class="nav-link"
+              >Meetings
+              <i class="fas fa-chevron-down" style="font-size: 0.7em"></i
+            ></span>
+            <div class="dropdown-menu">
+              <a href="Annual_Meetings.html" class="dropdown-item"
+                >Annual Meeting</a
+              >
+              <a href="Upcomming_Meetings.html" class="dropdown-item"
+                >Upcoming Meeting</a
+              >
+            </div>
+          </div>
+
+          <a href="Patient-Education.html" class="nav-link"
+            >Patient Education</a
+          >
+          <a href="Gallery.html" class="nav-link">Gallery</a>
+          <a
+            href="Contact_us.html"
+            class="nav-link btn btn-primary"
+            style="padding: 8px 25px; color: white"
+            >Contact Us</a
+          >
+        </nav>
+      </div>
     </header>
 
-    <!-- MAIN CONTENT: COMING SOON -->
-    <main class="coming-soon-wrapper">
-        <div class="coming-soon-content">
-            <lottie-player src="./Coming%20Soon.json" background="transparent" speed="1"
-                style="width: 100%; height: 300px; margin-bottom: 1rem;" loop autoplay>
-            </lottie-player>
+    <!-- PAGE HERO -->
+    <div class="page-header">
+      <div class="page-header-bg"></div>
+      <h1 class="page-title">Contact Us</h1>
+      <p style="opacity: 0.9; max-width: 600px; margin: 0 auto">
+        We are here to assist you. Reach out to any of our communications
+        channels or submit the form below.
+      </p>
+    </div>
 
-            <h1 class="coming-soon-title">Coming Soon</h1>
-            <p class="coming-soon-subtitle">We are currently crafting this page with care. <br>Please check back
-                shortly.</p>
+    <!-- MAIN CONTACT SECTION -->
+    <main class="contact-section">
+      <div class="contact-container">
+        <!-- Left Column: Info -->
+        <div class="contact-info-card">
+          <h2
+            style="
+              color: var(--royal-blue);
+              margin-bottom: 2rem;
+              font-family: 'Playfair Display';
+            "
+          >
+            Get in Touch
+          </h2>
 
-            <a href="index.html" class="btn btn-primary">
-                Back to Home <i class="fas fa-arrow-right"></i>
-            </a>
+          <div class="info-item">
+            <h4><i class="fas fa-phone-alt"></i> Phone</h4>
+            <p>+91 9921509170</p>
+            <p>+91 9881232872</p>
+          </div>
+
+          <div class="info-item">
+            <h4><i class="fas fa-envelope"></i> Email</h4>
+            <p>contact@sspp-pune.org</p>
+          </div>
+
+          <div class="info-item">
+            <h4><i class="fas fa-map-marker-alt"></i> Location</h4>
+            <div
+              style="
+                width: 100%;
+                border-radius: 12px;
+                overflow: hidden;
+                height: 250px;
+                margin-top: 10px;
+              "
+            >
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.376483568858!2d73.8540893148197!3d18.511874987414072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c0663486395d%3A0x6b8f368f5c88c70!2sIMA%20House!5e0!3m2!1sen!2sin!4v1625555555555!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+              ></iframe>
+            </div>
+          </div>
+
+          <div class="payment-qr-section">
+            <h4 style="color: var(--royal-blue); justify-content: center">
+              Scan to Pay
+            </h4>
+            <p style="font-size: 0.9rem; color: #64748b">
+              Use this QR code for membership or event payments.
+            </p>
+            <img
+              src="./assets/payment_qr.png"
+              alt="Payment QR Code"
+              class="payment-qr-img"
+            />
+          </div>
         </div>
+
+        <!-- Right Column: Form -->
+        <div class="contact-form-card">
+          <h3
+            style="
+              color: var(--royal-blue);
+              margin-bottom: 1.5rem;
+              font-family: 'Playfair Display';
+              font-size: 2rem;
+            "
+          >
+            Send us a Message
+          </h3>
+          <p style="margin-bottom: 2rem; color: #64748b">
+            Please fill out the form below. If you are making a payment,
+            uploading the screenshot is mandatory.
+          </p>
+
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name" class="form-label">Full Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="form-control"
+                placeholder="Dr. Firstname Lastname"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="form-label">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-control"
+                placeholder="you@example.com"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="phone" class="form-label">Mobile Number</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                class="form-control"
+                placeholder="+91 0000000000"
+                required
+                pattern="[0-9]{10}"
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Payment Screenshot</label>
+              <div class="file-upload-wrapper">
+                <input
+                  type="file"
+                  id="paymentScreenshot"
+                  name="paymentScreenshot"
+                  accept="image/*"
+                  required
+                  style="width: 100%"
+                />
+                <div
+                  style="font-size: 0.85rem; color: #64748b; margin-top: 5px"
+                >
+                  (Mandatory for verification)
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+              style="width: 100%; justify-content: center; margin-top: 1rem"
+            >
+              Submit Form <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
     </main>
 
     <!-- FOOTER -->
     <footer>
-        <div class="footer-container">
-            <div class="footer-logo" style="flex: 1;">
-                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                    <div
-                        style="width: 32px; height: 32px; background: rgba(255,255,255,0.1); border-radius: 50%; display: grid; place-items: center; color: var(--imperial-gold);">
-                        <i class="fas fa-om"></i>
-                    </div>
-                    <h3>SSPP Pune</h3>
-                </div>
-                <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.6;">
-                    Advancing the field of pain medicine through<br> education, research, and collaboration.
-                </p>
-                <div style="display: flex; gap: 15px; margin-top: 1.5rem;">
-                    <a href="#"
-                        style="color:white; background: rgba(255,255,255,0.1); width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%;"><i
-                            class="fab fa-facebook-f"></i></a>
-                    <a href="#"
-                        style="color:white; background: rgba(255,255,255,0.1); width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%;"><i
-                            class="fab fa-twitter"></i></a>
-                    <a href="#"
-                        style="color:white; background: rgba(255,255,255,0.1); width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%;"><i
-                            class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-
-            <div class="footer-links" style="flex: 1;">
-                <h4 style="color: var(--imperial-gold); margin-bottom: 1.2rem;">Quick Links</h4>
-                <a href="index.html">About Us</a>
-                <a href="Why_Join.html">Membership</a>
-                <a href="Annual_Meetings.html">Events</a>
-                <a href="Contact_us.html">Contact</a>
-            </div>
-
-            <div class="footer-links" style="flex: 1;">
-                <h4 style="color: var(--imperial-gold); margin-bottom: 1.2rem;">Contact</h4>
-                <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1rem;">
-                    <i class="fas fa-envelope" style="color: var(--pune-saffron); margin-right: 10px;"></i>
-                    contact@sspp-pune.org
-                </p>
-                <p style="color: #cbd5e1; font-size: 0.9rem;">
-                    <i class="fas fa-map-marker-alt" style="color: var(--pune-saffron); margin-right: 10px;"></i> IMA
-                    House, Tilak Road, Pune
-                </p>
-            </div>
+      <div class="footer-container">
+        <div class="footer-logo" style="flex: 1">
+          <div style="margin-bottom: 20px">
+            <img
+              src="./assets/logo.png"
+              style="max-width: 180px; height: auto"
+              alt="SSPP Logo"
+            />
+          </div>
+          <h3>SSPP Pune</h3>
+          <p
+            style="
+              color: #94a3b8;
+              font-size: 0.9rem;
+              margin-top: 0.5rem;
+              line-height: 1.6;
+            "
+          >
+            Advancing the field of pain medicine through<br />
+            education, research, and collaboration.
+          </p>
+          <div style="display: flex; gap: 15px; margin-top: 1.5rem">
+            <a
+              href="#"
+              style="
+                color: white;
+                background: rgba(255, 255, 255, 0.1);
+                width: 36px;
+                height: 36px;
+                display: grid;
+                place-items: center;
+                border-radius: 50%;
+              "
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a
+              href="#"
+              style="
+                color: white;
+                background: rgba(255, 255, 255, 0.1);
+                width: 36px;
+                height: 36px;
+                display: grid;
+                place-items: center;
+                border-radius: 50%;
+              "
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a
+              href="#"
+              style="
+                color: white;
+                background: rgba(255, 255, 255, 0.1);
+                width: 36px;
+                height: 36px;
+                display: grid;
+                place-items: center;
+                border-radius: 50%;
+              "
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+          </div>
         </div>
-        <div class="copyright">
-            &copy; 2025 Indian Society for Study of Pain (Pune Chapter). All rights reserved.
+
+        <div class="footer-links" style="flex: 1">
+          <h4 style="color: var(--imperial-gold); margin-bottom: 1.2rem">
+            Quick Links
+          </h4>
+          <a href="index.html">About Us</a>
+          <a href="Why_Join.html">Membership</a>
+          <a href="Annual_Meetings.html">Events</a>
+          <a href="Contact_us.html">Contact</a>
         </div>
+
+        <div class="footer-links" style="flex: 1">
+          <h4 style="color: var(--imperial-gold); margin-bottom: 1.2rem">
+            Contact
+          </h4>
+          <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1rem">
+            <i
+              class="fas fa-envelope"
+              style="color: var(--pune-saffron); margin-right: 10px"
+            ></i>
+            contact@sspp-pune.org
+          </p>
+          <p style="color: #cbd5e1; font-size: 0.9rem">
+            <i
+              class="fas fa-map-marker-alt"
+              style="color: var(--pune-saffron); margin-right: 10px"
+            ></i>
+            IMA House, Tilak Road, Pune
+          </p>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2025 Indian Society for Study of Pain (Pune Chapter). All rights
+        reserved.
+      </div>
     </footer>
-
-</body>
-
+  </body>
 </html>
