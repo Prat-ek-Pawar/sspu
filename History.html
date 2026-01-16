@@ -259,7 +259,7 @@
       }
 
       .history-container {
-        max-width: 1000px;
+        max-width: var(--container-width);
         margin: 0 auto;
         display: flex;
         flex-direction: column;
@@ -529,8 +529,12 @@
     <header>
       <div class="nav-container">
         <div class="logo-area">
-          <a href="index.html" style="text-decoration:none;">
-            <img src="./assets/logo.png" style="max-width: 180px; height: auto;" alt="SSPP Logo" />
+          <a href="index.html" style="text-decoration: none">
+            <img
+              src="./assets/logo.png"
+              style="max-width: 180px; height: auto"
+              alt="SSPP Logo"
+            />
           </a>
         </div>
         <button
@@ -653,8 +657,8 @@
         <div class="history-card">
           <div class="h-img-box">
             <img
-              src="https://picsum.photos/600/600?random=88"
-              alt="Founding Members"
+              src="./assets/history_foundation_plaque.png"
+              alt="SSPP Foundation Plaque 2014"
             />
             <div class="h-overlay"></div>
           </div>
@@ -714,10 +718,7 @@
         <div class="history-card" style="direction: rtl">
           <!-- Reverse layout for visual interest -->
           <div class="h-img-box">
-            <img
-              src="https://picsum.photos/600/600?random=89"
-              alt="SSPP Conference"
-            />
+            <img src="./assets/history_conference.png" alt="SSPP Conference" />
             <div class="h-overlay"></div>
           </div>
           <div class="h-content" style="direction: ltr">

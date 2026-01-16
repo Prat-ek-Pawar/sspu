@@ -300,9 +300,10 @@
       .contact-info-card {
         background: white;
         border-radius: 20px;
-        padding: 2.5rem;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-        border-top: 5px solid var(--pune-saffron);
+        padding: 3rem;
+        /* Minimal sleek shadow */
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.03);
         height: fit-content;
       }
 
@@ -343,9 +344,10 @@
       .contact-form-card {
         background: white;
         border-radius: 20px;
-        padding: 2.5rem;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-        border-top: 5px solid var(--deep-ocean);
+        padding: 3rem;
+        /* Minimal sleek shadow */
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.03);
       }
 
       .form-group {
@@ -361,12 +363,13 @@
 
       .form-control {
         width: 100%;
-        padding: 14px;
+        padding: 16px;
         border: 1px solid #e2e8f0;
-        border-radius: 8px;
+        border-radius: 12px;
         font-family: "Poppins", sans-serif;
-        transition: all 0.3s;
+        transition: all 0.3s ease;
         background: #f8fafc;
+        font-size: 0.95rem;
       }
 
       .form-control:focus {
@@ -378,12 +381,13 @@
 
       .file-upload-wrapper {
         position: relative;
-        padding: 20px;
+        padding: 30px;
         border: 2px dashed #cbd5e1;
-        border-radius: 8px;
+        border-radius: 12px;
         text-align: center;
-        background: #f8fafc;
+        background: #fff;
         transition: 0.3s;
+        cursor: pointer;
       }
 
       .file-upload-wrapper:hover {
@@ -459,8 +463,12 @@
     <header>
       <div class="nav-container">
         <div class="logo-area">
-          <a href="index.html" style="text-decoration:none;">
-            <img src="./assets/logo.png" style="max-width: 180px; height: auto;" alt="SSPP Logo" />
+          <a href="index.html" style="text-decoration: none">
+            <img
+              src="./assets/logo.png"
+              style="max-width: 180px; height: auto"
+              alt="SSPP Logo"
+            />
           </a>
         </div>
 
