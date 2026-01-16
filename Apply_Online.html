@@ -1,866 +1,1022 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Apply Online - SSPP Pune</title>
-  <style>
-    /* =========================================
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apply Online - SSPP Pune</title>
+    <style>
+      /* =========================================
        1. CORE DESIGN SYSTEM (ROYAL PUNE)
        ========================================= */
-    :root {
-      --royal-blue: #0f172a;
-      --deep-ocean: #1e3a8a;
-      --pune-saffron: #e76f51;
-      --imperial-gold: #fbbf24;
+      :root {
+        /* Vibrant Heritage Colors */
+        --royal-blue: #0f172a;
+        --deep-ocean: #1e3a8a;
+        --pune-saffron: #e76f51;
+        --imperial-gold: #fbbf24;
 
-      --gradient-royal: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
-      --gradient-gold: linear-gradient(45deg, #d4af37, #f9dc5c, #d4af37);
-      --gradient-saffron: linear-gradient(135deg, #e76f51 0%, #d62828 100%);
-      --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+        /* Gradients */
+        --gradient-royal: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+        --gradient-gold: linear-gradient(45deg, #d4af37, #f9dc5c, #d4af37);
+        --gradient-saffron: linear-gradient(135deg, #e76f51 0%, #d62828 100%);
 
-      --text-dark: #1e293b;
-      --text-light: #f8fafc;
-      --glass-border: rgba(255, 255, 255, 0.1);
-      --container-width: 1240px;
-      --header-height: 90px;
-      --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
-    }
+        /* UI Elements */
+        --glass-light: rgba(255, 255, 255, 0.9);
+        --glass-dark: rgba(15, 23, 42, 0.6);
+        --text-dark: #1e293b;
+        --text-light: #f8fafc;
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        --container-width: 1240px;
+        --header-height: 90px;
+        --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #fdfbf7;
-      /* Consistent with main site background */
-      color: var(--text-dark);
-      overflow-x: hidden;
-      line-height: 1.6;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    /* Cinematic Heritage Background */
-    .mesh-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background:
-        radial-gradient(at 0% 0%, rgba(231, 111, 81, 0.05) 0px, transparent 50%),
-        radial-gradient(at 100% 0%, rgba(251, 191, 36, 0.05) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(30, 58, 138, 0.05) 0px, transparent 50%),
-        radial-gradient(at 0% 100%, rgba(15, 23, 42, 0.05) 0px, transparent 50%);
-    }
-
-    /* Floating Abstract Blobs */
-    .glass-blob {
-      position: fixed;
-      width: 400px;
-      height: 400px;
-      filter: blur(80px);
-      opacity: 0.1;
-      border-radius: 50%;
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    .blob-1 {
-      background: var(--pune-saffron);
-      top: -100px;
-      right: -100px;
-      animation: float 20s infinite alternate linear;
-    }
-
-    .blob-2 {
-      background: var(--royal-blue);
-      bottom: -100px;
-      left: -100px;
-      animation: float 25s infinite alternate-reverse linear;
-    }
-
-    @keyframes float {
-      0% {
-        transform: translate(0, 0) rotate(0deg);
+        /* Page Specific */
+        --bg-light: #fdfbf7;
+        --bg-paper: #fdfbf7;
+        --text-muted: #475569;
+        --gradient-glass: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(255, 255, 255, 0.05) 100%
+        );
+        --glass-border: rgba(255, 255, 255, 0.1);
+        --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
       }
 
-      100% {
-        transform: translate(100px, 50px) rotate(360deg);
-      }
-    }
-
-    /* =========================================
-       2. PREMIUM NAVIGATION (Immersive Glass)
-       ========================================= */
-    header {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-    }
-
-    .nav-container {
-      max-width: var(--container-width);
-      margin: 0 auto;
-      min-width: 90vw;
-      height: var(--header-height);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 -42px;
-    }
-
-    .logo-area img {
-      height: 50px;
-      transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .desktop-nav {
-      display: none;
-    }
-
-    @media (min-width: 992px) {
-      .desktop-nav {
-        display: flex;
-        gap: 35px;
-        align-items: center;
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
 
-      .nav-link {
-        align-items: center;
-        gap: 6px;
-        display: flex;
-        justify-content: center;
-        text-decoration: none;
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #fdfbf7;
+        /* Consistent with main site background */
         color: var(--text-dark);
-        font-weight: 600;
-        font-size: 0.95rem;
-        padding: 10px 0;
-        position: relative;
+        overflow-x: hidden;
+        line-height: 1.6;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
       }
 
-      .nav-link:hover {
-        color: var(--pune-saffron);
-      }
-
-      .nav-link::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
+      /* Cinematic Heritage Background */
+      .mesh-bg {
+        position: fixed;
+        top: 0;
         left: 0;
-        width: 0;
-        height: 3px;
-        background: var(--gradient-saffron);
-        transition: 0.3s;
-        border-radius: 2px;
-      }
-
-      .nav-link:hover::after {
         width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: radial-gradient(
+            at 0% 0%,
+            rgba(231, 111, 81, 0.05) 0px,
+            transparent 50%
+          ),
+          radial-gradient(
+            at 100% 0%,
+            rgba(251, 191, 36, 0.05) 0px,
+            transparent 50%
+          ),
+          radial-gradient(
+            at 100% 100%,
+            rgba(30, 58, 138, 0.05) 0px,
+            transparent 50%
+          ),
+          radial-gradient(
+            at 0% 100%,
+            rgba(15, 23, 42, 0.05) 0px,
+            transparent 50%
+          );
       }
 
-      /* Remove underline for buttons */
-      .nav-link.btn::after,
-      .btn::after {
-        display: none !important;
+      /* Floating Abstract Blobs */
+      .glass-blob {
+        position: fixed;
+        width: 400px;
+        height: 400px;
+        filter: blur(80px);
+        opacity: 0.1;
+        border-radius: 50%;
+        z-index: -1;
+        pointer-events: none;
       }
 
-      .has-dropdown {
-        position: relative;
+      .blob-1 {
+        background: var(--pune-saffron);
+        top: -100px;
+        right: -100px;
+        animation: float 20s infinite alternate linear;
       }
 
-      .dropdown-menu {
-        position: absolute;
-        top: 100%;
-        left: -20px;
-        background: white;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        border-radius: 12px;
-        min-width: 260px;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(15px);
-        transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        padding: 12px 0;
-        border-top: 4px solid var(--pune-saffron);
-        z-index: 1010;
+      .blob-2 {
+        background: var(--royal-blue);
+        bottom: -100px;
+        left: -100px;
+        animation: float 25s infinite alternate-reverse linear;
       }
 
-      .has-dropdown:hover .dropdown-menu {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
+      @keyframes float {
+        0% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+
+        100% {
+          transform: translate(100px, 50px) rotate(360deg);
+        }
       }
 
-      .dropdown-item {
-        display: block;
-        padding: 10px 24px;
-        color: #475569;
-        text-decoration: none;
-        font-size: 0.9rem;
-        transition: 0.2s;
+      /* =========================================
+             2. NAVIGATION (Immersive Glass)
+             ========================================= */
+      header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
       }
 
-      .dropdown-item:hover {
-        color: var(--pune-saffron);
-        background: #fff7ed;
-        padding-left: 30px;
+      .nav-container {
+        max-width: var(--container-width);
+        margin: 0 auto;
+        min-width: 90vw;
+        height: var(--header-height);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 -42px;
       }
-    }
 
-    .mobile-toggle {
-      font-size: 2.5rem;
-      background: none;
-      position: absolute;
-      border: none;
-      right: 45px;
-      cursor: pointer;
-      color: var(--royal-blue);
-    }
+      .logo-text {
+        font-weight: 800;
+        font-size: 1.5rem;
+        background: var(--gradient-royal);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.5px;
+      }
 
-    @media (min-width: 992px) {
-      .mobile-toggle {
+      /* Desktop Nav - Row Aligned */
+      .desktop-nav {
         display: none;
       }
-    }
 
-    @media (max-width: 991px) {
+      @media (min-width: 992px) {
+        .desktop-nav {
+          display: flex !important;
+          gap: 35px;
+          align-items: center;
+        }
 
-      /* Logo adjustment for mobile/tablet */
-      .logo-area img {
-        max-width: 65% !important;
+        .nav-link {
+          align-items: center;
+          gap: 6px;
+          display: flex;
+          justify-content: center;
+          text-decoration: none;
+          color: var(--text-dark);
+          font-weight: 600;
+          font-size: 0.95rem;
+          padding: 10px 0;
+          position: relative;
+        }
+
+        /* Cultural Underline Animation */
+        .nav-link::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0%;
+          height: 3px;
+          background: var(--gradient-saffron);
+          transition: width 0.3s ease;
+          border-radius: 2px;
+        }
+
+        .nav-link:hover::after {
+          width: 100%;
+        }
+
+        /* Remove underline for buttons */
+        .nav-link.btn::after,
+        .btn::after {
+          display: none !important;
+        }
+
+        /* Dropdowns */
+        .has-dropdown {
+          position: relative;
+        }
+
+        .dropdown-menu {
+          position: absolute;
+          top: 140%;
+          left: -20px;
+          background: white;
+          min-width: 260px;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+          border-radius: 12px;
+          padding: 15px 0;
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(15px);
+          transition: all 0.4s var(--ease-elastic);
+          border-top: 4px solid var(--pune-saffron);
+        }
+
+        .has-dropdown:hover .dropdown-menu {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+          top: 100%;
+        }
+
+        .dropdown-item {
+          display: block;
+          padding: 10px 25px;
+          color: #475569;
+          text-decoration: none;
+          font-size: 0.9rem;
+          transition: all 0.2s;
+        }
+
+        .dropdown-item:hover {
+          background: #fff7ed;
+          color: var(--pune-saffron);
+          padding-left: 30px;
+        }
       }
-    }
 
-    /* Premium Buttons */
-    .btn {
-      padding: 12px 28px;
-      border-radius: 50px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: 0.4s var(--ease-standard);
-      border: none;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.95rem;
-    }
+      /* Mobile Menu */
+      .mobile-toggle {
+        font-size: 2.5rem;
+        background: none;
+        position: absolute;
+        border: none;
+        right: 45px;
+        cursor: pointer;
+        color: var(--royal-blue);
+      }
 
-    .btn-primary {
-      background: var(--gradient-saffron);
-      color: white;
-      box-shadow: 0 10px 25px -5px rgba(231, 111, 81, 0.4);
-    }
+      @media (min-width: 992px) {
+        .mobile-toggle {
+          display: none;
+        }
+      }
 
-    .btn-primary:hover {
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 15px 35px -5px rgba(231, 111, 81, 0.5);
-    }
+      @media (max-width: 991px) {
+        /* Logo adjustment for mobile/tablet */
+        .nav-container img {
+          max-width: 65% !important;
+        }
+      }
 
+      /* Mobile Active State */
+      /* Mobile Active State */
+      .desktop-nav.active-mobile {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        /* Fixed to cover screen or stick */
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        height: calc(100vh - var(--header-height));
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        align-items: center;
+        /* Center horizontally */
+        justify-content: flex-start;
+        gap: 20px;
+        overflow-y: auto;
+        z-index: 999;
+      }
 
-    /* Mobile Active State */
-    .desktop-nav.active-mobile {
-      display: flex;
-      flex-direction: column;
-      position: fixed;
-      /* Fixed to cover screen or stick */
-      top: var(--header-height);
-      left: 0;
-      width: 100%;
-      height: calc(100vh - var(--header-height));
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(10px);
-      padding: 2rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      align-items: center;
-      /* Center horizontally */
-      justify-content: flex-start;
-      gap: 20px;
-      overflow-y: auto;
-      z-index: 999;
-    }
+      .desktop-nav.active-mobile .nav-link {
+        font-size: 1.1rem;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      }
 
-    .desktop-nav.active-mobile .nav-link {
-      font-size: 1.1rem;
-      width: 100%;
-      text-align: center;
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    }
+      .desktop-nav.active-mobile .has-dropdown {
+        width: 100%;
+        text-align: center;
+      }
 
-    .desktop-nav.active-mobile .has-dropdown {
-      width: 100%;
-      text-align: center;
-    }
+      .desktop-nav.active-mobile .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border: none;
+        background: transparent;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        padding: 0;
+        margin-top: 10px;
+        display: none;
+        /* Hidden by default, maybe toggle? or just show all */
+      }
 
-    .desktop-nav.active-mobile .dropdown-menu {
-      position: static;
-      box-shadow: none;
-      border: none;
-      background: transparent;
-      opacity: 1;
-      visibility: visible;
-      transform: none;
-      padding: 0;
-      margin-top: 10px;
-      display: none;
-    }
+      /* Simple show for now or let them be valid links */
+      .desktop-nav.active-mobile .has-dropdown:hover .dropdown-menu {
+        display: block;
+      }
 
-    .desktop-nav.active-mobile .has-dropdown:hover .dropdown-menu {
-      display: block;
-    }
+      /* Button Styles */
+      .btn {
+        padding: 14px 32px;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border: 2px solid transparent;
+        cursor: pointer;
+      }
 
-    /* =========================================
+      .btn-primary {
+        background: var(--gradient-saffron);
+        color: white;
+        box-shadow: 0 10px 25px -5px rgba(231, 111, 81, 0.4);
+        border: none;
+      }
+
+      .btn:hover {
+        transform: translateY(-4px) scale(1.02);
+      }
+
+      /* =========================================
        3. CINEMATIC HERO SECTION
        ========================================= */
-    .page-header {
-      padding: 120px 24px 80px;
-      text-align: center;
-      position: relative;
-    }
+      .page-header {
+        padding: 120px 24px 80px;
+        text-align: center;
+        position: relative;
+      }
 
-    .page-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 10vw, 4.8rem);
-      font-weight: 800;
-      margin-bottom: 24px;
-      color: var(--royal-blue);
-      position: relative;
-    }
+      .page-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(3rem, 10vw, 4.8rem);
+        font-weight: 800;
+        margin-bottom: 24px;
+        color: var(--royal-blue);
+        position: relative;
+      }
 
-    .page-header p {
-      font-size: 1.15rem;
-      color: #64748b;
-      max-width: 700px;
-      margin: 0 auto;
-      line-height: 1.8;
-      font-weight: 500;
-    }
+      .page-header p {
+        font-size: 1.15rem;
+        color: #64748b;
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.8;
+        font-weight: 500;
+      }
 
-    /* =========================================
+      /* =========================================
        4. LAYOUT & CARDS (Senior Architecture)
        ========================================= */
-    .contact-section {
-      padding: 40px 24px 120px;
-      max-width: var(--container-width);
-      margin: 0 auto;
-    }
-
-    .contact-container {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
-
-    @media (min-width: 992px) {
-      .contact-container {
-        grid-template-columns: 1fr 1.25fr;
-        align-items: start;
+      .contact-section {
+        padding: 40px 24px 120px;
+        max-width: var(--container-width);
+        margin: 0 auto;
       }
-    }
 
-    /* Professional Glass Cards */
-    .contact-info-card,
-    .contact-form-card {
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      border-radius: 32px;
-      padding: 48px;
-      position: relative;
-      box-shadow: 0 40px 80px -20px rgba(15, 23, 42, 0.1);
-    }
-
-    .contact-info-card {
-      background: var(--gradient-royal);
-      color: white;
-      border: none;
-    }
-
-    .contact-info-card h2,
-    .contact-form-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      margin-bottom: 32px;
-      line-height: 1.2;
-    }
-
-    .contact-info-card h2 {
-      color: var(--imperial-gold);
-    }
-
-    .contact-form-card h3 {
-      color: var(--royal-blue);
-    }
-
-    /* Info Elements */
-    .info-item {
-      margin-bottom: 32px;
-    }
-
-    .info-item h4 {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--pune-saffron);
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 2.5px;
-      margin-bottom: 15px;
-      font-family: "Poppins";
-      font-weight: 700;
-    }
-
-    .info-item p {
-      font-size: 1.15rem;
-      font-weight: 600;
-      opacity: 0.9;
-    }
-
-    /* Map Interface */
-    .map-frame {
-      border-radius: 20px;
-      overflow: hidden;
-      height: 280px;
-      margin-top: 20px;
-      border: 4px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Premium QR Section */
-    .payment-qr-section {
-      margin-top: 50px;
-      text-align: center;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 40px;
-      border-radius: 28px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .payment-qr-section h4 {
-      color: var(--imperial-gold);
-      margin-bottom: 12px;
-      letter-spacing: 1px;
-    }
-
-    .payment-qr-section p {
-      font-size: 0.9rem;
-      margin-bottom: 30px;
-      opacity: 0.7;
-    }
-
-    .payment-qr-img {
-      width: 190px;
-      height: 190px;
-      padding: 15px;
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
-      transition: 0.4s var(--ease-standard);
-    }
-
-    .payment-qr-img:hover {
-      transform: scale(1.08) rotate(2deg);
-    }
-
-    /* =========================================
-       5. FORM ELEMENTS (Senior Frontend Style)
-       ========================================= */
-    .form-group {
-      margin-bottom: 35px;
-    }
-
-    .form-label {
-      display: block;
-      margin-bottom: 12px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--royal-blue);
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      opacity: 0.7;
-    }
-
-    .form-control {
-      width: 100%;
-      background: #f8fafc;
-      border: 2px solid #e2e8f0;
-      padding: 20px 24px;
-      border-radius: 18px;
-      color: var(--royal-blue);
-      font-size: 1.05rem;
-      transition: 0.3s;
-    }
-
-    .form-control:focus {
-      outline: none;
-      border-color: var(--pune-saffron);
-      background: white;
-      box-shadow: 0 15px 30px rgba(231, 111, 81, 0.1);
-      transform: translateY(-2px);
-    }
-
-    /* File Drop Zone */
-    .file-upload-wrapper {
-      border: 2px dashed #cbd5e1;
-      padding: 45px 24px;
-      border-radius: 20px;
-      text-align: center;
-      background: #f8fafc;
-      transition: 0.3s;
-      cursor: pointer;
-    }
-
-    .file-upload-wrapper:hover {
-      border-color: var(--pune-saffron);
-      background: #fff7ed;
-    }
-
-    /* =========================================
-       6. ROYAL FOOTER
-       ========================================= */
-    footer {
-      padding: 100px 24px 60px;
-      background: var(--royal-blue);
-      color: white;
-      margin-top: auto;
-      border-top: 6px solid var(--pune-saffron);
-    }
-
-    .footer-container {
-      max-width: var(--container-width);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 70px;
-    }
-
-    @media (max-width: 900px) {
-      .footer-container {
+      .contact-container {
+        display: grid;
         grid-template-columns: 1fr;
         gap: 40px;
       }
-    }
 
-    .footer-logo h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      margin-bottom: 25px;
-      color: white;
-    }
+      @media (min-width: 992px) {
+        .contact-container {
+          grid-template-columns: 1fr 1.25fr;
+          align-items: start;
+        }
+      }
 
-    .footer-links h4 {
-      font-family: 'Poppins';
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--imperial-gold);
-      font-size: 0.9rem;
-      margin-bottom: 30px;
-    }
+      /* Professional Glass Cards */
+      .contact-info-card,
+      .contact-form-card {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 32px;
+        padding: 48px;
+        position: relative;
+        box-shadow: 0 40px 80px -20px rgba(15, 23, 42, 0.1);
+      }
 
-    .footer-links a {
-      display: block;
-      color: rgba(255, 255, 255, 0.7);
-      text-decoration: none;
-      margin-bottom: 15px;
-      transition: 0.3s;
-      font-size: 1rem;
-    }
+      .contact-info-card {
+        background: var(--gradient-royal);
+        color: white;
+        border: none;
+      }
 
-    .footer-links a:hover {
-      color: var(--imperial-gold);
-      padding-left: 10px;
-    }
+      .contact-info-card h2,
+      .contact-form-card h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 2.5rem;
+        margin-bottom: 32px;
+        line-height: 1.2;
+      }
 
-    .footer-links p {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 20px;
-    }
+      .contact-info-card h2 {
+        color: var(--imperial-gold);
+      }
 
-    .footer-links p i {
-      color: var(--pune-saffron);
-      font-size: 1.1rem;
-    }
+      .contact-form-card h3 {
+        color: var(--royal-blue);
+      }
 
-    .copyright {
-      max-width: var(--container-width);
-      margin: 60px auto 0;
-      padding-top: 40px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      text-align: center;
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 0.95rem;
-    }
-  </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet" />
-</head>
+      /* Info Elements */
+      .info-item {
+        margin-bottom: 32px;
+      }
 
-<body>
-  <div class="mesh-bg"></div>
-  <div class="glass-blob blob-1"></div>
-  <div class="glass-blob blob-2"></div>
+      .info-item h4 {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--pune-saffron);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        margin-bottom: 15px;
+        font-family: "Poppins";
+        font-weight: 700;
+      }
 
-  <!-- HEADER -->
-  <header>
-    <div class="nav-container">
-      <div class="logo-area">
-        <a href="index.html">
-          <img src="./assets/logo.png" alt="SSPP Logo" />
-        </a>
-      </div>
+      .info-item p {
+        font-size: 1.15rem;
+        font-weight: 600;
+        opacity: 0.9;
+      }
 
-      <button class="mobile-toggle" onclick="document.querySelector('.desktop-nav').classList.toggle('active-mobile')">
-        <i class="fas fa-bars"></i>
-      </button>
+      /* Map Interface */
+      .map-frame {
+        border-radius: 20px;
+        overflow: hidden;
+        height: 280px;
+        margin-top: 20px;
+        border: 4px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      }
 
-      <!-- Navbar -->
-      <nav class="desktop-nav">
-        <a href="index.html" class="nav-link">Home</a>
+      /* Premium QR Section */
+      .payment-qr-section {
+        margin-top: 50px;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 40px;
+        border-radius: 28px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
 
-        <div class="has-dropdown">
-          <span class="nav-link">About <i class="fas fa-chevron-down" style="font-size: 0.7em"></i></span>
-          <div class="dropdown-menu">
-            <a href="Secretary_message.html" class="dropdown-item">Secretary's Message</a>
-            <a href="Vision_Mission.html" class="dropdown-item">Vision Mission</a>
-            <div class="dropdown-header"
-              style="padding: 8px 24px; font-weight: 700; font-size: 0.7rem; color: #64748b; opacity: 0.8; letter-spacing: 1px;">
-              GOVERNANCE</div>
-            <a href="GoverningCouncil.html" class="dropdown-item" style="padding-left: 32px">Governing Council</a>
-            <a href="Strategic_Plan.html" class="dropdown-item" style="padding-left: 32px">Strategic Plan</a>
-            <a href="History.html" class="dropdown-item">History</a>
-            <a href="Annual_Report.html" class="dropdown-item">Annual Report</a>
-          </div>
-        </div>
+      .payment-qr-section h4 {
+        color: var(--imperial-gold);
+        margin-bottom: 12px;
+        letter-spacing: 1px;
+      }
 
-        <div class="has-dropdown">
-          <span class="nav-link">Membership <i class="fas fa-chevron-down" style="font-size: 0.7em"></i></span>
-          <div class="dropdown-menu">
-            <a href="Why_Join.html" class="dropdown-item">Why Join?</a>
-            <a href="Apply_Online.html" class="dropdown-item">Apply Online</a>
-          </div>
-        </div>
+      .payment-qr-section p {
+        font-size: 0.9rem;
+        margin-bottom: 30px;
+        opacity: 0.7;
+      }
 
-        <a href="Activity.html" class="nav-link">Activity</a>
+      .payment-qr-img {
+        width: 190px;
+        height: 190px;
+        padding: 15px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+        transition: 0.4s var(--ease-standard);
+      }
 
-        <div class="has-dropdown">
-          <span class="nav-link">Meetings <i class="fas fa-chevron-down" style="font-size: 0.7em"></i></span>
-          <div class="dropdown-menu">
-            <a href="Annual_Meetings.html" class="dropdown-item">Annual Meeting</a>
-            <a href="Upcomming_Meetings.html" class="dropdown-item">Upcoming Meeting</a>
-          </div>
-        </div>
+      .payment-qr-img:hover {
+        transform: scale(1.08) rotate(2deg);
+      }
 
-        <a href="Patient-Education.html" class="nav-link">Patient Education</a>
-        <a href="Gallery.html" class="nav-link">Gallery</a>
-        <a href="Contact_us.html" class="btn btn-primary">Contact Us</a>
-        <a href="painscape.html" class="nav-link btn"
-          style="padding: 6px 15px; color: var(--royal-blue); background: var(--gradient-gold); margin-left: 5px; font-weight: 700; box-shadow: 0 0 20px rgba(251, 191, 36, 0.6); border: 2px solid white; display: inline-flex; align-items: center; gap: 6px;">
-          <i class="fas fa-crown"></i>
-          PAINSCAPE 2026
-        </a>
-      </nav>
-    </div>
-  </header>
+      /* =========================================
+       5. FORM ELEMENTS (Senior Frontend Style)
+       ========================================= */
+      .form-group {
+        margin-bottom: 35px;
+      }
 
-  <!-- PAGE HERO -->
-  <div class="page-header reveal">
-    <h1 class="page-title">Apply Online</h1>
-    <p>Join the Society for Study of Pain Pune. Please fill out the application form below.</p>
-  </div>
+      .form-label {
+        display: block;
+        margin-bottom: 12px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--royal-blue);
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        opacity: 0.7;
+      }
 
-  <!-- MAIN CONTACT SECTION -->
-  <main class="contact-section">
-    <div class="contact-container">
-      <!-- Left Column: Info -->
-      <div class="contact-info-card reveal">
-        <h2>Membership Support</h2>
+      .form-control {
+        width: 100%;
+        background: #f8fafc;
+        border: 2px solid #e2e8f0;
+        padding: 20px 24px;
+        border-radius: 18px;
+        color: var(--royal-blue);
+        font-size: 1.05rem;
+        transition: 0.3s;
+      }
 
-        <div class="info-item">
-          <h4><i class="fas fa-phone-alt"></i> Phone</h4>
-          <p>+91 9921509170</p>
-          <p>+91 9881232872</p>
-        </div>
+      .form-control:focus {
+        outline: none;
+        border-color: var(--pune-saffron);
+        background: white;
+        box-shadow: 0 15px 30px rgba(231, 111, 81, 0.1);
+        transform: translateY(-2px);
+      }
 
-        <div class="info-item">
-          <h4><i class="fas fa-envelope"></i> Email</h4>
-          <p>contact@sspp-pune.org</p>
-        </div>
+      /* File Drop Zone */
+      .file-upload-wrapper {
+        border: 2px dashed #cbd5e1;
+        padding: 45px 24px;
+        border-radius: 20px;
+        text-align: center;
+        background: #f8fafc;
+        transition: 0.3s;
+        cursor: pointer;
+      }
 
-        <div class="info-item">
-          <h4><i class="fas fa-map-marker-alt"></i> Location</h4>
-          <div class="map-frame">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.376483568858!2d73.8540893148197!3d18.511874987414072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c0663486395d%3A0x6b8f368f5c88c70!2sIMA%20House!5e0!3m2!1sen!2sin!4v1625555555555!5m2!1sen!2sin"
-              width="100%" height="100%" style="border: 0" allowfullscreen="" loading="lazy"></iframe>
-          </div>
-        </div>
+      .file-upload-wrapper:hover {
+        border-color: var(--pune-saffron);
+        background: #fff7ed;
+      }
 
-        <div class="payment-qr-section">
-          <h4>Scan to Pay</h4>
-          <p>Scan the QR code to pay your membership fees.</p>
-          <div style="background: white; padding: 15px; border-radius: 20px; display: inline-block;">
-            <img src="./assets/qr.jpeg" alt="Payment QR Code" class="payment-qr-img" />
-          </div>
-        </div>
-      </div>
+      /* =========================================
+       6. FOOTER (Agile & Synchronized)
+       ========================================= */
+      footer {
+        background: #0f172a;
+        color: #e2e8f0;
+        padding: 4rem 20px 2rem 20px;
+        border-top: 5px solid var(--pune-saffron);
+        margin-top: auto;
+      }
 
-      <!-- Right Column: Form -->
-      <div class="contact-form-card reveal">
-        <h3>Membership Application</h3>
-        <p style="margin-bottom: 2rem; color: #94a3b8">
-          Please complete the details below. Payment confirmation is mandatory.
-        </p>
+      .footer-container {
+        max-width: var(--container-width);
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+      }
 
-        <form id="applyForm">
-          <div class="form-group">
-            <label for="name" class="form-label">Full Name</label>
-            <input type="text" id="name" name="name" class="form-control" placeholder="Dr. Firstname Lastname"
-              required />
-          </div>
+      @media (min-width: 768px) {
+        .footer-container {
+          flex-direction: row;
+          justify-content: space-between;
+        }
+      }
 
-          <div class="form-group">
-            <label for="email" class="form-label">Email Address</label>
-            <input type="email" id="email" name="email" class="form-control" placeholder="you@example.com" required />
-          </div>
+      .footer-logo h3 {
+        color: white;
+        margin-bottom: 0.5rem;
+        font-size: 1.5rem;
+      }
 
-          <div class="form-group">
-            <label for="phone" class="form-label">Mobile Number</label>
-            <input type="tel" id="phone" name="phone" class="form-control" placeholder="+91 0000000000" required
-              pattern="[0-9]{10}" />
-          </div>
+      .footer-links a {
+        color: #94a3b8;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 0.8rem;
+        transition: 0.3s;
+      }
 
-          <div class="form-group">
-            <label class="form-label">Payment Screenshot</label>
-            <div class="file-upload-wrapper" onclick="document.getElementById('paymentScreenshot').click()">
-              <input type="file" id="paymentScreenshot" name="paymentScreenshot" accept="image/*" required
-                style="display: none" onchange="document.getElementById('file-label').innerText = this.files[0].name" />
-              <i class="fas fa-cloud-upload-alt"
-                style="font-size: 2rem; color: var(--accent); margin-bottom: 12px; display: block;"></i>
-              <span id="file-label" style="color: #cbd5e1; font-weight: 500;">Choose an image or drag & drop</span>
-              <div style="font-size: 0.85rem; color: #64748b; margin-top: 5px">(Mandatory for verification)</div>
+      .footer-links a:hover {
+        color: var(--imperial-gold);
+        padding-left: 5px;
+      }
+
+      .copyright {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+        font-size: 0.9rem;
+        color: #64748b;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="mesh-bg"></div>
+    <div class="glass-blob blob-1"></div>
+    <div class="glass-blob blob-2"></div>
+
+    <!-- HEADER & NAVBAR -->
+    <header>
+      <div class="nav-container">
+        <img src="./assets/logo.png" style="max-width: 20%" />
+
+        <button
+          class="mobile-toggle"
+          onclick="document.querySelector('.desktop-nav').classList.toggle('active-mobile')"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Navbar -->
+        <nav class="desktop-nav">
+          <a href="index.html" class="nav-link">Home</a>
+
+          <div class="has-dropdown">
+            <span class="nav-link"
+              >About <i class="fas fa-chevron-down" style="font-size: 0.7em"></i
+            ></span>
+            <div class="dropdown-menu">
+              <a href="Secretary_message.html" class="dropdown-item"
+                >Secretary's Message</a
+              >
+              <a href="Vision_Mission.html" class="dropdown-item"
+                >Vision Mission</a
+              >
+              <div
+                class="dropdown-header"
+                style="
+                  padding: 8px 25px;
+                  font-weight: 700;
+                  font-size: 0.75rem;
+                  color: var(--royal-blue);
+                  opacity: 0.6;
+                "
+              >
+                GOVERNANCE
+              </div>
+              <a
+                href="GoverningCouncil.html"
+                class="dropdown-item"
+                style="padding-left: 35px"
+                >Governing Council</a
+              >
+              <a
+                href="Strategic_Plan.html"
+                class="dropdown-item"
+                style="padding-left: 35px"
+                >Strategic Plan</a
+              >
+              <a href="History.html" class="dropdown-item">History</a>
+              <a href="Annual_Report.html" class="dropdown-item"
+                >Annual Report</a
+              >
             </div>
           </div>
 
-          <button type="submit" class="btn btn-primary"
-            style="width: 100%; justify-content: center; height: 60px; font-size: 1.1rem;">
-            Submit Application <i class="fas fa-paper-plane" style="margin-left: 10px;"></i>
-          </button>
-        </form>
-      </div>
-    </div>
-  </main>
+          <div class="has-dropdown">
+            <span class="nav-link"
+              >Membership
+              <i class="fas fa-chevron-down" style="font-size: 0.7em"></i
+            ></span>
+            <div class="dropdown-menu">
+              <a href="Why_Join.html" class="dropdown-item">Why Join?</a>
+              <a
+                href="Apply_Online.html"
+                class="dropdown-item active"
+                style="color: var(--pune-saffron); font-weight: 600"
+                >Apply Online</a
+              >
+            </div>
+          </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-container">
-      <div class="footer-logo">
-        <div class="logo-area">
-          <img src="./assets/logo.png" alt="SSPP Logo" style="filter: brightness(0) invert(1);" />
+          <a href="Activity.html" class="nav-link">Activity</a>
+
+          <div class="has-dropdown">
+            <span class="nav-link"
+              >Meetings
+              <i class="fas fa-chevron-down" style="font-size: 0.7em"></i
+            ></span>
+            <div class="dropdown-menu">
+              <a href="Annual_Meetings.html" class="dropdown-item"
+                >Annual Meeting</a
+              >
+              <a href="painscape.html#masterclasses" class="dropdown-item"
+                >Upcoming Meeting</a
+              >
+            </div>
+          </div>
+
+          <a href="Patient-Education.html" class="nav-link"
+            >Patient Education</a
+          >
+          <a href="Gallery.html" class="nav-link">Gallery</a>
+          <a
+            href="Contact_us.html"
+            class="nav-link btn btn-primary"
+            style="padding: 8px 25px; color: white"
+            >Contact Us</a
+          >
+          <a
+            href="painscape.html"
+            class="nav-link btn"
+            style="
+              padding: 6px 15px;
+              color: var(--royal-blue);
+              background: var(--gradient-gold);
+              margin-left: 5px;
+              font-weight: 700;
+              box-shadow: 0 0 20px rgba(251, 191, 36, 0.6);
+              border: 2px solid white;
+              display: inline-flex;
+              align-items: center;
+              gap: 6px;
+            "
+          >
+            <i class="fas fa-crown"></i>
+            PAINSCAPE 2026
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- PAGE HERO -->
+    <div class="page-header reveal">
+      <h1 class="page-title">Apply Online</h1>
+      <p>
+        Join the Society for Study of Pain Pune. Please fill out the application
+        form below.
+      </p>
+    </div>
+
+    <!-- MAIN CONTACT SECTION -->
+    <main class="contact-section">
+      <div class="contact-container">
+        <!-- Left Column: Info -->
+        <div class="contact-info-card reveal">
+          <h2>Membership Support</h2>
+
+          <div class="info-item">
+            <h4><i class="fas fa-phone-alt"></i> Phone</h4>
+            <p>+91 9921509170</p>
+            <p>+91 9881232872</p>
+          </div>
+
+          <div class="info-item">
+            <h4><i class="fas fa-envelope"></i> Email</h4>
+            <p>contact@sspp-pune.org</p>
+          </div>
+
+          <div class="info-item">
+            <h4><i class="fas fa-map-marker-alt"></i> Location</h4>
+            <div class="map-frame">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.376483568858!2d73.8540893148197!3d18.511874987414072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c0663486395d%3A0x6b8f368f5c88c70!2sIMA%20House!5e0!3m2!1sen!2sin!4v1625555555555!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+              ></iframe>
+            </div>
+          </div>
+
+          <!-- Payment & Fees Row -->
+          <div
+            style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 30px"
+          >
+            <!-- QR Section (Compact Side-by-Side) -->
+            <div
+              style="
+                flex: 0 0 auto;
+                text-align: center;
+                background: rgba(255, 255, 255, 0.05);
+                padding: 20px;
+                border-radius: 24px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <h4
+                style="
+                  color: var(--imperial-gold);
+                  margin-bottom: 15px;
+                  font-size: 0.9rem;
+                  letter-spacing: 1px;
+                "
+              >
+                SCAN TO PAY
+              </h4>
+              <div
+                style="
+                  background: white;
+                  padding: 10px;
+                  border-radius: 16px;
+                  display: inline-block;
+                  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+                "
+              >
+                <img
+                  src="./assets/qr.jpeg"
+                  alt="Payment QR Code"
+                  style="width: 140px; height: 140px; display: block"
+                />
+              </div>
+            </div>
+          </div>
         </div>
-        <h3>SSPP Pune</h3>
-        <p>
-          Advancing the field of pain medicine through<br />
-          education, research, and collaboration.
-        </p>
-        <div style="display: flex; gap: 16px; margin-top: 32px">
-          <a href="#"
-            style="color: white; background: rgba(255, 255, 255, 0.05); width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; transition: 0.3s;"><i
-              class="fab fa-facebook-f"></i></a>
-          <a href="#"
-            style="color: white; background: rgba(255, 255, 255, 0.05); width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; transition: 0.3s;"><i
-              class="fab fa-twitter"></i></a>
-          <a href="#"
-            style="color: white; background: rgba(255, 255, 255, 0.05); width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; transition: 0.3s;"><i
-              class="fab fa-linkedin-in"></i></a>
+
+        <!-- Right Column: Form -->
+        <div
+          class="contact-form-card reveal"
+          style="padding: 0; overflow: hidden"
+        >
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSdJfINlzdgkSquY9T4jTvUFCWV30Gk-CmVF064dbWt5YUscIA/viewform?embedded=true"
+            width="100%"
+            height="1000"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            style="display: block"
+            >Loading…</iframe
+          >
         </div>
       </div>
+    </main>
 
-      <div class="footer-links">
-        <h4>Quick Links</h4>
-        <a href="index.html">About Us</a>
-        <a href="Why_Join.html">Membership</a>
-        <a href="Annual_Meetings.html">Events</a>
-        <a href="Contact_us.html">Contact</a>
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-logo" style="flex: 1">
+          <div style="margin-bottom: 20px">
+            <img
+              src="./assets/logo.png"
+              style="max-width: 180px; height: auto"
+              alt="SSPP Logo"
+            />
+          </div>
+          <h3>SSPP Pune</h3>
+          <p
+            style="
+              color: #94a3b8;
+              font-size: 0.9rem;
+              margin-top: 0.5rem;
+              line-height: 1.6;
+            "
+          >
+            Advancing the field of pain medicine through<br />
+            education, research, and collaboration.
+          </p>
+          <div style="display: flex; gap: 15px; margin-top: 1.5rem">
+            <a
+              href="#"
+              style="
+                color: white;
+                background: rgba(255, 255, 255, 0.1);
+                width: 36px;
+                height: 36px;
+                display: grid;
+                place-items: center;
+                border-radius: 50%;
+              "
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a
+              href="#"
+              style="
+                color: white;
+                background: rgba(255, 255, 255, 0.1);
+                width: 36px;
+                height: 36px;
+                display: grid;
+                place-items: center;
+                border-radius: 50%;
+              "
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a
+              href="#"
+              style="
+                color: white;
+                background: rgba(255, 255, 255, 0.1);
+                width: 36px;
+                height: 36px;
+                display: grid;
+                place-items: center;
+                border-radius: 50%;
+              "
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+          </div>
+        </div>
+
+        <div class="footer-links" style="flex: 1">
+          <h4 style="color: var(--imperial-gold); margin-bottom: 1.2rem">
+            Quick Links
+          </h4>
+          <a href="index.html">About Us</a>
+          <a href="Why_Join.html">Membership</a>
+          <a href="Annual_Meetings.html">Events</a>
+          <a href="Contact_us.html">Contact</a>
+        </div>
+
+        <div class="footer-links" style="flex: 1">
+          <h4 style="color: var(--imperial-gold); margin-bottom: 1.2rem">
+            Contact
+          </h4>
+          <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1rem">
+            <i
+              class="fas fa-phone-alt"
+              style="color: var(--pune-saffron); margin-right: 10px"
+            ></i>
+            +91 73873 18075
+          </p>
+          <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1rem">
+            <i
+              class="fas fa-envelope"
+              style="color: var(--pune-saffron); margin-right: 10px"
+            ></i>
+            painscape2026pune@gmail.com
+          </p>
+          <p style="color: #cbd5e1; font-size: 0.9rem">
+            <i
+              class="fas fa-map-marker-alt"
+              style="color: var(--pune-saffron); margin-right: 10px"
+            ></i>
+            IMA House, Tilak Road, Pune
+          </p>
+        </div>
       </div>
-
-      <div class="footer-links">
-        <h4>Contact Detail</h4>
-        <p>
-          <i class="fas fa-envelope"></i>
-          contact@sspp-pune.org
-        </p>
-        <p>
-          <i class="fas fa-map-marker-alt"></i>
-          IMA House, Tilak Road, Pune
-        </p>
+      <div class="copyright">
+        &copy; 2025 Indian Society for Study of Pain (Pune Chapter). All rights
+        reserved.
       </div>
-    </div>
-    <div class="copyright">
-      &copy; 2025 Indian Society for Study of Pain (Pune Chapter). All rights reserved.
-    </div>
-  </footer>
+    </footer>
 
-  <!-- SCRIPTS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      gsap.registerPlugin(ScrollTrigger);
+    <!-- SCRIPTS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        gsap.registerPlugin(ScrollTrigger);
 
-      // Animation for revealing elements
-      gsap.utils.toArray('.reveal').forEach((el, i) => {
-        gsap.to(el, {
-          opacity: 1,
-          y: 0,
-          duration: 1.2,
-          delay: i * 0.1,
-          ease: "expo.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 85%",
-            toggleActions: "play none none none"
-          }
+        // Animation for revealing elements
+        gsap.utils.toArray(".reveal").forEach((el, i) => {
+          gsap.to(el, {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            delay: i * 0.1,
+            ease: "expo.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 85%",
+              toggleActions: "play none none none",
+            },
+          });
+        });
+
+        // Mouse following effect for background blobs
+        document.addEventListener("mousemove", (e) => {
+          const x = (e.clientX - window.innerWidth / 2) * 0.05;
+          const y = (e.clientY - window.innerHeight / 2) * 0.05;
+          gsap.to(".blob-1", { x: x, y: y, duration: 2, ease: "power2.out" });
+          gsap.to(".blob-2", { x: -x, y: -y, duration: 2, ease: "power2.out" });
+        });
+
+        // Smooth hover effects for info cards
+        const cards = document.querySelectorAll(
+          ".contact-info-card, .contact-form-card"
+        );
+        cards.forEach((card) => {
+          card.addEventListener("mouseenter", () => {
+            gsap.to(card, { scale: 1.02, duration: 0.4, ease: "power2.out" });
+          });
+          card.addEventListener("mouseleave", () => {
+            gsap.to(card, { scale: 1, duration: 0.4, ease: "power2.out" });
+          });
         });
       });
-
-      // Mouse following effect for background blobs
-      document.addEventListener('mousemove', (e) => {
-        const x = (e.clientX - window.innerWidth / 2) * 0.05;
-        const y = (e.clientY - window.innerHeight / 2) * 0.05;
-        gsap.to('.blob-1', { x: x, y: y, duration: 2, ease: "power2.out" });
-        gsap.to('.blob-2', { x: -x, y: -y, duration: 2, ease: "power2.out" });
-      });
-
-      // Smooth hover effects for info cards
-      const cards = document.querySelectorAll('.contact-info-card, .contact-form-card');
-      cards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-          gsap.to(card, { scale: 1.02, duration: 0.4, ease: "power2.out" });
-        });
-        card.addEventListener('mouseleave', () => {
-          gsap.to(card, { scale: 1, duration: 0.4, ease: "power2.out" });
-        });
-      });
-    });
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>

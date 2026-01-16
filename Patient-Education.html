@@ -1,565 +1,637 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patient Education Center - SSPP Pune</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Patient Education Center - SSPP Pune</title>
+    <!-- Theme CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Theme CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet" />
-
-  <!-- Reuse global styles for consistency (Assuming main styles are here or inline in existing pages as seen in Step 9) -->
-  <!-- Ideally we would link to a global style.css if it existed, but based on Step 9 index.html has inline styles. 
+    <!-- Reuse global styles for consistency (Assuming main styles are here or inline in existing pages as seen in Step 9) -->
+    <!-- Ideally we would link to a global style.css if it existed, but based on Step 9 index.html has inline styles. 
          We will include the CRITICAL variables and structure here to ensure it works standalone while matching. -->
-  <style>
-    :root {
-      --royal-blue: #0f172a;
-      --pune-saffron: #e76f51;
-      --imperial-gold: #fbbf24;
-      --container-width: 1240px;
-      --header-height: 90px;
-      --text-dark: #1e293b;
-      --bg-light: #fdfbf7;
-      --gradient-royal: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
-      --gradient-saffron: linear-gradient(135deg, #e76f51 0%, #d62828 100%);
-    }
+    <style>
+      :root {
+        /* Vibrant Heritage Colors */
+        --royal-blue: #0f172a;
+        --deep-ocean: #1e3a8a;
+        --pune-saffron: #e76f51;
+        --imperial-gold: #fbbf24;
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        /* Gradients */
+        --gradient-royal: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+        --gradient-gold: linear-gradient(45deg, #d4af37, #f9dc5c, #d4af37);
+        --gradient-saffron: linear-gradient(135deg, #e76f51 0%, #d62828 100%);
 
-    body {
-      font-family: "Poppins", sans-serif;
-      background-color: var(--bg-light);
-      color: var(--text-dark);
-      overflow-x: hidden;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
+        /* UI Elements */
+        --glass-light: rgba(255, 255, 255, 0.9);
+        --glass-dark: rgba(15, 23, 42, 0.6);
+        --text-dark: #1e293b;
+        --text-light: #f8fafc;
 
-    /* =========================================
-           2. NAVIGATION (Immersive Glass)
-           ========================================= */
-    header {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(20px);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    }
+        --container-width: 1240px;
+        --header-height: 90px;
+        --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    .nav-container {
-      max-width: var(--container-width);
-      margin: 0 auto;
-      min-width: 90vw;
-      height: var(--header-height);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 -42px;
-    }
-
-    .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .logo-box {
-      width: 48px;
-      height: 48px;
-      background: var(--gradient-royal);
-      color: var(--imperial-gold);
-      display: grid;
-      place-items: center;
-      border-radius: 12px;
-      font-size: 1.5rem;
-      box-shadow: 0 8px 20px -5px rgba(30, 58, 138, 0.4);
-    }
-
-    .logo-text {
-      font-weight: 800;
-      font-size: 1.5rem;
-      background: var(--gradient-royal);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      letter-spacing: -0.5px;
-    }
-
-    /* Desktop Nav - Row Aligned */
-    .desktop-nav {
-      display: none;
-    }
-
-    @media (min-width: 992px) {
-      .desktop-nav {
-        display: flex !important;
-        gap: 35px;
-        align-items: center;
+        /* Page Specific */
+        --bg-light: #fdfbf7;
+        --bg-paper: #fdfbf7;
+        --text-muted: #475569;
       }
 
-      .nav-link {
-        align-items: center;
-        gap: 6px;
-        display: flex;
-        justify-content: center;
-        text-decoration: none;
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: var(--bg-light);
         color: var(--text-dark);
-        font-weight: 600;
-        font-size: 0.95rem;
-        padding: 10px 0;
-        position: relative;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
       }
 
-      /* Cultural Underline Animation */
-      .nav-link::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0%;
-        height: 3px;
-        background: var(--gradient-saffron);
-        transition: width 0.3s ease;
-        border-radius: 2px;
+      /* =========================================
+             2. NAVIGATION (Immersive Glass)
+             ========================================= */
+      header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
       }
 
-      .nav-link:hover::after {
-        width: 100%;
+      .nav-container {
+        max-width: var(--container-width);
+        margin: 0 auto;
+        min-width: 90vw;
+        height: var(--header-height);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 -42px;
       }
 
-      /* Remove underline for buttons */
-      .nav-link.btn::after,
-      .btn::after {
-        display: none !important;
+      .logo-text {
+        font-weight: 800;
+        font-size: 1.5rem;
+        background: var(--gradient-royal);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.5px;
       }
 
-      /* Dropdowns */
-      .has-dropdown {
-        position: relative;
-      }
-
-      .dropdown-menu {
-        position: absolute;
-        top: 140%;
-        left: -20px;
-        background: white;
-        min-width: 260px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        border-radius: 12px;
-        padding: 15px 0;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(15px);
-        transition: all 0.4s var(--ease-elastic);
-        border-top: 4px solid var(--pune-saffron);
-      }
-
-      .has-dropdown:hover .dropdown-menu {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-        top: 100%;
-      }
-
-      .dropdown-item {
-        display: block;
-        padding: 10px 25px;
-        color: #475569;
-        text-decoration: none;
-        font-size: 0.9rem;
-        transition: all 0.2s;
-      }
-
-      .dropdown-item:hover {
-        background: #fff7ed;
-        color: var(--pune-saffron);
-        padding-left: 30px;
-      }
-    }
-
-    /* Mobile Menu */
-    .mobile-toggle {
-      font-size: 2.5rem;
-      background: none;
-      position: absolute;
-      border: none;
-      right: 45px;
-      cursor: pointer;
-      color: var(--royal-blue);
-    }
-
-    @media (min-width: 992px) {
-      .mobile-toggle {
+      /* Desktop Nav - Row Aligned */
+      .desktop-nav {
         display: none;
       }
-    }
 
-    @media (max-width: 991px) {
+      @media (min-width: 992px) {
+        .desktop-nav {
+          display: flex !important;
+          gap: 35px;
+          align-items: center;
+        }
 
-      /* Logo adjustment for mobile/tablet */
-      .nav-container img {
-        max-width: 65% !important;
+        .nav-link {
+          align-items: center;
+          gap: 6px;
+          display: flex;
+          justify-content: center;
+          text-decoration: none;
+          color: var(--text-dark);
+          font-weight: 600;
+          font-size: 0.95rem;
+          padding: 10px 0;
+          position: relative;
+        }
+
+        /* Cultural Underline Animation */
+        .nav-link::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0%;
+          height: 3px;
+          background: var(--gradient-saffron);
+          transition: width 0.3s ease;
+          border-radius: 2px;
+        }
+
+        .nav-link:hover::after {
+          width: 100%;
+        }
+
+        /* Remove underline for buttons */
+        .nav-link.btn::after,
+        .btn::after {
+          display: none !important;
+        }
+
+        /* Dropdowns */
+        .has-dropdown {
+          position: relative;
+        }
+
+        .dropdown-menu {
+          position: absolute;
+          top: 140%;
+          left: -20px;
+          background: white;
+          min-width: 260px;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+          border-radius: 12px;
+          padding: 15px 0;
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(15px);
+          transition: all 0.4s var(--ease-elastic);
+          border-top: 4px solid var(--pune-saffron);
+        }
+
+        .has-dropdown:hover .dropdown-menu {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+          top: 100%;
+        }
+
+        .dropdown-item {
+          display: block;
+          padding: 10px 25px;
+          color: #475569;
+          text-decoration: none;
+          font-size: 0.9rem;
+          transition: all 0.2s;
+        }
+
+        .dropdown-item:hover {
+          background: #fff7ed;
+          color: var(--pune-saffron);
+          padding-left: 30px;
+        }
       }
-    }
 
-    /* Mobile Active State */
-    .desktop-nav.active-mobile {
-      display: flex;
-      flex-direction: column;
-      position: fixed;
-      /* Fixed to cover screen or stick */
-      top: var(--header-height);
-      left: 0;
-      width: 100%;
-      height: calc(100vh - var(--header-height));
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(10px);
-      padding: 2rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      align-items: center;
-      /* Center horizontally */
-      justify-content: flex-start;
-      gap: 20px;
-      overflow-y: auto;
-      z-index: 999;
-    }
+      /* Mobile Menu */
+      .mobile-toggle {
+        font-size: 2.5rem;
+        background: none;
+        position: absolute;
+        border: none;
+        right: 45px;
+        cursor: pointer;
+        color: var(--royal-blue);
+      }
 
-    .desktop-nav.active-mobile .nav-link {
-      font-size: 1.1rem;
-      width: 100%;
-      text-align: center;
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    }
+      @media (min-width: 992px) {
+        .mobile-toggle {
+          display: none;
+        }
+      }
 
-    .desktop-nav.active-mobile .has-dropdown {
-      width: 100%;
-      text-align: center;
-    }
+      @media (max-width: 991px) {
+        /* Logo adjustment for mobile/tablet */
+        .nav-container img {
+          max-width: 65% !important;
+        }
+      }
 
-    .desktop-nav.active-mobile .dropdown-menu {
-      position: static;
-      box-shadow: none;
-      border: none;
-      background: transparent;
-      opacity: 1;
-      visibility: visible;
-      transform: none;
-      padding: 0;
-      margin-top: 10px;
-      display: none;
-    }
+      /* Mobile Active State */
+      /* Mobile Active State */
+      .desktop-nav.active-mobile {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        /* Fixed to cover screen or stick */
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        height: calc(100vh - var(--header-height));
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        align-items: center;
+        /* Center horizontally */
+        justify-content: flex-start;
+        gap: 20px;
+        overflow-y: auto;
+        z-index: 999;
+      }
 
-    .desktop-nav.active-mobile .has-dropdown:hover .dropdown-menu {
-      display: block;
-    }
+      .desktop-nav.active-mobile .nav-link {
+        font-size: 1.1rem;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      }
 
-    .btn {
-      padding: 14px 32px;
-      border-radius: 50px;
-      font-weight: 600;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-      border: 2px solid transparent;
-    }
+      .desktop-nav.active-mobile .has-dropdown {
+        width: 100%;
+        text-align: center;
+      }
 
-    .btn-primary {
-      background: var(--gradient-saffron);
-      color: white;
-      box-shadow: 0 10px 25px -5px rgba(231, 111, 81, 0.4);
-    }
+      .desktop-nav.active-mobile .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border: none;
+        background: transparent;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        padding: 0;
+        margin-top: 10px;
+        display: none;
+        /* Hidden by default, maybe toggle? or just show all */
+      }
 
-    .btn:hover {
-      transform: translateY(-4px) scale(1.02);
-    }
+      /* Simple show for now or let them be valid links */
+      .desktop-nav.active-mobile .has-dropdown:hover .dropdown-menu {
+        display: block;
+      }
 
-    /* =========================================
+      .btn {
+        padding: 14px 32px;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border: 2px solid transparent;
+      }
+
+      .btn-primary {
+        background: var(--gradient-saffron);
+        color: white;
+        box-shadow: 0 10px 25px -5px rgba(231, 111, 81, 0.4);
+      }
+
+      .btn:hover {
+        transform: translateY(-4px) scale(1.02);
+      }
+
+      /* =========================================
            7. FOOTER (Immutable Structure, Styled)
            ========================================= */
-    footer {
-      background: #0f172a;
-      color: #e2e8f0;
-      padding: 4rem 20px 2rem 20px;
-      border-top: 5px solid var(--pune-saffron);
-    }
-
-    .footer-container {
-      max-width: var(--container-width);
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 3rem;
-    }
-
-    @media (min-width: 768px) {
-      .footer-container {
-        flex-direction: row;
-        justify-content: space-between;
+      footer {
+        background: #0f172a;
+        color: #e2e8f0;
+        padding: 4rem 20px 2rem 20px;
+        border-top: 5px solid var(--pune-saffron);
       }
-    }
 
-    .footer-logo h3 {
-      color: white;
-      margin-bottom: 0.5rem;
-      font-size: 1.5rem;
-    }
+      .footer-container {
+        max-width: var(--container-width);
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+      }
 
-    .footer-links a {
-      color: #94a3b8;
-      text-decoration: none;
-      display: block;
-      margin-bottom: 0.8rem;
-      transition: 0.3s;
-    }
+      @media (min-width: 768px) {
+        .footer-container {
+          flex-direction: row;
+          justify-content: space-between;
+        }
+      }
 
-    .footer-links a:hover {
-      color: var(--imperial-gold);
-      padding-left: 5px;
-    }
+      .footer-logo h3 {
+        color: white;
+        margin-bottom: 0.5rem;
+        font-size: 1.5rem;
+      }
 
-    .copyright {
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      text-align: center;
-      font-size: 0.9rem;
-      color: #64748b;
-    }
-  </style>
+      .footer-links a {
+        color: #94a3b8;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 0.8rem;
+        transition: 0.3s;
+      }
 
-  <!-- Patient Education CSS -->
-  <link rel="stylesheet" href="./assets/css/patient-education.css" />
+      .footer-links a:hover {
+        color: var(--imperial-gold);
+        padding-left: 5px;
+      }
 
-  <!-- Scripts -->
-  <script src="./assets/gsap.min.js" defer></script>
-  <script src="./assets/js/pages/patient-education.js" defer></script>
-</head>
+      .copyright {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+        font-size: 0.9rem;
+        color: #64748b;
+      }
+    </style>
 
-<body>
-  <!-- HEADER & NAVBAR -->
-  <header>
-    <div class="nav-container">
-      <img src="./assets/logo.png" style="max-width: 20%" />
+    <!-- Patient Education CSS -->
+    <link rel="stylesheet" href="./assets/css/patient-education.css" />
 
-      <button class="mobile-toggle" onclick="document.querySelector('.desktop-nav').classList.toggle('active-mobile')">
-        <i class="fas fa-bars"></i>
-      </button>
+    <!-- Scripts -->
+    <script src="./assets/gsap.min.js" defer></script>
+    <script src="./assets/js/pages/patient-education.js" defer></script>
+  </head>
 
-      <!-- Navbar -->
-      <nav class="desktop-nav">
-        <a href="index.html" class="nav-link">Home</a>
+  <body>
+    <!-- HEADER & NAVBAR -->
+    <header>
+      <div class="nav-container">
+        <img src="./assets/logo.png" style="max-width: 20%" />
 
-        <div class="has-dropdown">
-          <span class="nav-link">About <i class="fas fa-chevron-down" style="font-size: 0.7em"></i></span>
-          <div class="dropdown-menu">
-            <a href="Secretary_message.html" class="dropdown-item">Secretary's Message</a>
-            <a href="Vision_Mission.html" class="dropdown-item">Vision Mission</a>
-            <div class="dropdown-header" style="
+        <button
+          class="mobile-toggle"
+          onclick="document.querySelector('.desktop-nav').classList.toggle('active-mobile')"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Navbar -->
+        <nav class="desktop-nav">
+          <a href="index.html" class="nav-link">Home</a>
+
+          <div class="has-dropdown">
+            <span class="nav-link"
+              >About <i class="fas fa-chevron-down" style="font-size: 0.7em"></i
+            ></span>
+            <div class="dropdown-menu">
+              <a href="Secretary_message.html" class="dropdown-item"
+                >Secretary's Message</a
+              >
+              <a href="Vision_Mission.html" class="dropdown-item"
+                >Vision Mission</a
+              >
+              <div
+                class="dropdown-header"
+                style="
                   padding: 8px 25px;
                   font-weight: 700;
                   font-size: 0.75rem;
                   color: var(--royal-blue);
                   opacity: 0.6;
-                ">
-              GOVERNANCE
+                "
+              >
+                GOVERNANCE
+              </div>
+              <a
+                href="GoverningCouncil.html"
+                class="dropdown-item"
+                style="padding-left: 35px"
+                >Governing Council</a
+              >
+              <a
+                href="Strategic_Plan.html"
+                class="dropdown-item"
+                style="padding-left: 35px"
+                >Strategic Plan</a
+              >
+              <a href="History.html" class="dropdown-item">History</a>
+              <a href="Annual_Report.html" class="dropdown-item"
+                >Annual Report</a
+              >
             </div>
-            <a href="GoverningCouncil.html" class="dropdown-item" style="padding-left: 35px">Governing Council</a>
-            <a href="Strategic_Plan.html" class="dropdown-item" style="padding-left: 35px">Strategic Plan</a>
-            <a href="History.html" class="dropdown-item">History</a>
-            <a href="Annual_Report.html" class="dropdown-item">Annual Report</a>
           </div>
-        </div>
 
-        <div class="has-dropdown">
-          <span class="nav-link">Membership
-            <i class="fas fa-chevron-down" style="font-size: 0.7em"></i></span>
-          <div class="dropdown-menu">
-            <a href="Why_Join.html" class="dropdown-item">Why Join?</a>
-            <a href="Apply_Online.html" class="dropdown-item">Apply Online</a>
+          <div class="has-dropdown">
+            <span class="nav-link"
+              >Membership
+              <i class="fas fa-chevron-down" style="font-size: 0.7em"></i
+            ></span>
+            <div class="dropdown-menu">
+              <a href="Why_Join.html" class="dropdown-item">Why Join?</a>
+              <a href="Apply_Online.html" class="dropdown-item">Apply Online</a>
+            </div>
           </div>
-        </div>
 
-        <a href="Activity.html" class="nav-link">Activity</a>
+          <a href="Activity.html" class="nav-link">Activity</a>
 
-        <div class="has-dropdown">
-          <span class="nav-link">Meetings
-            <i class="fas fa-chevron-down" style="font-size: 0.7em"></i></span>
-          <div class="dropdown-menu">
-            <a href="Annual_Meetings.html" class="dropdown-item">Annual Meeting</a>
-            <a href="Upcomming_Meetings.html" class="dropdown-item">Upcoming Meeting</a>
+          <div class="has-dropdown">
+            <span class="nav-link"
+              >Meetings
+              <i class="fas fa-chevron-down" style="font-size: 0.7em"></i
+            ></span>
+            <div class="dropdown-menu">
+              <a href="Annual_Meetings.html" class="dropdown-item"
+                >Annual Meeting</a
+              >
+              <a href="painscape.html#masterclasses" class="dropdown-item"
+                >Upcoming Meeting</a
+              >
+            </div>
           </div>
-        </div>
 
-        <a href="Patient-Education.html" class="nav-link active" style="color: var(--pune-saffron)">Patient
-          Education</a>
-        <a href="Gallery.html" class="nav-link">Gallery</a>
-        <a href="Contact_us.html" class="nav-link btn btn-primary" style="padding: 8px 25px; color: white">Contact
-          Us</a>
-        <a href="painscape.html" class="nav-link btn"
-          style="padding: 6px 15px; color: var(--royal-blue); background: var(--gradient-gold); margin-left: 5px; font-weight: 700; box-shadow: 0 0 20px rgba(251, 191, 36, 0.6); border: 2px solid white; display: inline-flex; align-items: center; gap: 6px;">
-          <i class="fas fa-crown"></i>
-          PAINSCAPE 2026
+          <a
+            href="Patient-Education.html"
+            class="nav-link active"
+            style="color: var(--pune-saffron); font-weight: 600"
+            >Patient Education</a
+          >
+          <a href="Gallery.html" class="nav-link">Gallery</a>
+          <a
+            href="Contact_us.html"
+            class="nav-link btn btn-primary"
+            style="padding: 8px 25px; color: white"
+            >Contact Us</a
+          >
+          <a
+            href="painscape.html"
+            class="nav-link btn"
+            style="
+              padding: 6px 15px;
+              color: var(--royal-blue);
+              background: var(--gradient-gold);
+              margin-left: 5px;
+              font-weight: 700;
+              box-shadow: 0 0 20px rgba(251, 191, 36, 0.6);
+              border: 2px solid white;
+              display: inline-flex;
+              align-items: center;
+              gap: 6px;
+            "
+          >
+            <i class="fas fa-crown"></i>
+            PAINSCAPE 2026
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="edu-hero">
+      <div class="edu-hero-content">
+        <h1 class="edu-title">Knowledge is the First Step to Healing</h1>
+        <p class="edu-subtitle">
+          Pain can be complex, but understanding it shouldn't be. <br />
+          We provide medically accurate, easy-to-understand resources to help
+          you make informed decisions about your health.
+        </p>
+      </div>
+    </section>
+
+    <!-- TOPIC GRID -->
+    <section class="edu-grid-section">
+      <div class="topic-grid">
+        <!-- Topic 1 -->
+        <a href="patient-education/chronic-pain.html" class="topic-card">
+          <div class="topic-icon-wrap">
+            <i class="fas fa-brain"></i>
+          </div>
+          <h3>Understanding Chronic Pain</h3>
+          <p>
+            Why pain persists after healing, how the nervous system adapts, and
+            the difference between clear injury and chronic conditions.
+          </p>
+          <div class="topic-link-text">
+            Read Article <i class="fas fa-arrow-right"></i>
+          </div>
         </a>
-      </nav>
+
+        <!-- Topic 2 -->
+        <a href="#" class="topic-card">
+          <div class="topic-icon-wrap">
+            <!-- Self-explanatory Spine SVG -->
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 4v2"></path>
+              <path d="M10 8h4"></path>
+              <path d="M12 8v3"></path>
+              <path d="M10 13h4"></path>
+              <path d="M12 13v3"></path>
+              <path d="M10 18h4"></path>
+              <path d="M12 18v2"></path>
+              <path d="M8 8a4 4 0 0 1 8 0"></path>
+              <!-- Top vertebra hint -->
+              <path d="M9 13a3 3 0 0 1 6 0"></path>
+              <!-- Mid vertebra hint -->
+              <path d="M9 18a3 3 0 0 1 6 0"></path>
+              <!-- Low vertebra hint -->
+            </svg>
+          </div>
+          <h3>Back & Spine Care</h3>
+          <p>
+            From slip discs to sciatica—learn about common spine conditions and
+            the nonsurgical ways to treat them effectively.
+          </p>
+          <div class="topic-link-text">Coming Soon</div>
+        </a>
+
+        <!-- Topic 3 -->
+        <a href="#" class="topic-card">
+          <div class="topic-icon-wrap">
+            <i class="fas fa-bone"></i>
+          </div>
+          <h3>Joint & Arthritis Pain</h3>
+          <p>
+            Managing knee, shoulder, and hip pain. Understanding osteoarthritis
+            and how to maintain mobility as you age.
+          </p>
+          <div class="topic-link-text">Coming Soon</div>
+        </a>
+
+        <!-- Topic 4 -->
+        <a href="#" class="topic-card">
+          <div class="topic-icon-wrap">
+            <i class="fas fa-user-injured"></i>
+          </div>
+          <h3>Neck & Spondylosis</h3>
+          <p>
+            "Text neck," stiffness, and radiating arm pain. Simple ergonomic
+            changes and treatments for cervical health.
+          </p>
+          <div class="topic-link-text">Coming Soon</div>
+        </a>
+
+        <!-- Topic 5 -->
+        <a href="#" class="topic-card">
+          <div class="topic-icon-wrap">
+            <i class="fas fa-procedures"></i>
+          </div>
+          <h3>Interventional Procedures</h3>
+          <p>
+            What are nerve blocks, epidurals, and ablations? Demystifying the
+            minimally invasive procedures we use.
+          </p>
+          <div class="topic-link-text">Coming Soon</div>
+        </a>
+
+        <!-- Topic 6 -->
+        <a href="#" class="topic-card">
+          <div class="topic-icon-wrap">
+            <i class="fas fa-notes-medical"></i>
+          </div>
+          <h3>When to see a Doctor?</h3>
+          <p>
+            Red flags and warning signs. How to know if your pain requires
+            immediate specialist attention.
+          </p>
+          <div class="topic-link-text">Coming Soon</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- DISCLAIMER -->
+    <div class="article-container" style="padding-top: 0">
+      <div class="edu-disclaimer">
+        <i class="fas fa-info-circle" style="margin-right: 5px"></i>
+        This content is for educational purposes only and does not constitute
+        medical advice. Always consult a qualified specialist for your specific
+        condition.
+      </div>
     </div>
-  </header>
 
-  <!-- HERO SECTION -->
-  <section class="edu-hero">
-    <div class="edu-hero-content">
-      <h1 class="edu-title">Knowledge is the First Step to Healing</h1>
-      <p class="edu-subtitle">
-        Pain can be complex, but understanding it shouldn't be. <br />
-        We provide medically accurate, easy-to-understand resources to help
-        you make informed decisions about your health.
-      </p>
-    </div>
-  </section>
-
-  <!-- TOPIC GRID -->
-  <section class="edu-grid-section">
-    <div class="topic-grid">
-      <!-- Topic 1 -->
-      <a href="patient-education/chronic-pain.html" class="topic-card">
-        <div class="topic-icon-wrap">
-          <i class="fas fa-brain"></i>
-        </div>
-        <h3>Understanding Chronic Pain</h3>
-        <p>
-          Why pain persists after healing, how the nervous system adapts, and
-          the difference between clear injury and chronic conditions.
-        </p>
-        <div class="topic-link-text">
-          Read Article <i class="fas fa-arrow-right"></i>
-        </div>
-      </a>
-
-      <!-- Topic 2 -->
-      <a href="#" class="topic-card">
-        <div class="topic-icon-wrap">
-          <!-- Self-explanatory Spine SVG -->
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 4v2"></path>
-            <path d="M10 8h4"></path>
-            <path d="M12 8v3"></path>
-            <path d="M10 13h4"></path>
-            <path d="M12 13v3"></path>
-            <path d="M10 18h4"></path>
-            <path d="M12 18v2"></path>
-            <path d="M8 8a4 4 0 0 1 8 0"></path>
-            <!-- Top vertebra hint -->
-            <path d="M9 13a3 3 0 0 1 6 0"></path>
-            <!-- Mid vertebra hint -->
-            <path d="M9 18a3 3 0 0 1 6 0"></path>
-            <!-- Low vertebra hint -->
-          </svg>
-        </div>
-        <h3>Back & Spine Care</h3>
-        <p>
-          From slip discs to sciatica—learn about common spine conditions and
-          the nonsurgical ways to treat them effectively.
-        </p>
-        <div class="topic-link-text">Coming Soon</div>
-      </a>
-
-      <!-- Topic 3 -->
-      <a href="#" class="topic-card">
-        <div class="topic-icon-wrap">
-          <i class="fas fa-bone"></i>
-        </div>
-        <h3>Joint & Arthritis Pain</h3>
-        <p>
-          Managing knee, shoulder, and hip pain. Understanding osteoarthritis
-          and how to maintain mobility as you age.
-        </p>
-        <div class="topic-link-text">Coming Soon</div>
-      </a>
-
-      <!-- Topic 4 -->
-      <a href="#" class="topic-card">
-        <div class="topic-icon-wrap">
-          <i class="fas fa-user-injured"></i>
-        </div>
-        <h3>Neck & Spondylosis</h3>
-        <p>
-          "Text neck," stiffness, and radiating arm pain. Simple ergonomic
-          changes and treatments for cervical health.
-        </p>
-        <div class="topic-link-text">Coming Soon</div>
-      </a>
-
-      <!-- Topic 5 -->
-      <a href="#" class="topic-card">
-        <div class="topic-icon-wrap">
-          <i class="fas fa-procedures"></i>
-        </div>
-        <h3>Interventional Procedures</h3>
-        <p>
-          What are nerve blocks, epidurals, and ablations? Demystifying the
-          minimally invasive procedures we use.
-        </p>
-        <div class="topic-link-text">Coming Soon</div>
-      </a>
-
-      <!-- Topic 6 -->
-      <a href="#" class="topic-card">
-        <div class="topic-icon-wrap">
-          <i class="fas fa-notes-medical"></i>
-        </div>
-        <h3>When to see a Doctor?</h3>
-        <p>
-          Red flags and warning signs. How to know if your pain requires
-          immediate specialist attention.
-        </p>
-        <div class="topic-link-text">Coming Soon</div>
-      </a>
-    </div>
-  </section>
-
-  <!-- DISCLAIMER -->
-  <div class="article-container" style="padding-top: 0">
-    <div class="edu-disclaimer">
-      <i class="fas fa-info-circle" style="margin-right: 5px"></i>
-      This content is for educational purposes only and does not constitute
-      medical advice. Always consult a qualified specialist for your specific
-      condition.
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-container">
-      <div class="footer-logo" style="flex: 1">
-        <div style="margin-bottom: 20px">
-          <img src="./assets/logo.png" style="max-width: 180px; height: auto" alt="SSPP Logo" />
-        </div>
-        <h3>SSPP Pune</h3>
-        <p style="
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-logo" style="flex: 1">
+          <div style="margin-bottom: 20px">
+            <img
+              src="./assets/logo.png"
+              style="max-width: 180px; height: auto"
+              alt="SSPP Logo"
+            />
+          </div>
+          <h3>SSPP Pune</h3>
+          <p
+            style="
               color: #94a3b8;
               font-size: 0.9rem;
               margin-top: 0.5rem;
               line-height: 1.6;
-            ">
-          Advancing the field of pain medicine through<br />
-          education, research, and collaboration.
-        </p>
-        <div style="display: flex; gap: 15px; margin-top: 1.5rem">
-          <a href="#" style="
+            "
+          >
+            Advancing the field of pain medicine through<br />
+            education, research, and collaboration.
+          </p>
+          <div style="display: flex; gap: 15px; margin-top: 1.5rem">
+            <a
+              href="#"
+              style="
                 color: white;
                 background: rgba(255, 255, 255, 0.1);
                 width: 36px;
@@ -567,8 +639,12 @@
                 display: grid;
                 place-items: center;
                 border-radius: 50%;
-              "><i class="fab fa-facebook-f"></i></a>
-          <a href="#" style="
+              "
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a
+              href="#"
+              style="
                 color: white;
                 background: rgba(255, 255, 255, 0.1);
                 width: 36px;
@@ -576,8 +652,12 @@
                 display: grid;
                 place-items: center;
                 border-radius: 50%;
-              "><i class="fab fa-twitter"></i></a>
-          <a href="#" style="
+              "
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a
+              href="#"
+              style="
                 color: white;
                 background: rgba(255, 255, 255, 0.1);
                 width: 36px;
@@ -585,39 +665,46 @@
                 display: grid;
                 place-items: center;
                 border-radius: 50%;
-              "><i class="fab fa-linkedin-in"></i></a>
+              "
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+          </div>
+        </div>
+
+        <div class="footer-links" style="flex: 1">
+          <h4 style="color: var(--imperial-gold); margin-bottom: 1.2rem">
+            Quick Links
+          </h4>
+          <a href="index.html">About Us</a>
+          <a href="Why_Join.html">Membership</a>
+          <a href="Annual_Meetings.html">Events</a>
+          <a href="Contact_us.html">Contact</a>
+        </div>
+
+        <div class="footer-links" style="flex: 1">
+          <h4 style="color: var(--imperial-gold); margin-bottom: 1.2rem">
+            Contact
+          </h4>
+          <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1rem">
+            <i
+              class="fas fa-envelope"
+              style="color: var(--pune-saffron); margin-right: 10px"
+            ></i>
+            contact@sspp-pune.org
+          </p>
+          <p style="color: #cbd5e1; font-size: 0.9rem">
+            <i
+              class="fas fa-map-marker-alt"
+              style="color: var(--pune-saffron); margin-right: 10px"
+            ></i>
+            IMA House, Tilak Road, Pune
+          </p>
         </div>
       </div>
-
-      <div class="footer-links" style="flex: 1">
-        <h4 style="color: var(--imperial-gold); margin-bottom: 1.2rem">
-          Quick Links
-        </h4>
-        <a href="index.html">About Us</a>
-        <a href="Why_Join.html">Membership</a>
-        <a href="Annual_Meetings.html">Events</a>
-        <a href="Contact_us.html">Contact</a>
+      <div class="copyright">
+        &copy; 2025 Indian Society for Study of Pain (Pune Chapter). All rights
+        reserved.
       </div>
-
-      <div class="footer-links" style="flex: 1">
-        <h4 style="color: var(--imperial-gold); margin-bottom: 1.2rem">
-          Contact
-        </h4>
-        <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1rem">
-          <i class="fas fa-envelope" style="color: var(--pune-saffron); margin-right: 10px"></i>
-          contact@sspp-pune.org
-        </p>
-        <p style="color: #cbd5e1; font-size: 0.9rem">
-          <i class="fas fa-map-marker-alt" style="color: var(--pune-saffron); margin-right: 10px"></i>
-          IMA House, Tilak Road, Pune
-        </p>
-      </div>
-    </div>
-    <div class="copyright">
-      &copy; 2025 Indian Society for Study of Pain (Pune Chapter). All rights
-      reserved.
-    </div>
-  </footer>
-</body>
-
+    </footer>
+  </body>
 </html>
