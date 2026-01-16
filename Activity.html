@@ -923,6 +923,87 @@
         font-size: 0.9rem;
         color: #64748b;
       }
+
+      /* Mobile Active State - REPAIRED */
+      .desktop-nav.active-mobile {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        /* Fixed to cover screen or stick */
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        height: calc(100vh - var(--header-height));
+        background: #ffffff; /* Use solid white for clarity per request */
+        /* backdrop-filter: blur(10px); Removed since solid bg is requested/safer */
+        padding: 20px 0; /* Add top padding per container rules */
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        align-items: center;
+        /* Center horizontally */
+        justify-content: flex-start;
+        gap: 15px; /* Adjust gap */
+        overflow-y: auto;
+        z-index: 999;
+        text-align: center; /* Ensure text alignment */
+      }
+
+      .desktop-nav.active-mobile .nav-link {
+        font-size: 1.1rem;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+        /* STRICT RULES */
+        text-decoration: none !important;
+        color: #333333;
+        font-weight: 500;
+        display: block; /* Ensure full width click area */
+      }
+
+      .desktop-nav.active-mobile .nav-link:hover {
+        color: #e65100; /* Orange/Brand Color */
+      }
+
+      /* Buttons in Mobile Menu */
+      .desktop-nav.active-mobile .btn {
+        width: fit-content;
+        max-width: 80%;
+        margin: 10px auto;
+        display: inline-flex; /* Maintain pill shape inline-flex behavior but block-like positioning */
+        padding: 10px 20px;
+      }
+
+      .desktop-nav.active-mobile .has-dropdown {
+        width: 100%;
+        text-align: center;
+      }
+
+      .desktop-nav.active-mobile .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border: none;
+        background: transparent;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        padding: 0;
+        margin-top: 5px;
+        display: none;
+        /* Hidden by default, maybe toggle? or just show all */
+        border-top: none; /* Remove border top if present */
+      }
+
+      /* Simple show for now or let them be valid links */
+      .desktop-nav.active-mobile .has-dropdown:hover .dropdown-menu {
+        display: block;
+      }
+
+      /* Mobile dropdown items */
+      .desktop-nav.active-mobile .dropdown-item {
+        padding: 8px 0;
+        color: #555;
+      }
     </style>
   </head>
 
@@ -941,7 +1022,12 @@
 
         <!-- Navbar -->
         <nav class="desktop-nav">
-          <a href="index.html" class="nav-link">Home</a>
+          <a
+            href="index.html"
+            class="nav-link"
+            style="color: var(--pune-saffron)"
+            >Home</a
+          >
 
           <div class="has-dropdown">
             <span class="nav-link"
@@ -996,12 +1082,7 @@
             </div>
           </div>
 
-          <a
-            href="Activity.html"
-            class="nav-link active"
-            style="color: var(--pune-saffron); font-weight: 600"
-            >Activity</a
-          >
+          <a href="Activity.html" class="nav-link">Activity</a>
 
           <div class="has-dropdown">
             <span class="nav-link"
@@ -1061,25 +1142,6 @@
           outreach, and academic achievements driving the future of Pain
           Medicine.
         </p>
-
-        <div class="stat-bar">
-          <div class="stat-item">
-            <div class="stat-val">30+</div>
-            <div class="stat-label">Events</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-val">12</div>
-            <div class="stat-label">Workshops</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-val">05</div>
-            <div class="stat-label">Awards</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-val">1k+</div>
-            <div class="stat-label">Lives Touched</div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -1096,17 +1158,6 @@
       <!-- Content Area -->
       <main class="content-area" id="content-projector">
         <!-- Filter Controls -->
-        <div class="filter-bar">
-          <span class="filter-label">Filter by:</span>
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="Conference">
-            Conferences
-          </button>
-          <button class="filter-btn" data-filter="Workshop">Workshops</button>
-          <button class="filter-btn" data-filter="Camp">Camps</button>
-          <button class="filter-btn" data-filter="Award">Awards</button>
-          <button class="filter-btn" data-filter="Social">Social</button>
-        </div>
 
         <!-- Javascript will inject Month Sections -->
       </main>
@@ -1220,170 +1271,6 @@
       // --- Activity Data ---
       // EXACT DATA PRESERVED AS PER REQUIREMENTS
       const activities = [
-        // --- DECEMBER 2024 ---
-        {
-          month: "December 2024",
-          title: "MIPSICON Annual CME & Cadaveric Program",
-          desc: "Dr. Sanjog acting as Organizing Secretary and Faculty at Navi Mumbai.",
-          type: "Conference",
-          icon: "fa-book-medical",
-        },
-        {
-          month: "December 2024",
-          title: "PRASHA: Hybrid Pain Orientation Course",
-          desc: "Online plus offline hybrid course organized at Bharti Vidyapeeth.",
-          type: "Academic",
-          icon: "fa-laptop-medical",
-        },
-        {
-          month: "December 2024",
-          title: "10th Spine Weekend 2024",
-          desc: "Dr. Priya Rathi as faculty speaking on 'Radiofrequency ablation in Lumbosacral pain'.",
-          type: "Conference",
-          icon: "fa-user-md",
-        },
-        {
-          month: "December 2024",
-          title: "Centenary of Mahilya Vidyalay",
-          desc: "Dr. Madhuri Lokapur attended celebrations founded by her grandparents.",
-          type: "Social",
-          icon: "fa-users",
-        },
-
-        // --- JANUARY 2025 ---
-        {
-          month: "January 2025",
-          title: "Orthobiologics Awareness Article",
-          desc: "Dr. Kiran Shete published an article on MSK conditions.",
-          type: "Media",
-          icon: "fa-newspaper",
-        },
-        {
-          month: "January 2025",
-          title: "SSPP Webinar: The Ozone Debate",
-          desc: "Debate on 'Ozone, a hidden weapon in pain physician armamentarium'.",
-          type: "Webinar",
-          icon: "fa-video",
-        },
-        {
-          month: "January 2025",
-          title: "CME on Knee Conundrum (Miraj)",
-          desc: "Organized by ISSP Miraj. Faculties: Dr. Sanjog, Dr. Varshali, Dr. Varsha, Dr. Asha.",
-          type: "Conference",
-          icon: "fa-bone",
-        },
-        {
-          month: "January 2025",
-          title: "Endurance India First Aid Services",
-          desc: "Dr. Sanjog & Team JEEVISHA provided medical support for the tournament.",
-          type: "Camp",
-          icon: "fa-medkit",
-        },
-
-        // --- FEBRUARY 2025 ---
-        {
-          month: "February 2025",
-          title: "FIAPM Pass-outs Gathering",
-          desc: "Dinner gathering organized by the SSPP Family.",
-          type: "Social",
-          icon: "fa-glass-cheers",
-        },
-        {
-          month: "February 2025",
-          title: "Free BMD & Medical Camp",
-          desc: "Organized by Dr. Sanjog Mekewar in a residential society.",
-          type: "Camp",
-          icon: "fa-heartbeat",
-        },
-
-        // --- MARCH 2025 ---
-        {
-          month: "March 2025",
-          title: "BEST CITY BRANCH AWARD",
-          desc: "SSPP won the award for the 5th consecutive time at ISSPCON 2025.",
-          type: "Award",
-          icon: "fa-trophy",
-        },
-        {
-          month: "March 2025",
-          title: "USG Guided Dry Needling Workshop",
-          desc: "Dr. Priya Rathi was part of the organizing team and faculty in Mumbai.",
-          type: "Workshop",
-          icon: "fa-syringe",
-        },
-        {
-          month: "March 2025",
-          title: "Women's Pain Management Camp",
-          desc: "Dr. Kanchan Godase provided free consultations for women.",
-          type: "Camp",
-          icon: "fa-female",
-        },
-        {
-          month: "March 2025",
-          title: "RESCON Oral Paper Presentation",
-          desc: "Dr. Amruta presented on 'Knowledge and Attitude regarding Chronic Pain'.",
-          type: "Academic",
-          icon: "fa-file-alt",
-        },
-        {
-          month: "March 2025",
-          title: "SSPP Webinar: Post Viral Sequelae",
-          desc: "Debate on 'Role of Pain Physician in Post Viral Sequelae Management'.",
-          type: "Webinar",
-          icon: "fa-video",
-        },
-        {
-          month: "March 2025",
-          title: "European Congress of Radiology (Vienna)",
-          desc: "Dr. Kirti Pawar presented research on the Popliteus muscle.",
-          type: "Conference",
-          icon: "fa-plane",
-        },
-        {
-          month: "March 2025",
-          title: "Bone Density Camp & Women's Day",
-          desc: "Dr. Priya Rathi (Hasya Club) and Dr. Aparna Desai (HDFC School/John Deere).",
-          type: "Camp",
-          icon: "fa-child",
-        },
-
-        // --- APRIL 2025 ---
-        {
-          month: "April 2025",
-          title: "Pain Connect 2025 (Austin, USA)",
-          desc: "Dr. Priya Rathi invited as faculty by American Academy of Pain Medicine.",
-          type: "Conference",
-          icon: "fa-globe-americas",
-        },
-        {
-          month: "April 2025",
-          title: "GP Pain Awareness Talk",
-          desc: "Organized by Dr. Sanjog Mekewar for General Practitioners.",
-          type: "Academic",
-          icon: "fa-chalkboard-teacher",
-        },
-        {
-          month: "April 2025",
-          title: "4th Int. Conf. on MSK Pain (Railway Hospital)",
-          desc: "Dr. Kirti Pawar invited as Faculty. Theme: Degeneration to Regeneration.",
-          type: "Conference",
-          icon: "fa-train",
-        },
-        {
-          month: "April 2025",
-          title: "Painex Corporate Health Camps",
-          desc: "Camps at K Nest, Dagdusheth Ganpati, and Mahindra & Mahindra.",
-          type: "Camp",
-          icon: "fa-industry",
-        },
-        {
-          month: "April 2025",
-          title: "SSPP Academic Achievements",
-          desc: "Dr. Varshali Kenia elected to ISSP GC. Multiple members completed FIAPM Fellowship.",
-          type: "Award",
-          icon: "fa-medal",
-        },
-
         // --- MAY 2025 ---
         {
           month: "May 2025",

@@ -96,17 +96,13 @@
         letter-spacing: 2px;
         color: var(--text-main);
         font-weight: 700;
-        position: absolute;
-        top: -94px;
-        left: 0;
-        z-index: 101;
-        /* Higher than nav-links */
-        height: 200px;
-        display: block;
+        display: flex;
+        align-items: center;
       }
 
       .logo img {
-        height: 200px;
+        height: 60px;
+        width: auto;
         display: block;
       }
 
@@ -1702,8 +1698,18 @@
 
           <!-- Form Column -->
           <div class="form-card" style="padding: 0; overflow: hidden">
-            <h3 style="color: var(--royal-blue); margin: 30px 30px 10px 30px; font-family: 'Playfair Display';">Step 2: Annual Conference Registration</h3>
-             <p style="color: var(--text-muted); margin: 0 30px 20px 30px;">Fill out the form below to finalize your registration.</p>
+            <h3
+              style="
+                color: var(--royal-blue);
+                margin: 30px 30px 10px 30px;
+                font-family: 'Playfair Display';
+              "
+            >
+              Step 2: Annual Conference Registration
+            </h3>
+            <p style="color: var(--text-muted); margin: 0 30px 20px 30px">
+              Fill out the form below to finalize your registration.
+            </p>
             <iframe
               src="https://docs.google.com/forms/d/e/1FAIpQLSdJfINlzdgkSquY9T4jTvUFCWV30Gk-CmVF064dbWt5YUscIA/viewform?embedded=true"
               width="100%"
@@ -1712,7 +1718,8 @@
               marginheight="0"
               marginwidth="0"
               style="display: block"
-              >Loading…</iframe>
+              >Loading…</iframe
+            >
           </div>
         </div>
 
@@ -1782,12 +1789,7 @@
       <div class="container">
         <div class="footer-grid">
           <div class="footer-col">
-            <a href="index.html" class="footer-logo">SSPP</a>
-            <p>
-              The Society for Study of Pain, Pune (SSPP) is dedicated to
-              advancing the field of pain medicine through education, research,
-              and collaboration.
-            </p>
+            <img src="./assets/Painscape-logo.png" alt="" />
           </div>
           <div class="footer-col">
             <h4>Quick Links</h4>

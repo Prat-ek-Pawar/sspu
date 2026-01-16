@@ -542,7 +542,117 @@
         font-size: 0.9rem;
         color: #64748b;
       }
-    </style>
+    
+      /* Modern Buttons (Injected from index.html) */
+      .btn {
+        padding: 14px 32px;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border: 2px solid transparent;
+      }
+
+      .btn-primary {
+        background: var(--gradient-saffron);
+        color: white;
+        box-shadow: 0 10px 25px -5px rgba(231, 111, 81, 0.4);
+      }
+
+      .btn-outline {
+        border-color: var(--royal-blue);
+        color: var(--royal-blue);
+        background: transparent;
+      }
+
+      .btn:hover {
+        transform: translateY(-4px) scale(1.02);
+      }
+
+      /* Mobile Active State - REPAIRED */
+      .desktop-nav.active-mobile {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        /* Fixed to cover screen or stick */
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        height: calc(100vh - var(--header-height));
+        background: #ffffff; /* Use solid white for clarity per request */
+        /* backdrop-filter: blur(10px); Removed since solid bg is requested/safer */
+        padding: 20px 0; /* Add top padding per container rules */
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        align-items: center;
+        /* Center horizontally */
+        justify-content: flex-start;
+        gap: 15px; /* Adjust gap */
+        overflow-y: auto;
+        z-index: 999;
+        text-align: center; /* Ensure text alignment */
+      }
+
+      .desktop-nav.active-mobile .nav-link {
+        font-size: 1.1rem;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        
+        /* STRICT RULES */
+        text-decoration: none !important;
+        color: #333333;
+        font-weight: 500;
+        display: block; /* Ensure full width click area */
+      }
+
+      .desktop-nav.active-mobile .nav-link:hover {
+        color: #E65100; /* Orange/Brand Color */
+      }
+      
+      /* Buttons in Mobile Menu */
+      .desktop-nav.active-mobile .btn {
+        width: fit-content;
+        max-width: 80%;
+        margin: 10px auto;
+        display: inline-flex; /* Maintain pill shape inline-flex behavior but block-like positioning */
+        padding: 10px 20px;
+      }
+      
+      .desktop-nav.active-mobile .has-dropdown {
+        width: 100%;
+        text-align: center;
+      }
+
+      .desktop-nav.active-mobile .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border: none;
+        background: transparent;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        padding: 0;
+        margin-top: 5px;
+        display: none;
+        /* Hidden by default, maybe toggle? or just show all */
+        border-top: none; /* Remove border top if present */
+      }
+
+      /* Simple show for now or let them be valid links */
+      .desktop-nav.active-mobile .has-dropdown:hover .dropdown-menu {
+        display: block;
+      }
+      
+      /* Mobile dropdown items */
+      .desktop-nav.active-mobile .dropdown-item {
+         padding: 8px 0;
+         color: #555;
+      }
+</style>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -568,7 +678,12 @@
 
         <!-- Navbar -->
         <nav class="desktop-nav">
-          <a href="index.html" class="nav-link">Home</a>
+          <a
+            href="index.html"
+            class="nav-link"
+            style="color: var(--pune-saffron)"
+            >Home</a
+          >
 
           <div class="has-dropdown">
             <span class="nav-link"
@@ -578,10 +693,7 @@
               <a href="Secretary_message.html" class="dropdown-item"
                 >Secretary's Message</a
               >
-              <a
-                href="Vision_Mission.html"
-                class="dropdown-item active"
-                style="color: var(--pune-saffron); font-weight: 600"
+              <a href="Vision_Mission.html" class="dropdown-item"
                 >Vision Mission</a
               >
               <div
